@@ -7,6 +7,7 @@ export type Image = {
 export type Link = {
     text: string;
     href: string;
+    target?: string;
 };
 
 export type Hero = {
@@ -38,68 +39,51 @@ export type SiteConfig = {
 };
 
 const siteConfig: SiteConfig = {
-    title: 'Dante',
-    subtitle: 'Minimal Astro.js theme',
-    description: 'Astro.js and Tailwind CSS theme for blog and portfolio by justgoodui.com',
+    title: 'Giles',
+    subtitle: 'Founder | Father | Producer | dj',
+    description: 'Giles is a music producer, dj, startup founder, and father. He builds products at the intersection of music, technology and design.',
     image: {
-        src: '/dante-preview.jpg',
-        alt: 'Dante - Astro.js and Tailwind CSS theme'
+        src: '/gb.avif',
+        alt: 'Giles - Founder | Father | Producer | dj'
     },
     headerNavLinks: [
-        {
-            text: 'Home',
-            href: '/'
-        },
         {
             text: 'Projects',
             href: '/projects'
         },
         {
-            text: 'Blog',
-            href: '/blog'
+            text: 'Changelog',
+            href: '/changelog'
         },
         {
-            text: 'Tags',
-            href: '/tags'
+            text: 'Music',
+            href: 'https://soundcloud.com/gilo_music',
+            target: '_blank'
         }
     ],
     footerNavLinks: [
         {
-            text: 'About',
-            href: '/about'
-        },
-        {
             text: 'Contact',
             href: '/contact'
-        },
-        {
-            text: 'Terms',
-            href: '/terms'
-        },
-        {
-            text: 'Download theme',
-            href: 'https://github.com/JustGoodUI/dante-astro-theme'
         }
     ],
     socialLinks: [
         {
-            text: 'Dribbble',
-            href: 'https://dribbble.com/'
-        },
-        {
-            text: 'Instagram',
-            href: 'https://instagram.com/'
+            text: 'SoundCloud',
+            href: 'https://soundcloud.com/gilo_music'
         },
         {
             text: 'X/Twitter',
-            href: 'https://twitter.com/'
+            href: 'https://twitter.com/gilesbutler'
         }
     ],
     hero: {
-        title: 'Hi There & Welcome to My Corner of the Web!',
-        text: "I'm **Ethan Donovan**, a web developer at Amazing Studio, dedicated to the realms of collaboration and artificial intelligence. My approach involves embracing intuition, conducting just enough research, and leveraging aesthetics as a catalyst for exceptional products. I have a profound appreciation for top-notch software, visual design, and the principles of product-led growth. Feel free to explore some of my coding endeavors on <a href='https://github.com/JustGoodUI/dante-astro-theme'>GitHub</a> or follow me on <a href='https://twitter.com/justgoodui'>Twitter/X</a>.",
+        title: 'I\'m Giles. A creative technologist, music producer, dj and father.',
+        text: `<p>Blending technology with the arts is more than a pursuit — it's a lifestyle. Guided by intuition and curated research, I channel creativity into everyday innovation. I’m deeply immersed in the art of breaking new ground with tech, crafting design that pops, and pushing the envelope of artistic growth. My projects dance at the vibrant intersection of music, technology, and design — each one a unique narrative woven from sound and pixels. I'm always on the lookout for collaborations here in Sydney or online. If you’re into making big, bold, artistic ripples or just want to peek into my world, explore my projects below and let’s connect!</p>
+        <p>Currently attempting to release a new product every month till 2025.</p>
+        `,
         image: {
-            src: '/hero.jpeg',
+            src: '/gb.avif',
             alt: 'A person sitting at a desk in front of a computer'
         },
         actions: [
@@ -110,7 +94,7 @@ const siteConfig: SiteConfig = {
         ]
     },
     subscribe: {
-        title: 'Subscribe to Dante Newsletter',
+        title: 'Subscribe to my Newsletter',
         text: 'One update per week. All the latest posts directly in your inbox.',
         formUrl: '#'
     },

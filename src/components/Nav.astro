@@ -18,12 +18,23 @@ const navLinks = siteConfig.headerNavLinks || [];
                 >
                     <span class="menu-toggle-icon w-6 h-px relative bg-current" />
                 </button>
-                <ul id="menu-items" class="menu flex gap-6">
+                <ul id="menu-items" class="menu flex gap-4">
+                    <li class="py-1">
+                        <NavLink title="Home" class="hover:rotate-90 block transition-transform" href="/">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4" width="32" height="24" viewBox="0 0 256 256">
+                                <path
+                                    fill="currentColor"
+                                    d="M236.78 211.81A24.34 24.34 0 0 1 215.45 224H40.55a24.34 24.34 0 0 1-21.33-12.19a23.51 23.51 0 0 1 0-23.72l87.43-151.87a24.76 24.76 0 0 1 42.7 0l87.45 151.87a23.51 23.51 0 0 1-.02 23.72"
+                                />
+                            </svg>
+                        </NavLink>
+                    </li>
                     {navLinks.map((link) => (
                         <li class="py-1">
                             <NavLink
                                 class="text-xl font-serif text-main hover:underline hover:underline-offset-2 hover:decoration-1 md:text-base"
                                 href={link.href}
+                                target={link.target}
                             >
                                 {link.text}
                             </NavLink>

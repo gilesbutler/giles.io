@@ -7,16 +7,16 @@ import Nav from '../components/Nav.astro';
 
 export type Props = HeadProps & { showHeader?: boolean };
 
-const { showHeader = true, ...head } = Astro.props;
+const { showHeader = false, ...head } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="antialiased break-words">
+<html lang="en" class="antialiased break-words dark">
     <head>
         <BaseHead {...head} />
         <script>
-            if (localStorage.theme === 'dark') {
-                document.documentElement.classList.add('dark');
+            if (localStorage.theme === 'light') {
+                document.documentElement.classList.add('light');
             }
         </script>
         <ViewTransitions />

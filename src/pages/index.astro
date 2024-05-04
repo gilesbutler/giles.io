@@ -9,10 +9,14 @@ import siteConfig from '../data/site-config';
 import { sortItemsByDateDesc } from '../utils/data-utils';
 
 const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
-const featuredPosts = posts.filter(({ data }) => data.isFeatured);
+// const featuredPosts = posts.filter(({ data }) => data.isFeatured);
+// Get latest 3 posts
+const featuredPosts = posts.slice(0, 3);
 
 const projects = (await getCollection('projects')).sort(sortItemsByDateDesc);
-const featuredProjects = projects.filter(({ data }) => data.isFeatured);
+// const featuredProjects = projects.filter(({ data }) => data.isFeatured);
+// Get latest 3 projects
+const featuredProjects = projects.slice(0, 3);
 ---
 
 <BaseLayout description={siteConfig.description} image={siteConfig.image}>
@@ -33,12 +37,12 @@ const featuredProjects = projects.filter(({ data }) => data.isFeatured);
     {
         featuredPosts?.length > 0 && (
             <div class="mb-16 sm:mb-24">
-                <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">Writing</h2>
+                <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">The Changelog</h2>
                 {featuredPosts.map((post) => (
                     <PostPreview post={post} class="mb-10 sm:mb-12" headingLevel="h3" />
                 ))}
                 <div class="mt-12 sm:mt-16">
-                    <Button href="/blog">View All Posts</Button>
+                    <Button href="/changelog">View All Posts</Button>
                 </div>
             </div>
         )
