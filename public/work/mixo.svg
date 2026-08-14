@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e01e5a"/>
+      <stop offset="1" stop-color="#7a0c33"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <text x="60" y="120" font-family="system-ui, sans-serif" font-size="36" fill="#fff" opacity="0.7">Mixo</text>
+  <text x="60" y="200" font-family="system-ui, sans-serif" font-size="84" font-weight="700" fill="#fff">Founder story + growth</text>
+  <text x="60" y="740" font-family="ui-monospace, monospace" font-size="18" fill="#fff" opacity="0.6">Placeholder image - replace with real cover.</text>
+</svg>

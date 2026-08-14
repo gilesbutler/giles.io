@@ -1,0 +1,28 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Nav from "~/components/Nav.astro";
+import Footer from "~/components/Footer.astro";
+import { siteConfig } from "~/config/site";
+const nf = siteConfig.notFound;
+---
+
+<Layout title={`Page not found — ${siteConfig.name}`} noindex={true}>
+  <Nav />
+  <main id="main">
+    <section class="hero" style="min-height:78vh">
+      <p class="hand myname">{nf.kicker}</p>
+      <h1 class="display-name selected">{nf.title}
+        <span class="h tl"></span><span class="h tr"></span><span class="h bl"></span><span class="h br"></span>
+      </h1>
+      <p class="mono-label avail"><span class="dot"></span> {nf.note}</p>
+      <a href="/" class="cta btn-pill">
+        <span class="ico"
+          ><svg viewBox="0 0 24 24" fill="none"
+            ><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg
+          ></span
+        ><span>{nf.ctaLabel}</span>
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Layout>

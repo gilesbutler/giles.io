@@ -1,50 +1,33 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Button from '../components/Button.astro';
-import Hero from '../components/Hero.astro';
-import PostPreview from '../components/PostPreview.astro';
-import ProjectPreview from '../components/ProjectPreview.astro';
-import siteConfig from '../data/site-config';
-import { sortItemsByDateDesc } from '../utils/data-utils';
-
-const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
-// const featuredPosts = posts.filter(({ data }) => data.isFeatured);
-// Get latest 3 posts
-const featuredPosts = posts.slice(0, 3);
-
-const projects = (await getCollection('projects')).sort(sortItemsByDateDesc);
-// const featuredProjects = projects.filter(({ data }) => data.isFeatured);
-// Get latest 3 projects
-const featuredProjects = projects.slice(0, 3);
+import Layout from "~/layouts/Layout.astro";
+import Nav from "~/components/Nav.astro";
+import Hero from "~/components/Hero.astro";
+import Clients from "~/components/Clients.astro";
+import Statement from "~/components/Statement.astro";
+import About from "~/components/About.astro";
+import Stats from "~/components/Stats.astro";
+import FeaturedWorks from "~/components/FeaturedWorks.astro";
+import Testimonials from "~/components/Testimonials.astro";
+import Contact from "~/components/Contact.astro";
+import Footer from "~/components/Footer.astro";
 ---
 
-<BaseLayout description={siteConfig.description} image={siteConfig.image}>
+<Layout>
+  <Nav />
+  <main id="main">
     <Hero />
-    {
-        featuredProjects?.length > 0 && (
-            <div class="mb-16 sm:mb-24">
-                <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">Projects</h2>
-                {featuredProjects.map((project) => (
-                    <ProjectPreview project={project} class="mb-10 sm:mb-12" headingLevel="h3" />
-                ))}
-                <div class="mt-12 sm:mt-16">
-                    <Button href="/projects">View All Projects</Button>
-                </div>
-            </div>
-        )
-    }
-    {
-        featuredPosts?.length > 0 && (
-            <div class="mb-16 sm:mb-24">
-                <h2 class="mb-12 text-xl font-serif italic sm:mb-16 sm:text-2xl">The Changelog</h2>
-                {featuredPosts.map((post) => (
-                    <PostPreview post={post} class="mb-10 sm:mb-12" headingLevel="h3" />
-                ))}
-                <div class="mt-12 sm:mt-16">
-                    <Button href="/changelog">View All Posts</Button>
-                </div>
-            </div>
-        )
-    }
-</BaseLayout>
+    <Clients />
+    <Statement />
+    <div class="arc" aria-hidden="true">
+      <svg viewBox="0 0 1200 90" fill="none" preserveAspectRatio="none"
+        ><path d="M0 80 Q600 0 1200 80" stroke="currentColor" stroke-width="2"></path></svg
+      >
+    </div>
+    <About />
+    <Stats />
+    <FeaturedWorks />
+    <Testimonials />
+    <Contact />
+  </main>
+  <Footer />
+</Layout>

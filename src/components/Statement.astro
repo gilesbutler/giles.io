@@ -1,0 +1,41 @@
+---
+import { siteConfig } from "~/config/site";
+const { statement } = siteConfig;
+---
+
+<section class="statement">
+  <h2 data-reveal>
+    {statement.partA}
+    <span class="g cyan"
+      ><svg viewBox="0 0 24 24" fill="none"
+        ><circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="2"></circle><circle
+          cx="12"
+          cy="12"
+          r="2.5"
+          fill="currentColor"></circle></svg
+      ></span
+    >
+    {statement.partB}
+    <span class="g magenta"
+      ><svg viewBox="0 0 24 24" fill="none"
+        ><path
+          d="M12 3v18M3 12h18M6 6l12 12M18 6L6 18"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"></path></svg
+      ></span
+    >
+  </h2>
+  <a href={statement.ctaUrl} class="cta btn-pill" data-reveal>
+    <span class="ico"
+      ><svg viewBox="0 0 24 24" fill="none"
+        ><path
+          d="M5 12h13M12 6l6 6-6 6"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path></svg
+      ></span
+    ><span>{statement.ctaLabel}</span>
+  </a>
+</section>

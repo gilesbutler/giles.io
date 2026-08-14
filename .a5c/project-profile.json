@@ -1,0 +1,455 @@
+{
+  "projectName": "giles.io",
+  "description": "Existing version-1 Astro static portfolio for Giles Butler, a product-minded creative engineer and co-founder of Fuzzy Logic Labs.",
+  "goals": [
+    {
+      "id": "goal-portfolio-1",
+      "description": "Present Giles Butler's product engineering, frontend, design, and full-stack experience.",
+      "category": "portfolio",
+      "priority": "high",
+      "status": "active"
+    },
+    {
+      "id": "goal-content-1",
+      "description": "Maintain site copy, navigation, SEO, contact content, and case studies from clear source locations.",
+      "category": "content-maintenance",
+      "priority": "high",
+      "status": "active"
+    },
+    {
+      "id": "goal-delivery-1",
+      "description": "Continuously publish a reliable static site from main through Netlify.",
+      "category": "delivery",
+      "priority": "high",
+      "status": "active"
+    },
+    {
+      "id": "goal-process-1",
+      "description": "Use semi-autonomous assistance without babysitter triggers in production CI/CD.",
+      "category": "process",
+      "priority": "medium",
+      "status": "active"
+    }
+  ],
+  "techStack": {
+    "languages": [
+      {
+        "name": "TypeScript",
+        "version": "5.7",
+        "role": "configuration, schemas, Astro scripts"
+      },
+      {
+        "name": "JavaScript",
+        "role": "Astro configuration and process scripts"
+      },
+      {
+        "name": "CSS",
+        "role": "global tokens, themes, responsive styling"
+      },
+      {
+        "name": "Markdown",
+        "role": "content collections"
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "Astro",
+        "version": "7.0.2",
+        "category": "static site framework"
+      },
+      {
+        "name": "Tailwind CSS",
+        "version": "4.3.0",
+        "category": "styling via Vite"
+      },
+      {
+        "name": "Zod",
+        "category": "content validation"
+      },
+      {
+        "name": "@astrojs/sitemap",
+        "version": "3.7.3",
+        "category": "sitemap generation"
+      }
+    ],
+    "databases": [],
+    "infrastructure": [
+      {
+        "name": "Netlify",
+        "category": "primary hosting/build/deploy"
+      },
+      {
+        "name": "Vercel",
+        "category": "secondary hosting"
+      },
+      {
+        "name": "Cloudflare Pages",
+        "category": "optional deployment"
+      },
+      {
+        "name": "Node.js",
+        "version": "22",
+        "category": "build runtime"
+      }
+    ],
+    "buildTools": [
+      "Astro CLI",
+      "Vite",
+      "@tailwindcss/vite",
+      "patch-package",
+      "TypeScript"
+    ],
+    "packageManagers": [
+      "npm"
+    ]
+  },
+  "architecture": {
+    "pattern": "Configuration-driven, statically generated Astro site.",
+    "modules": [
+      {
+        "name": "Site configuration",
+        "path": "src/config/site.ts",
+        "description": "Single source for identity, copy, navigation, sections, SEO, form, and footer."
+      },
+      {
+        "name": "Routes",
+        "path": "src/pages/",
+        "description": "Home, about, work index/detail, contact, 404, and service-worker cleanup route."
+      },
+      {
+        "name": "Components",
+        "path": "src/components/",
+        "description": "Presentational Astro sections."
+      },
+      {
+        "name": "Content collections",
+        "path": "src/content/ and src/content.config.ts",
+        "description": "Glob-loaded work and journal Markdown validated with Zod."
+      },
+      {
+        "name": "Styles",
+        "path": "src/styles/global.css",
+        "description": "Centralized theme tokens and responsive styles."
+      }
+    ],
+    "entryPoints": [
+      "src/pages/index.astro",
+      "src/pages/about.astro",
+      "src/pages/work.astro",
+      "src/pages/work/[slug].astro",
+      "src/pages/contact.astro",
+      "astro.config.mjs"
+    ],
+    "dataFlow": "Build-time Astro content/config loading produces dist/; Netlify publishes dist/. Contact posts to Netlify Forms. There is no database or application API."
+  },
+  "team": [
+    {
+      "name": "Giles Butler",
+      "role": "Owner and product-minded creative engineer",
+      "responsibilities": [
+        "Portfolio direction",
+        "Astro/frontend/design/full-stack implementation",
+        "Content and deployment ownership"
+      ]
+    },
+    {
+      "name": "Adam Arbolino",
+      "role": "Fuzzy Logic Labs co-founder",
+      "responsibilities": [
+        "Co-founded Fuzzy Logic Labs and collaborated on represented products"
+      ]
+    },
+    {
+      "name": "Asta Bankauske",
+      "role": "Historical repository contributor",
+      "responsibilities": [
+        "Dependency maintenance and GitHub merge activity"
+      ]
+    },
+    {
+      "name": "Luca Zoppetti",
+      "role": "Historical external contributor",
+      "responsibilities": [
+        "Theme-flash fix"
+      ]
+    }
+  ],
+  "workflows": [
+    {
+      "name": "development",
+      "description": "Local Astro development and implementation.",
+      "steps": [
+        "npm install",
+        "npm run dev",
+        "Edit source",
+        "npm run build"
+      ],
+      "triggers": [
+        "Manual local development"
+      ]
+    },
+    {
+      "name": "content-update",
+      "description": "Plan or update content, build, and inspect generated routes.",
+      "steps": [
+        "Use OpenSpec when appropriate",
+        "Edit centralized config or Markdown",
+        "Run build and smoke checks"
+      ],
+      "triggers": [
+        "Content request"
+      ]
+    },
+    {
+      "name": "verification",
+      "description": "Build-based smoke verification; no unit-test framework exists.",
+      "steps": [
+        "npm run build",
+        "Assert required dist routes and identity",
+        "Assert archived routes remain absent"
+      ],
+      "triggers": [
+        "Before delivery"
+      ]
+    },
+    {
+      "name": "netlify-deployment",
+      "description": "Primary continuous deployment.",
+      "steps": [
+        "Push main",
+        "Netlify runs npm run build with Node 22",
+        "Publish dist/",
+        "Apply security headers"
+      ],
+      "triggers": [
+        "Push to main"
+      ],
+      "approvalPreferences": {
+        "autonomy": "semi-autonomous",
+        "ciCdDecision": "Skip babysitter CI/CD integration"
+      }
+    }
+  ],
+  "processes": [
+    "cradle/project-install",
+    ".a5c/processes/homepage-annotation-update.js",
+    ".a5c/processes/portfolio-content-update.js",
+    ".a5c/processes/install-august-template.js",
+    ".a5c/processes/apply-portfolio.sh",
+    ".a5c/processes/verify-portfolio.sh"
+  ],
+  "tools": {
+    "development": [
+      "Astro CLI",
+      "npm",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS v4",
+      "patch-package"
+    ],
+    "documentation": [
+      "README.md",
+      "HEADSHOTS_TODO.md",
+      "OpenSpec"
+    ],
+    "verification": [
+      "npm run build",
+      "bash .a5c/processes/verify-portfolio.sh"
+    ],
+    "orchestration": [
+      "Babysitter process references under .a5c/processes/",
+      "OpenSpec under openspec/ and .omp/"
+    ]
+  },
+  "services": [
+    {
+      "name": "Netlify",
+      "role": "Primary hosting, builds, publishing, Forms, CAPTCHA, and honeypot"
+    },
+    {
+      "name": "Vercel",
+      "role": "Secondary deployment target"
+    },
+    {
+      "name": "Cloudflare Pages",
+      "role": "Optional deployment target"
+    },
+    {
+      "name": "GitHub",
+      "role": "Canonical repository and PR collaboration"
+    }
+  ],
+  "externalIntegrations": [
+    {
+      "name": "Netlify Forms",
+      "purpose": "Contact submission from /contact/",
+      "configuration": "Built-in CAPTCHA and honeypot"
+    },
+    {
+      "name": "GitHub",
+      "purpose": "Source repository"
+    },
+    {
+      "name": "Analytics switchboard",
+      "purpose": "Optional analytics; currently disabled"
+    }
+  ],
+  "cicd": {
+    "provider": "Netlify",
+    "configPaths": [
+      "netlify.toml",
+      "vercel.json"
+    ],
+    "pipelines": [
+      {
+        "name": "Netlify production",
+        "trigger": "Push to main",
+        "stages": [
+          "npm run build with Node 22",
+          "Publish dist/",
+          "Apply security headers"
+        ]
+      },
+      {
+        "name": "Vercel secondary",
+        "trigger": "Manual deploy:vercel",
+        "stages": [
+          "Build",
+          "Publish dist/"
+        ]
+      },
+      {
+        "name": "Cloudflare secondary",
+        "trigger": "Manual deploy:cloudflare",
+        "stages": [
+          "Build",
+          "Deploy dist/"
+        ]
+      }
+    ],
+    "babysitterIntegration": {
+      "enabled": false,
+      "triggerOn": [],
+      "processIds": [],
+      "reason": "Explicitly skip babysitter CI/CD integration"
+    }
+  },
+  "painPoints": [
+    {
+      "id": "pp-testing-1",
+      "description": "No unit, integration, lint, or dedicated test suite; confidence relies on build and route smoke checks.",
+      "severity": "medium",
+      "category": "quality",
+      "discoveredVia": "Repository analysis"
+    },
+    {
+      "id": "pp-dependencies-1",
+      "description": "Dependency updates historically use a repeated manual external-fork PR loop.",
+      "severity": "medium",
+      "category": "maintenance",
+      "discoveredVia": "Git-history mining"
+    },
+    {
+      "id": "pp-assets-1",
+      "description": "HEADSHOTS_TODO.md and placeholder case-study imagery indicate remaining asset work.",
+      "severity": "low",
+      "category": "content",
+      "discoveredVia": "Repository inspection"
+    }
+  ],
+  "bottlenecks": [
+    {
+      "id": "bn-testing-1",
+      "description": "Manual build-and-route verification is the primary quality gate.",
+      "impact": "Limited regression detection.",
+      "location": ".a5c/processes/verify-portfolio.sh",
+      "frequency": "Every delivery"
+    },
+    {
+      "id": "bn-dependencies-1",
+      "description": "Manual dependency update loop.",
+      "impact": "Recurring maintenance effort and possible update lag.",
+      "location": "GitHub PR workflow",
+      "frequency": "Recurring"
+    },
+    {
+      "id": "bn-release-1",
+      "description": "No tags, releases, changelog, or semver markers.",
+      "impact": "Release boundaries are hard to audit.",
+      "location": "Git history",
+      "frequency": "Continuous"
+    }
+  ],
+  "conventions": {
+    "naming": {
+      "paths": "Lowercase route/content slugs",
+      "siteConfig": "camelCase properties",
+      "components": "PascalCase Astro filenames"
+    },
+    "git": {
+      "branchStrategy": "Trunk-based single main branch",
+      "mergeStrategy": "GitHub PR merges plus direct content/config commits",
+      "commitStyle": "Terse lowercase imperative subjects",
+      "releaseStrategy": "Continuous deployment; no formal releases"
+    },
+    "codeStyle": {
+      "framework": "Presentational Astro components",
+      "interactivity": "Inline scripts and data attributes",
+      "styling": "Global CSS tokens and CSS variables",
+      "configuration": "Prefer src/config/site.ts as single source"
+    },
+    "importOrder": [
+      "External packages",
+      "Astro imports",
+      "~/* aliases",
+      "Relative imports"
+    ],
+    "errorHandling": "Fail-fast shell verification and Zod/Astro content validation.",
+    "testingConventions": "Use npm run build and deterministic generated-route/content assertions; no unit-test framework.",
+    "additionalRules": [
+      "Keep site static unless explicitly required otherwise.",
+      "Keep Netlify primary.",
+      "Do not add babysitter CI/CD triggers.",
+      "Use OpenSpec for changes that warrant planning.",
+      "Gitignore policy: Logs only; ignore .a5c/creds.env, .a5c/creds.env.tmp.*, and .a5c/logs/."
+    ]
+  },
+  "repositories": [
+    {
+      "name": "giles.io",
+      "url": "https://github.com/gilesbutler/giles.io.git",
+      "branch": "main",
+      "role": "canonical source"
+    }
+  ],
+  "claudeMdInstructions": [
+    "Use Astro 7 static-site conventions with Node 22 and existing repository data/content/asset paths.",
+    "Use Netlify as the primary deployment target; publish dist/ via the configured build, and treat Vercel/Cloudflare as secondary manual targets.",
+    "Do not add Babysitter CI/CD integration, CI triggers, deployment pipelines, dependencies, or new process files without explicit approval.",
+    "Work semi-autonomously for routine reversible edits; request approval for consequential, irreversible, production, security-sensitive, dependency, deletion, migration, or scope changes.",
+    "Use OpenSpec for spec-worthy work and run strict validation plus change status checks before implementation.",
+    "Use .a5c/processes/portfolio-content-update.js for full portfolio-content updates, .a5c/processes/homepage-annotation-update.js for homepage annotation requests, and .a5c/processes/verify-portfolio.sh for build/route/content smoke verification.",
+    "Use the documented npm, OpenSpec, and verification commands; preserve existing process hard gates and do not invent substitute workflows."
+  ],
+  "installedSkills": [
+    "OpenSpec spec-driven workflow",
+    "Babysitter cradle/project-install reference",
+    "Astro/static-site conventions"
+  ],
+  "installedAgents": [
+    "General-purpose profile architect",
+    "Senior Astro frontend engineer role",
+    "Review and verification roles referenced by processes"
+  ],
+  "installedProcesses": [
+    "cradle/project-install",
+    ".a5c/processes/homepage-annotation-update.js",
+    ".a5c/processes/portfolio-content-update.js",
+    ".a5c/processes/install-august-template.js",
+    ".a5c/processes/apply-portfolio.sh",
+    ".a5c/processes/verify-portfolio.sh"
+  ],
+  "createdAt": "2026-08-13T13:41:08Z",
+  "updatedAt": "2026-08-13T14:54:17Z",
+  "version": 1
+}

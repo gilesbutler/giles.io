@@ -1,33 +1,151 @@
 ---
-import ArrowLeft from '../icons/ArrowLeft.astro';
-import ArrowRight from '../icons/ArrowRight.astro';
-import IconButton from './IconButton.astro';
+/* Blog pagination for August. Renders nothing when there's only one page.
+   No shared button class exists, so the pager is built from August's own
+   tokens: a ghost pill mirrors .btn-contact / .theme-toggle (paper fill,
+   1.6px ink border, 11px radius, hover-lift + hard offset shadow), and the
+   current page is a candy-cyan pill matching .navlink.active / .m-contact.
+   Text + border on the cyan surface are pinned to black so they stay legible
+   in BOTH light and dark, exactly like every other colored-surface element in
+   this theme. Arrows reuse August's own Hero arrow (Next) and its horizontal
+   mirror (Prev) - the theme has no shared Icon component. Windowed page numbers
+   with an ellipsis keep long runs tidy. */
+interface Props {
+  currentPage: number;
+  lastPage: number;
+  hrefFor?: (n: number) => string;
+}
+const {
+  currentPage,
+  lastPage,
+  hrefFor = (n: number) => (n === 1 ? "/blog/" : `/blog/${n}/`),
+} = Astro.props;
 
-const { page, class: className } = Astro.props;
+const items: (number | "gap")[] = [];
+if (lastPage > 1) {
+  const w = 1;
+  const lo = Math.max(2, currentPage - w);
+  const hi = Math.min(lastPage - 1, currentPage + w);
+  items.push(1);
+  if (lo > 2) items.push("gap");
+  for (let n = lo; n <= hi; n++) items.push(n);
+  if (hi < lastPage - 1) items.push("gap");
+  items.push(lastPage);
+}
+
+const prev = currentPage > 1 ? currentPage - 1 : null;
+const next = currentPage < lastPage ? currentPage + 1 : null;
+const off = "opacity:0.4;pointer-events:none;";
 ---
 
-<nav aria-label="Pagination" class:list={['px-12 py-2 relative text-center', className]}>
-    {
-        page.url.prev && (
-            <IconButton
-                class="absolute left-0 top-1/2 -translate-y-1/2"
-                href={page.url.prev}
-                aria-label={`Go to page ${page.currentPage - 1} of ${page.lastPage}`}
-            >
-                <ArrowLeft class="w-5 h-5 fill-current" />
-            </IconButton>
+{lastPage > 1 && (
+  <nav class="pg" data-reveal aria-label="Blog pagination">
+    {prev ? (
+      <a href={hrefFor(prev)} rel="prev" class="pg-btn">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H6M12 6l-6 6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        <span>Prev</span>
+      </a>
+    ) : (
+      <span class="pg-btn" aria-disabled="true" style={off}>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H6M12 6l-6 6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        <span>Prev</span>
+      </span>
+    )}
+
+    <div class="pg-nums">
+      {items.map((it) =>
+        it === "gap" ? (
+          <span class="pg-gap" aria-hidden="true">…</span>
+        ) : it === currentPage ? (
+          <span class="pg-btn pg-num is-active" aria-current="page">{it}</span>
+        ) : (
+          <a href={hrefFor(it)} class="pg-btn pg-num" aria-label={`Page ${it}`}>{it}</a>
         )
-    }
-    <span class="text-sm" aria-current="page">Page {page.currentPage} of {page.lastPage}</span>
-    {
-        page.url.next && (
-            <IconButton
-                class="absolute right-0 top-1/2 -translate-y-1/2"
-                href={page.url.next}
-                aria-label={`Go to page ${page.currentPage + 1} of ${page.lastPage}`}
-            >
-                <ArrowRight class="w-5 h-5 fill-current" />
-            </IconButton>
-        )
-    }
-</nav>
+      )}
+    </div>
+
+    {next ? (
+      <a href={hrefFor(next)} rel="next" class="pg-btn">
+        <span>Next</span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </a>
+    ) : (
+      <span class="pg-btn" aria-disabled="true" style={off}>
+        <span>Next</span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M12 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      </span>
+    )}
+  </nav>
+)}
+
+<style>
+  .pg {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 26px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  /* Ghost pill - mirrors August's .btn-contact / .theme-toggle. */
+  .pg-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1.6px solid var(--ink);
+    border-radius: 11px;
+    padding: 10px 16px;
+    transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1),
+      box-shadow 0.25s ease, background 0.15s ease;
+  }
+  a.pg-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 5px 8px 0 rgba(17, 18, 18, 0.22);
+  }
+  a.pg-btn:active {
+    transform: translateY(-1px) scale(0.99);
+  }
+  .pg-btn svg {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 auto;
+  }
+
+  .pg-nums {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .pg-num {
+    min-width: 2.75rem;
+    padding: 10px 12px;
+  }
+  /* Current page - candy-cyan pill (like .navlink.active / .m-contact). Ink is
+     pinned to black on the colored surface so text + border stay legible in
+     BOTH light and dark, matching August's other colored-surface elements. */
+  .pg-num.is-active {
+    background: var(--cyan);
+    color: #111212;
+    border-color: #111212;
+  }
+
+  .pg-gap {
+    padding: 0 4px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1;
+    color: var(--ink);
+    user-select: none;
+  }
+</style>

@@ -1,0 +1,22 @@
+---
+import { siteConfig } from "~/config/site";
+const { timeline } = siteConfig;
+---
+
+<section class="section" id="timeline">
+  <div class="section-head">
+    <p class="kicker">{timeline.kicker}</p>
+    <h2>{timeline.heading}</h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-list">
+      {timeline.entries.map((e) => (
+        <div class:list={["tl-item", e.color]}>
+          <span class="tl-year">{e.year}</span>
+          <h3 class="tl-title">{e.title}</h3>
+          <p class="tl-body">{e.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

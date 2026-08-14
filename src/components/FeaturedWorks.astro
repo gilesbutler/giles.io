@@ -1,0 +1,73 @@
+---
+import { getCollection } from "astro:content";
+import { siteConfig } from "~/config/site";
+const { works } = siteConfig;
+
+const projects = (await getCollection("work", (e) => !e.data.draft)).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+---
+
+<section id="work">
+  <div class="works-intro">
+    <p class="hand kicker" data-reveal>{works.kicker}</p>
+    <div class="works-title" data-reveal>{works.titleTop}<br />{works.titleBottom}</div>
+    <div class="works-note" data-reveal>{works.note}</div>
+  </div>
+
+  <div class="stack" id="stack">
+    {projects.map((p, i) => {
+      const isLight = p.data.cardText === "light";
+      const tabx = i * 235;
+      return (
+        <article
+          class:list={["folder-card", isLight ? "dark" : "light-bg"]}
+          style={`--card:${p.data.cardColor};--tabink:${isLight ? "#fff" : "#111212"};--tabx:${tabx}px;z-index:${i + 1}`}
+        >
+          <div class="fc-shell">
+            <div class="fc-tabrow">
+              <div class="tab">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  ><path d="M3 7h6l2 2h10v9H3z" stroke="currentColor" stroke-width="1.8"></path></svg
+                >
+                {works.projectPrefix} {String(i + 1).padStart(2, "0")}
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="fc-inner">
+                <div class="fc-text">
+                  <p class="fc-meta"><span class="d"></span> {fmtDate(p.data.date)}</p>
+                  <h3 class="fc-name">{p.data.title}</h3>
+                  <p class="fc-desc">{p.data.excerpt}</p>
+                  <a href={`/work/${p.id}/`} class="fc-view">
+                    {works.viewLabel}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                      ><path
+                        d="M7 17L17 7M9 7h8v8"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path></svg
+                    >
+                  </a>
+                  <div class="fc-tags">
+                    {p.data.tags.map((t) => <span class="fc-tag">{t}</span>)}
+                  </div>
+                </div>
+                <div class="fc-img">
+                  <div class="frame"><img src={p.data.image} alt={p.data.imageAlt} /></div>
+                  <span class="handle tl"></span><span class="handle tr"></span><span class="handle bl"></span><span class="handle br"></span>
+                  <span class="jpg"><b>JPG</b> {p.data.imageLabel}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      );
+    })}
+    <div class="stack-end" aria-hidden="true"></div>
+  </div>
+</section>

@@ -1,0 +1,175 @@
+---
+import "~/styles/global.css";
+import { siteConfig } from "~/config/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonical?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = siteConfig.seo.title,
+  description = siteConfig.seo.description,
+  ogImage = siteConfig.seo.ogImage,
+  canonical = Astro.url.pathname,
+  noindex = false,
+} = Astro.props;
+
+const canonicalURL = new URL(canonical, Astro.site ?? Astro.url);
+const ogImageURL = new URL(ogImage, Astro.site ?? Astro.url).toString();
+const robots = noindex
+  ? "noindex, nofollow"
+  : "index, follow, max-image-preview:large, max-snippet:-1";
+
+function getAnalytics() {
+  const a = siteConfig.analytics;
+  if (!a.provider) return "";
+  if (a.provider === "google" && a.googleId) {
+    return `<script async src="https://www.googletagmanager.com/gtag/js?id=${a.googleId}"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${a.googleId}');</script>`;
+  }
+  if (a.provider === "plausible" && a.plausibleDomain) {
+    return `<script defer data-domain="${a.plausibleDomain}" src="https://plausible.io/js/script.js"></script>`;
+  }
+  if (a.provider === "umami" && a.umamiWebsiteId) {
+    const src = a.umamiScriptUrl || "https://cloud.umami.is/script.js";
+    return `<script defer src="${src}" data-website-id="${a.umamiWebsiteId}"></script>`;
+  }
+  return "";
+}
+const analytics = getAnalytics();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="color-scheme" content="light dark" />
+    <script is:inline define:vars={{ themeDefault: siteConfig.theme.default, themeToggle: siteConfig.theme.toggle }}>
+      // Set the theme before first paint to avoid a flash.
+      try {
+        document.documentElement.dataset.theme = themeToggle
+          ? localStorage.getItem("august-theme") || themeDefault
+          : themeDefault;
+      } catch (e) {
+        document.documentElement.dataset.theme = themeDefault;
+      }
+    </script>
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="icon" type="image/svg+xml" href={siteConfig.favicon} />
+    <link rel="apple-touch-icon" href={siteConfig.favicon} />
+    <link rel="canonical" href={canonicalURL.toString()} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <meta name="author" content={siteConfig.name} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL.toString()} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    {siteConfig.seo.twitterHandle && (
+      <meta name="twitter:creator" content={siteConfig.seo.twitterHandle} />
+    )}
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+    {analytics && <Fragment set:html={analytics} />}
+    {siteConfig.headScripts && <Fragment set:html={siteConfig.headScripts} />}
+  </head>
+  <body>
+    <div class="canvas-bg"></div>
+    <slot />
+
+    <script is:inline>
+      (() => {
+        const reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+        // live clock
+        const clock = document.getElementById("clock");
+        if (clock) {
+          const tick = () => {
+            const d = new Date();
+            let h = d.getHours();
+            const m = String(d.getMinutes()).padStart(2, "0");
+            const s = String(d.getSeconds()).padStart(2, "0");
+            const ap = h >= 12 ? "PM" : "AM";
+            h = h % 12 || 12;
+            clock.textContent = h + ":" + m + ":" + s + " " + ap;
+          };
+          tick();
+          setInterval(tick, 1000);
+        }
+
+        // nav shadow on scroll
+        const nav = document.getElementById("nav");
+        if (nav) {
+          const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 8);
+          onScroll();
+          window.addEventListener("scroll", onScroll, { passive: true });
+
+          // mobile hamburger drawer
+          const burger = nav.querySelector(".nav-burger");
+          if (burger) {
+            burger.addEventListener("click", () => {
+              const open = nav.classList.toggle("menu-open");
+              burger.setAttribute("aria-expanded", String(open));
+            });
+            nav.querySelectorAll(".nav-mobile a").forEach((a) =>
+              a.addEventListener("click", () => nav.classList.remove("menu-open"))
+            );
+          }
+
+          // theme toggle (light/dark)
+          const tt = nav.querySelector(".theme-toggle");
+          if (tt) {
+            tt.addEventListener("click", () => {
+              const next =
+                document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+              document.documentElement.dataset.theme = next;
+              try {
+                localStorage.setItem("august-theme", next);
+              } catch (e) {}
+            });
+          }
+        }
+
+        // fade-in-up on scroll
+        const els = document.querySelectorAll("[data-reveal]");
+        if (reduce || !("IntersectionObserver" in window)) {
+          els.forEach((e) => e.classList.add("in"));
+        } else {
+          const io = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((e) => {
+                if (e.isIntersecting) {
+                  e.target.classList.add("in");
+                  io.unobserve(e.target);
+                }
+              });
+            },
+            { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+          );
+          els.forEach((e) => io.observe(e));
+        }
+      })();
+    </script>
+  </body>
+</html>

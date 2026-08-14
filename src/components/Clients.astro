@@ -1,0 +1,15 @@
+---
+import { siteConfig } from "~/config/site";
+const { clients } = siteConfig;
+// duplicated once so the -50% loop is seamless
+const items = [...clients.items, ...clients.items];
+---
+
+<section class="clients" id="clients">
+  <p class="ck">{clients.kicker}</p>
+  <div class="marquee">
+    <div class="marquee-track">
+      {items.map((name) => <span class="marquee-item">{name}</span>)}
+    </div>
+  </div>
+</section>

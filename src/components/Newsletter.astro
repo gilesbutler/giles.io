@@ -1,0 +1,41 @@
+---
+import { siteConfig } from "~/config/site";
+const n = siteConfig.newsletter;
+
+let action = "";
+let emailName = "email";
+if (n.provider === "buttondown") {
+  action = `https://buttondown.email/api/emails/embed-subscribe/${n.buttondownUser}`;
+  emailName = "email";
+} else if (n.provider === "convertkit") {
+  action = `https://app.convertkit.com/forms/${n.convertkitFormId}/subscriptions`;
+  emailName = "email_address";
+} else if (n.provider === "mailchimp") {
+  action = n.mailchimpAction;
+  emailName = "EMAIL";
+} else if (n.provider === "formspree") {
+  action = `https://formspree.io/f/${n.formspreeId}`;
+  emailName = "email";
+}
+---
+
+<section class="section" id="newsletter">
+  <div class="newsletter-band">
+    <div class="nl-inner">
+      <p class="kicker">{n.kicker}</p>
+      <h2>{n.heading}</h2>
+      {n.subtitle && <p class="sub">{n.subtitle}</p>}
+      <form class="nl-form" action={action} method="POST" target="_blank">
+        <input
+          type="email"
+          name={emailName}
+          placeholder={n.placeholder}
+          required
+          aria-label="Email address"
+        />
+        <button type="submit">{n.buttonLabel}</button>
+      </form>
+      {n.note && <p class="nl-note">{n.note}</p>}
+    </div>
+  </div>
+</section>

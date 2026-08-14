@@ -1,0 +1,61 @@
+---
+import { siteConfig } from "~/config/site";
+const f = siteConfig.contactForm;
+const isNetlify = f.provider === "netlify";
+---
+
+<div class="contact-page">
+  <form
+    class="cform"
+    method="POST"
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
+    data-netlify-recaptcha="true"
+    name="contact"
+  >
+    <input type="hidden" name="form-name" value="contact" />
+    <p class="hp" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+      <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+    </p>
+    <div class="cfield">
+      <label for="cf-name">{f.fields.name}</label>
+      <input id="cf-name" name="name" type="text" required autocomplete="name" />
+    </div>
+    <div class="cfield">
+      <label for="cf-email">{f.fields.email}</label>
+      <input id="cf-email" name="email" type="email" required autocomplete="email" />
+    </div>
+    <div class="cfield">
+      <label for="cf-msg">{f.fields.message}</label>
+      <textarea id="cf-msg" name="message" required></textarea>
+    </div>
+    <div data-netlify-recaptcha="true"></div>
+    <button class="submit" type="submit">
+      {f.submitLabel}
+      <svg viewBox="0 0 24 24" fill="none" style="width:16px;height:16px"
+        ><path
+          d="M5 12h13M12 6l6 6-6 6"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path></svg
+      >
+    </button>
+  </form>
+
+  <div class="channels">
+    {f.channels.map((ch) =>
+      ch.url ? (
+        <a class="channel" href={ch.url}>
+          <div class="l">{ch.label}</div>
+          <div class="v">{ch.value}</div>
+        </a>
+      ) : (
+        <div class="channel">
+          <div class="l">{ch.label}</div>
+          <div class="v">{ch.value}</div>
+        </div>
+      )
+    )}
+  </div>
+</div>

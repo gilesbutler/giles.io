@@ -1,88 +1,43 @@
-# Dante - Astro & Tailwind CSS Theme by justgoodui.com
+# giles.io
 
-Dante is a single-author blog and portfolio theme for Astro.js. Featuring a minimal, slick, responsive and content-focused design. For more Astro.js themes please check [justgoodui.com](https://justgoodui.com/).
+Personal portfolio for **Giles Butler** - product minded creative engineer,
+co-founder of Fuzzy Logic Labs, 15+ years turning complex problems into
+interfaces people actually use.
 
-![Dante Astro.js Theme](public/gb.avif)
+Built with [Astro](https://astro.build) on the [August](https://august-theme.pages.dev)
+template, deployed to [Netlify](https://www.netlify.com) at
+[https://giles.io](https://giles.io).
 
-[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/JustGoodUI/dante-astro-theme)
+## Quick start
 
-If you click this☝️ button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
-
-## Theme Features:
-
-- ✅ Dark and light color mode
-- ✅ Hero section with bio
-- ✅ Portfolio collection
-- ✅ Pagination support
-- ✅ Post tags support
-- ✅ Subscription form
-- ✅ View transitions
-- ✅ Tailwind CSS
-- ✅ Mobile-first responsive layout
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## Template Integrations
-
-- @astrojs/tailwind - https://docs.astro.build/en/guides/integrations-guide/tailwind/
-- @astrojs/sitemap - https://docs.astro.build/en/guides/integrations-guide/sitemap/
-- @astrojs/mdx - https://docs.astro.build/en/guides/markdown-content/
-- @astrojs/rss - https://docs.astro.build/en/guides/rss/
-
-## Project Structure
-
-Inside of Dante Astro theme, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── data/
-│   ├── icons/
-│   ├── layouts/
-│   ├── pages/
-│   ├── styles/
-│   └── utils/
-├── astro.config.mjs
-├── package.json
-├── README.md
-├── tailwind.config.cjs
-└── tsconfig.json
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # production build to ./dist
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Where things live
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro (`.astro`) components.
+| What | Where |
+| --- | --- |
+| Site identity, nav, hero, sections, footer, SEO, contact form | `src/config/site.ts` |
+| Case studies | `src/content/work/*.md` |
+| Theme tokens (colors, fonts, spacing) | `src/styles/global.css` |
+| Public assets, headshots, case-study covers | `public/` |
+| Archived demo material (not built) | `archived/` |
+| OpenSpec changes | `openspec/changes/` |
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## Contact form
 
-Any static assets, like images, can be placed in the `public/` directory.
+The form on `/contact/` posts to **Netlify Forms** with Netlify's built-in
+captcha and honeypot. No third-party scripts are loaded.
 
-## Astro.js Commands
+## Deploy
 
-All commands are run from the root of the project, from a terminal:
+Netlify builds on push to the configured branch and publishes `dist/`. See
+`netlify.toml` for the build command, Node version, and security headers.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Follow-ups
 
-## Want to learn more about Astro.js?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credits
-
-- Demo content generate with [Chat GPT](https://chat.openai.com/)
-- Images for demo content from [Unsplash](https://unsplash.com/)
-
-## License
-
-Licensed under the [GPL-3.0](https://github.com/JustGoodUI/dante-astro-theme/blob/main/LICENSE) license.
+See `HEADSHOTS_TODO.md` for the list of placeholder photos and case-study
+covers to drop in later.

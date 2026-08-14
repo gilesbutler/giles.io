@@ -1,0 +1,26 @@
+---
+import { siteConfig } from "~/config/site";
+const { faq } = siteConfig;
+---
+
+<section class="section" id="faq">
+  <div class="section-head">
+    <p class="kicker">{faq.kicker}</p>
+    <h2>{faq.heading}</h2>
+  </div>
+  <div class="faq">
+    {faq.items.map((it) => (
+      <details class="faq-item">
+        <summary>
+          {it.q}
+          <span class="mk"
+            ><svg viewBox="0 0 24 24" fill="none"
+              ><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path></svg
+            ></span
+          >
+        </summary>
+        <div class="ans">{it.a}</div>
+      </details>
+    ))}
+  </div>
+</section>

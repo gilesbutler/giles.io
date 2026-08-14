@@ -1,0 +1,26 @@
+{
+  "qualityThreshold": 80,
+  "testCoverage": {
+    "status": "not configured",
+    "note": "No dedicated test suite is checked in."
+  },
+  "linting": {
+    "status": "not configured",
+    "note": "No lint configuration is checked in."
+  },
+  "formatting": {
+    "status": "editor-only",
+    "note": "Prettier is editor-only; no formatting configuration is checked in."
+  },
+  "commitChecks": [
+    "npm run build",
+    "bash .a5c/processes/verify-portfolio.sh"
+  ],
+  "deployGates": {
+    "netlify": {
+      "required": true,
+      "buildCommand": "npm run build",
+      "publishDirectory": "dist"
+    }
+  }
+}

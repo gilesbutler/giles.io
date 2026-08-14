@@ -1,0 +1,9 @@
+{
+  "name": "giles.io",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@a5c-ai/babysitter-sdk": "6.0.0"
+  }
+}

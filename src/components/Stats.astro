@@ -1,0 +1,112 @@
+---
+import { siteConfig } from "~/config/site";
+const { stats } = siteConfig;
+---
+
+<section class="section" id="stats">
+  <div class="section-head">
+    <p class="kicker">{stats.kicker}</p>
+    <h2>{stats.heading}</h2>
+  </div>
+  <div class="stats-row">
+    {
+      stats.items.map((s) => (
+        <div class:list={["stat", s.color]}>
+          <div class="v">
+            <span class="relative">
+              {s.value}
+              {s.label === "Websites created" && (
+                <>
+                  <button
+                    class="stat-what"
+                    type="button"
+                    aria-controls="websites-created-popover"
+                    aria-expanded="false"
+                  >
+                    what?
+                  </button>
+                  <div
+                    id="websites-created-popover"
+                    class="stat-popover"
+                    popover="auto"
+                    role="status"
+                  >
+                    Yes, that is correct, I have created over 3 million
+                    websites. Mixo the AI website product I built is on it's way
+                    to 3.5 million! Wild 🤓
+                  </div>
+                </>
+              )}
+            </span>
+          </div>
+          <div class="l">{s.label}</div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  const what = document.querySelector<HTMLButtonElement>(".stat-what");
+  const popover = document.getElementById("websites-created-popover");
+
+  if (what && popover instanceof HTMLElement && "showPopover" in popover) {
+    let hovering = false;
+    let pinned = false;
+    let hideTimer: number | undefined;
+
+    const show = () => {
+      window.clearTimeout(hideTimer);
+      if (!popover.matches(":popover-open")) popover.showPopover();
+      what.setAttribute("aria-expanded", "true");
+    };
+
+    const hide = () => {
+      window.clearTimeout(hideTimer);
+      if (!hovering && !pinned && popover.matches(":popover-open"))
+        popover.hidePopover();
+      what.setAttribute(
+        "aria-expanded",
+        String(popover.matches(":popover-open")),
+      );
+    };
+
+    const scheduleHide = () => {
+      window.clearTimeout(hideTimer);
+      hideTimer = window.setTimeout(hide, 80);
+    };
+
+    what.addEventListener("pointerenter", () => {
+      hovering = true;
+      show();
+    });
+    what.addEventListener("pointerleave", () => {
+      hovering = false;
+      scheduleHide();
+    });
+    what.addEventListener("focus", show);
+    what.addEventListener("blur", () => {
+      if (!hovering) scheduleHide();
+    });
+    what.addEventListener("click", (event) => {
+      event.preventDefault();
+      pinned = !pinned;
+      if (pinned) show();
+      else hide();
+    });
+    popover.addEventListener("pointerenter", () => {
+      hovering = true;
+      show();
+    });
+    popover.addEventListener("pointerleave", () => {
+      hovering = false;
+      scheduleHide();
+    });
+    popover.addEventListener("toggle", (event) => {
+      if ((event as ToggleEvent).newState === "closed") {
+        pinned = false;
+        what.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+</script>

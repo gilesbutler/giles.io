@@ -1,46 +1,41 @@
 ---
-import siteConfig from '../data/site-config';
+import { siteConfig } from "~/config/site";
+const { footer, name } = siteConfig;
 
-const socialLinks = siteConfig.socialLinks || [];
-const navLinks = siteConfig.footerNavLinks || [];
+const socialIcons: Record<string, string> = {
+  x: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h3l-7 8 8 12h-6l-5-7-6 7H2l8-9L2 2h6l4 6z"/></svg>',
+  linkedin:
+    '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4a2 2 0 110 4 2 2 0 010-4zM2 9h4v12H2zM9 9h4v2c.6-1 2-2 4-2 3 0 5 2 5 6v7h-4v-6c0-2-1-3-2-3s-2 1-2 3v6H9z"/></svg>',
+  dribbble:
+    '<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M5 8c5 2 10 3 14 2M8 4c4 5 6 10 6 16M3 13c6-2 11-1 15 4" stroke="currentColor" stroke-width="1.6"/></svg>',
+};
 ---
 
-<footer class="w-full max-w-3xl mx-auto pt-12 pb-10 sm:pt-24 sm:pb-14">
-    {
-        navLinks.length > 0 && (
-            <div class="mb-4 flex flex-wrap gap-x-6 gap-y-1">
-                {navLinks.map((link) => (
-                    <a class="font-serif hover:underline hover:underline-offset-2" href={link.href}>
-                        {link.text}
-                    </a>
-                ))}
-            </div>
-        )
-    }
-    <div
-        class:list={[
-            'pt-6 flex flex-col gap-4 border-t border-dashed border-main',
-            { 'sm:flex-row-reverse sm:justify-between sm:items-center': socialLinks.length > 0 }
-        ]}
-    >
-        {
-            socialLinks.length > 0 && (
-                <div class="flex flex-wrap gap-x-4 gap-y-1">
-                    {socialLinks.map((link) => (
-                        <a
-                            class="inline-flex items-center justify-center text-sm hover:underline hover:underline-offset-2"
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferer"
-                        >
-                            {link.text}
-                        </a>
-                    ))}
-                </div>
-            )
-        }
-        <p class="text-sm">
-            &copy; {new Date().getFullYear()}&nbsp;<a class="hover:underline hover:underline-offset-2" href="/">{siteConfig.title}.io</a>. All rights reserved.
-        </p>
+<footer class="ft">
+  <div class="ft-card">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <span class="mark"><b>{name}<span class="logo-dot">.</span></b></span>
+        <p>{footer.bio}</p>
+        <p class="mono-label avail"><span class="dot"></span> {footer.availability}</p>
+      </div>
+      {footer.columns.map((col) => (
+        <div class="ft-col">
+          <h5>{col.heading}</h5>
+          {col.links.map((l) => <a href={l.url}>{l.label}</a>)}
+        </div>
+      ))}
     </div>
+    <div class="ft-bar">
+      <div class="socials">
+        {footer.socials.map((sc) => (
+          <a href={sc.url} aria-label={sc.label} set:html={socialIcons[sc.icon] ?? ""}></a>
+        ))}
+      </div>
+      <p class="made">
+        {footer.copyright} {footer.backlink.prefix}
+        <a href={footer.backlink.url} target="_blank" rel="noopener">{footer.backlink.label}</a>
+      </p>
+    </div>
+  </div>
 </footer>

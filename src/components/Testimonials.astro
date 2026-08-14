@@ -1,0 +1,25 @@
+---
+import { siteConfig } from "~/config/site";
+const { testimonials } = siteConfig;
+---
+
+<section class="section" id="testimonials">
+  <div class="section-head">
+    <p class="kicker">{testimonials.kicker}</p>
+    <h2>{testimonials.heading}</h2>
+  </div>
+  <div class="tgrid">
+    {testimonials.items.map((t) => (
+      <figure class:list={["tcard", t.color]}>
+        <blockquote class="quote">{t.quote}</blockquote>
+        <figcaption class="who">
+          <img src={t.avatar} alt={t.name} />
+          <div>
+            <div class="n">{t.name}</div>
+            <div class="r">{t.role}</div>
+          </div>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

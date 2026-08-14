@@ -1,0 +1,33 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+interface Props {
+  /** Pre-selected posts (e.g. a paginated slice). Falls back to the full
+      journal collection, newest first, when omitted. */
+  posts?: CollectionEntry<"journal">[];
+}
+const { posts: postsProp } = Astro.props;
+const posts =
+  postsProp ??
+  (await getCollection("journal", (e) => !e.data.draft)).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  );
+const fmt = (d: Date) =>
+  d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+---
+
+<div class="blog-grid">
+  {posts.map((p) => (
+    <a class="post-card" href={`/blog/${p.id}/`}>
+      <div class="pc-img">
+        {p.data.image && <img src={p.data.image} alt={p.data.title} loading="lazy" />}
+        <span class="pc-cat">{p.data.category}</span>
+      </div>
+      <div class="pc-body">
+        <span class="pc-date">{fmt(p.data.date)}</span>
+        <h3 class="pc-title">{p.data.title}</h3>
+        <p class="pc-desc">{p.data.description}</p>
+      </div>
+    </a>
+  ))}
+</div>

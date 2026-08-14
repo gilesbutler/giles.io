@@ -1,21 +1,24 @@
-# build output
-dist/
-# generated types
-.astro/
-
-# dependencies
-node_modules/
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-
-# environment variables
-.env
-.env.production
-
-# macOS-specific files
+node_modules
+dist
 .DS_Store
+.env
+.env.*
+!.env.example
+.cache
+.vercel
+.netlify
+.wrangler
+.astro
+node_modules/
+dist/
+.astro/
+.vercel/
+.netlify/
+.wrangler/
+*.log
+
+# --- babysitter managed ---
+.a5c/creds.env
+.a5c/creds.env.tmp.*
+.a5c/logs/
+# --- end babysitter managed ---
