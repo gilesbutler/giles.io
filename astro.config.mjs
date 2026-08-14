@@ -1,15 +1,13 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-import astroAgentAnnotate from 'astro-agent-annotate';
-
 
 export default defineConfig({
   site: 'https://giles.io',
   output: 'static',
   devToolbar: { enabled: true },
   server: { host: true, port: 4321 },
-  integrations: [sitemap(), astroAgentAnnotate()],
+  integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
     server: {
