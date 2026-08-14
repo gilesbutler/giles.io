@@ -147,9 +147,15 @@ export const siteConfig = {
         color: "cyan",
       },
       {
+        year: "2019–2022",
+        title: "Co-Founder & Product Engineer, Promo.ai",
+        body: "Co-founded and built an email marketing platform for Shopify merchants. I owned the product design, UX and Vue 3 frontend, including campaign creation, email templates and the component system. Built with Vuex, VueUse, Tailwind CSS and Storybook, with Shopify and SendGrid integrations. Promo.ai served thousands of paying customers.",
+        color: "amber",
+      },
+      {
         year: "Client engagement",
         title: "Fuzzy Logic Labs x eGuarantee",
-        body: "Client engagement through Fuzzy Logic Labs. Built the eGuarantee MVP, the Astro landing pages, and the Vue.js underwriting application using xState for state management. Hosted on AWS. The MVP went live and eGuarantee is now a leading Australian commercial lease bond provider.",
+        body: "Client engagement through Fuzzy Logic Labs from Dec 2019 to Jan 2021. We built eGuarantee’s original MVP and digital underwriting application. Giles led discovery, UX design and frontend delivery with the founder, designing and building the Vue 3 application. XState modelled the application and underwriting workflow, handling applications, underwriting information, documents, payments and approvals. Integrated with a custom Node.js serverless architecture on AWS and document-processing APIs, and built supporting Astro/Vue landing pages. The company has since grown into an award-winning Australian commercial lease-bond provider.",
         color: "amber",
       },
       {
@@ -159,9 +165,9 @@ export const siteConfig = {
         color: "green",
       },
       {
-        year: "2020",
+        year: "2013",
         title: "Lead Engineer, CommBank website rebuild",
-        body: "Led engineering for the rebuild of CommBank's website and managed a team of four frontend developers over a six-month engagement. Took the site from wireframes through to production: a 20,000-page migration, a highly technical refactor, and complex legacy system support that saved the bank hundreds of thousands of dollars.",
+        body: "Led frontend development for the rebuild of CommBank's website as lead frontend developer, managing a team of four over an approximately six-month engagement. Took the site from wireframes through to production: a 20,000-page migration, with ownership of frontend architecture and code review and coordination with design and backend teams. The bank’s CTO estimated the result saved hundreds of thousands of dollars.",
         color: "amber",
       },
       {
@@ -171,7 +177,7 @@ export const siteConfig = {
         color: "magenta",
       },
       {
-        year: "2015 - 2016",
+        year: "2016–2017",
         title: "Product Engineer & Product Manager, LawPath",
         body: "Product engineer and product manager at LawPath. Led the company registration tool across product strategy, design, frontend engineering, third-party APIs, and integration with ASIC. Presented to C-level executives, and owned the product direction.",
         color: "green",

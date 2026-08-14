@@ -1,7 +1,7 @@
 ---
 title: "eGuarantee MVP"
-date: 2023-04-01
-excerpt: "MVP build for eGuarantee. Astro landing pages. Vue.js application with xState for state management. Hosted on AWS. Now a leading Australian commercial lease bond provider."
+date: 2019-12-01
+excerpt: "Original MVP and digital underwriting application. Vue 3, XState, Astro/Vue, Node.js serverless architecture on AWS, document-processing APIs, applications, underwriting information, documents, payments and approvals."
 tags:
   - Vue
   - xState
@@ -14,12 +14,17 @@ cardText: dark
 order: 3
 ---
 
-eGuarantee came to Fuzzy Logic Labs as a client engagement. We built their MVP, the Astro landing pages, and the Vue.js application plus serverless stack that runs the underwriting flow.
+eGuarantee came to Fuzzy Logic Labs as a client engagement.
+Fuzzy Logic Labs built the original MVP and digital underwriting application.
+
+We built eGuarantee’s original MVP and digital underwriting application. The company has since grown into an award-winning Australian commercial lease-bond provider.
 
 ## What I built
 
-- The MVP that went live - now a leading Australian commercial lease bond provider, backed by a major global insurer.
-- The Vue.js application with xState as the state machine layer, modelling the underwriting flow so the form is explicit, testable, and easy to extend.
-- The Astro landing pages, deployed on AWS, that turn a complex commercial-lease product into something a tenant can actually evaluate.
+- Giles led discovery, UX design and frontend delivery with the founder.
+- Designed and built the Vue 3 application, with XState modelling the application and underwriting workflow.
+- Handled applications, underwriting information, documents, payments and approvals.
+- Integrated with a custom Node.js serverless architecture on AWS and document-processing APIs.
+- Built supporting Astro/Vue landing pages.
 
-The interesting choice was xState. For a flow with this many branches, hand-rolled state is where the bugs live. Modelling it as a state machine paid off the first time a regulator changed the rules.
+XState made the branching application and underwriting workflow explicit, easier to reason about and safer to extend as requirements evolved.

@@ -7,8 +7,10 @@ const projects = (await getCollection("work", (e) => !e.data.draft)).sort(
   (a, b) => a.data.order - b.data.order
 );
 
-const fmtDate = (d: Date) =>
-  d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+const fmtDate = (d: Date, id: string) =>
+  id === "commbank"
+    ? d.toLocaleDateString("en-US", { year: "numeric" })
+    : d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
 ---
 
 <section id="work">
@@ -39,7 +41,7 @@ const fmtDate = (d: Date) =>
             <div class="card-body">
               <div class="fc-inner">
                 <div class="fc-text">
-                  <p class="fc-meta"><span class="d"></span> {fmtDate(p.data.date)}</p>
+                  <p class="fc-meta"><span class="d"></span> {fmtDate(p.data.date, p.id)}</p>
                   <h3 class="fc-name">{p.data.title}</h3>
                   <p class="fc-desc">{p.data.excerpt}</p>
                   <a href={`/work/${p.id}/`} class="fc-view">

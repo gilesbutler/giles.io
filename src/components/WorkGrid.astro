@@ -4,7 +4,10 @@ import { getCollection } from "astro:content";
 const projects = (await getCollection("work", (e) => !e.data.draft)).sort(
   (a, b) => a.data.order - b.data.order
 );
-const fmt = (d: Date) => d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+const fmt = (d: Date, id: string) =>
+  id === "commbank"
+    ? d.toLocaleDateString("en-US", { year: "numeric" })
+    : d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
 ---
 
 <div class="work-grid">
@@ -18,7 +21,7 @@ const fmt = (d: Date) => d.toLocaleDateString("en-US", { month: "short", year: "
       >
         <div class="wk-img"><img src={p.data.image} alt={p.data.imageAlt} loading="lazy" /></div>
         <div class="wk-body">
-          <p class="wk-meta">{fmt(p.data.date)}</p>
+          <p class="wk-meta">{fmt(p.data.date, p.id)}</p>
           <h3 class="wk-name">{p.data.title}</h3>
           <p class="wk-desc">{p.data.excerpt}</p>
           <div class="wk-tags">{p.data.tags.map((t) => <span class="wk-tag">{t}</span>)}</div>

@@ -1,6 +1,6 @@
 ---
 title: "LawPath company registration tool"
-date: 2015-06-01
+date: 2016-06-01
 excerpt: "Senior frontend engineer and product manager. Lead developer on the company registration tool, integrating with ASIC. Team of 10. Presented to C-level executives."
 tags:
   - React
