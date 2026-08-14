@@ -1129,7 +1129,6 @@ section {
 .contact {
   background: var(--brown);
   color: #fff;
-  border-radius: 34px;
   max-width: 1248px;
   margin: 120px auto 26px;
   padding: 90px 20px 110px;
@@ -1137,6 +1136,12 @@ section {
   z-index: 5;
   overflow: hidden;
   text-align: center;
+}
+@media (min-width: 1248px) {
+  .contact {
+    transition: border-radius 500ms;
+    border-radius: 34px;
+  }
 }
 .contact .blob {
   position: absolute;
