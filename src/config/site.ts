@@ -108,11 +108,13 @@ export const siteConfig = {
         links: [
           { label: "Contact form", url: "/contact/" },
           { label: "LinkedIn", url: "https://www.linkedin.com/in/gilesbutler/" },
+          { label: "Bluesky", url: "https://bsky.app/profile/giles.io" },
         ],
       },
     ],
     socials: [
       { label: "LinkedIn", url: "https://www.linkedin.com/in/gilesbutler/", icon: "linkedin" },
+      { label: "Bluesky", url: "https://bsky.app/profile/giles.io", icon: "bluesky" },
     ],
     copyright: "© 2026 Giles Butler.",
     backlink: { prefix: "Built with", label: "Astro", url: "https://astro.build" },
