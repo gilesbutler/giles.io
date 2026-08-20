@@ -24,4 +24,4 @@ I was the lead frontend developer for the rebuild of CommBank's website. I manag
 
 The result was estimated by the bank's CTO to have saved hundreds of thousands of dollars.
 
-The hardest part wasn't any one page - it was keeping the site stable while a 20,000-page migration ran in parallel with the rebuild.
+The work combined frontend architecture, team leadership, and close coordination with design and backend teams.

@@ -6,7 +6,7 @@
 
 export const siteConfig = {
   name: "Giles",
-  tagline: "Product-minded full-stack staff engineer with frontend depth, design fluency, and creative product judgment.",
+  tagline: "Senior Design Engineer shaping product direction, interaction design, and frontend systems - with full-stack fluency to ship.",
   url: "https://giles.io",
   favicon: "/favicon.svg",
 
@@ -35,7 +35,7 @@ export const siteConfig = {
         { lead: "Founder of", strong: "Mixo" },
         { lead: "Best at", strong: "Product + engineering" },
       ],
-      role: "Staff Product Engineer",
+      role: "Senior Design Engineer",
       location: "Cotswolds 🇬🇧 - remote",
     },
     avatars: ["/avatar.jpg", "/avatar-secondary.png"],
@@ -43,7 +43,7 @@ export const siteConfig = {
 
   statement: {
     partA: "I design & build",
-    partB: "world class digital products",
+    partB: "world-class digital products",
     ctaLabel: "Get in touch",
     ctaUrl: "/contact/",
   },
@@ -52,21 +52,21 @@ export const siteConfig = {
     kicker: "about me!",
     heading: "what's up",
     lead: {
-      partA: "I'm Giles, a full-stack product staff engineer in the Cotswolds 🇬🇧",
+      partA: "I'm Giles, a Senior Design Engineer in the Cotswolds 🇬🇧",
       photo: "/about-inline.png",
       partB: "I",
       emphasis: "love",
-      partC: "bringing product thinking, design, and engineering together.",
+      partC: "bringing product thinking, interaction design, and engineering together.",
     },
     workspace: [
       { image: "/workspace-remote.png", caption: "the office" },
       { image: "/workspace-desk.png", caption: "my desk" },
     ],
     skills: [
-      { label: "Product engineering", color: "cyan", icon: "product" },
-      { label: "Frontend systems", color: "amber", icon: "system" },
-      { label: "UI/UX Design", color: "magenta", icon: "grid" },
-      { label: "Agentic Workflows", color: "green", icon: "robot" },
+      { label: "Product framing", color: "cyan", icon: "product" },
+      { label: "Interaction design", color: "amber", icon: "system" },
+      { label: "Frontend systems", color: "magenta", icon: "grid" },
+      { label: "Full-stack delivery", color: "green", icon: "robot" },
     ],
   },
 
@@ -81,20 +81,20 @@ export const siteConfig = {
 
   contact: {
     lets: "let's talk",
-    text: "I'm most energized by staff product engineering roles where I can move from shaping the problem to shipping the product - with frontend depth, full-stack fluency, and a designer's eye for the details.",
+    text: "I'm most energized by Senior Design Engineer roles where I can shape the problem, design the interaction, and ship the product - with frontend craft and full-stack fluency when the work calls for it.",
     stickerLabel: "Contact",
     comment: {
       header: "Currently",
       name: "Giles",
       avatar: "/avatar.jpg",
-      body: "Open to staff product engineering roles. Remote-friendly, UK/US East Coast hours, available from the Cotswolds, UK.",
+      body: "Open to Senior Design Engineer roles and selected product engagements. Remote-friendly, UK/US East Coast hours, available from the Cotswolds, UK.",
       reactions: 1,
     },
   },
 
   footer: {
-    bio: "Staff product engineer in the UK making complicated things simple. Currently taking on a few thoughtful projects.",
-    availability: "Open to to new roles and projects",
+    bio: "Senior Design Engineer in the UK, making complicated products clear and useful. Co-founder of Fuzzy Logic Labs, currently open to thoughtful roles and projects.",
+    availability: "Open to new roles and projects",
     columns: [
       {
         heading: "Explore",
@@ -106,7 +106,7 @@ export const siteConfig = {
       {
         heading: "Get in touch",
         links: [
-          { label: "Contact form", url: "/contact/" },
+          { label: "Contact", url: "/contact/" },
           { label: "LinkedIn", url: "https://www.linkedin.com/in/gilesbutler/" },
           { label: "Bluesky", url: "https://bsky.app/profile/giles.io" },
         ],
@@ -123,18 +123,18 @@ export const siteConfig = {
   pages: {
     about: {
       kicker: "about me",
-      title: "Founder, father, entrepreneur",
-      subtitle: "A staff product engineer with frontend depth, full-stack fluency, a love for design, and 15+ years of shipping.",
+      title: "Senior Design Engineer",
+      subtitle: "Product-minded design engineer with frontend depth, full-stack fluency, and 16 years of shipping.",
     },
     work: {
       kicker: "selected work",
       title: "Case studies",
-      subtitle: "This is a showcase of what happens when product, design, and engineering drive the process.",
+      subtitle: "A selection of products shaped from problem framing through interaction design and shipped implementation.",
     },
     contact: {
       kicker: "get in touch",
       title: "Let's talk",
-      subtitle: "Open to contract work, full-time roles, and good conversations about hard problems.",
+      subtitle: "Open to Senior Design Engineer roles, selected product engagements, and good conversations about hard problems.",
     },
   },
 
@@ -163,7 +163,7 @@ export const siteConfig = {
       {
         year: "Client engagement",
         title: "Fuzzy Logic Labs x Credabl",
-        body: "Client engagement through Fuzzy Logic Labs. Design, wireframing, development and updating of Credabl's WordPress site, then a full rebuild a few years later on a headless CMS (Dato) and React (Gridsome).",
+        body: "Client engagement through Fuzzy Logic Labs. Led design, wireframing and development for Credabl's WordPress site, then a full rebuild a few years later on a headless CMS (Dato) and React (Gridsome).",
         color: "green",
       },
       {
@@ -197,11 +197,11 @@ export const siteConfig = {
     kicker: "questions?",
     heading: "Good to know",
     items: [
-      { q: "What kind of work do you take on?", a: "I help teams turn ambiguous product problems into shipped software. From product framing and interaction design through to frontend systems and full-stack delivery. I'm happiest on complex products where thoughtful decisions make a real difference." },
-      { q: "Are you available right now?", a: "I'm open to staff product engineering and/or frontend/full-stack roles and selected product engagements. I keep commitments focused so I can give the work proper attention." },
-      { q: "Do you work solo or with a team?", a: "Both. I can take ownership from problem framing to implementation, or join an existing team as a product-minded technical lead who raises clarity and quality." },
+      { q: "What kind of role are you looking for?", a: "Senior Design Engineer roles where I can shape product problems, design clear interactions, and build frontend systems that ship. Full-stack fluency means I can carry the work further when the product needs it." },
+      { q: "Are you available right now?", a: "I'm open to Senior Design Engineer roles and selected product engagements. I keep commitments focused so I can give the work proper attention." },
+      { q: "Do you work solo or with a team?", a: "Both. I can take ownership from problem framing and interaction design through implementation, or join an existing team as a design-minded technical lead who raises clarity and quality." },
       { q: "Where are you based?", a: "Cotswolds, UK, working remotely with teams across the UK, Europe, and the US. Comfortable with US East Coast hours and occasional on-site time for the right team." },
-      { q: "How do we start?", a: "A short call to understand the product, the team, and the problem... then we can work out the shape of the engagement or role from there." },
+      { q: "How do we start?", a: "A short call to understand the product, the team, and the problem - then we can work out the shape of the engagement or role from there." },
     ],
   },
 
@@ -242,7 +242,7 @@ export const siteConfig = {
 
   stats: {
     kicker: "by the numbers",
-    heading: "A decade+ of shipping",
+    heading: "16 years of designing and shipping",
     items: [
       { value: "16", label: "Years building", color: "cyan" },
       { value: "40", label: "Products shipped", color: "magenta" },
@@ -315,8 +315,8 @@ export const siteConfig = {
   },
 
   seo: {
-    title: "Giles Butler - Staff Product Engineer",
-    description: "Giles is a product-minded full-stack staff engineer with frontend depth, design fluency, and creative product judgment, and co-founder of Fuzzy Logic Labs. 15+ years turning complex problems into products people actually use.",
+    title: "Giles Butler - Senior Design Engineer",
+    description: "Giles Butler is a Senior Design Engineer shaping product direction, interaction design, and frontend systems, with full-stack fluency and 16 years of shipping. Co-founder of Fuzzy Logic Labs.",
     ogImage: "/avatar.jpg",
     twitterHandle: "",
   },
