@@ -16,6 +16,7 @@ dist/
 .netlify/
 .wrangler/
 *.log
+storybook-static/
 
 # --- babysitter managed ---
 .a5c/creds.env

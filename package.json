@@ -8,23 +8,31 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "storybook": "storybook dev --port 6006",
+    "build-storybook": "storybook build",
     "postinstall": "patch-package",
     "deploy:vercel": "npx vercel --prod",
     "deploy:netlify": "npm run build && npx netlify deploy --prod --dir=dist",
     "deploy:cloudflare": "npm run build && npx wrangler pages deploy dist --project-name=august-theme"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/sitemap": "^3.7.4",
     "@fontsource-variable/inter": "^5.2.5",
     "@fontsource-variable/rubik": "^5.2.5",
     "@fontsource/dm-mono": "^5.2.5",
     "@fontsource/just-me-again-down-here": "^5.2.5",
-    "astro": "^7.2.1"
+    "astro": "^7.3.2",
+    "astro-icon": "^1.2.0"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.133",
+    "@storybook-astro/framework": "^1.12.0",
+    "@storybook/addon-mcp": "^10.6.0",
+    "@storybook/builder-vite": "^10.6.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.0",
     "patch-package": "^8.0.1",
+    "storybook": "^10.6.0",
     "tailwindcss": "^4.3.0",
     "typescript": "^5.7.0"
   },
