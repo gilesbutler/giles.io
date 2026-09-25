@@ -26,7 +26,7 @@ import ContactActions from "~/components/ContactActions.astro";
     <!-- Hero -->
     <section
       id="hero"
-      class="theme-section section-full flex-center px-fluid"
+      class="theme-section section-full flex-center px-fluid overflow-x-clip"
       data-scroll
       data-scroll-call="heroVisibility"
       data-scroll-repeat
@@ -91,9 +91,11 @@ import ContactActions from "~/components/ContactActions.astro";
           data-scroll-speed="0.2"
         >
           <img
-            class="avatar flt3 !w-12 z-1"
+            class="avatar flt3 !w-12 z-1 opacity-[calc(0.75-var(--progress))]"
             src="/avatar.jpg"
             alt="Giles' serious artist photo!"
+            data-scroll
+            data-scroll-css-progress
           />
           <span
             class="hand absolute left-[66%] w-12 rotate-3 !text-slate-500 moody"
