@@ -1,0 +1,256 @@
+<div class="contact-actions">
+  <div class="email-actions">
+    <button class="cta-button cta-button--primary" id="email-me" type="button">
+      <span>Email Me</span>
+      <span class="cta-button__icon" aria-hidden="true">
+        ↗
+      </span>
+    </button>
+
+    <button
+      class="cta-button cta-button--copy"
+      id="copy-email"
+      type="button"
+      aria-describedby="copy-status"
+    >
+      <span class="copy-label">Copy Email</span>
+    </button>
+  </div>
+
+  <a
+    class="cta-button cta-button--secondary"
+    href="/giles-butler-cv.pdf"
+    download
+  >
+    <span>Download CV</span>
+  </a>
+
+  <span
+    class="copy-status"
+    id="copy-status"
+    role="status"
+    aria-live="polite"
+  ></span>
+</div>
+
+<style>
+  .contact-actions {
+    --cta-yellow: #ffcc36;
+    --cta-black: #050505;
+    --cta-white: #f1efe9;
+    --cta-muted: #9b9b9b;
+    --cta-border: rgba(255, 255, 255, 0.18);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 48px;
+    font-family: inherit;
+  }
+
+  .email-actions {
+    display: flex;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .cta-button {
+    appearance: none;
+    border: 0;
+    border-radius: 14px;
+    min-height: 34px;
+    padding: 0 22px 0 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition:
+      transform 180ms ease,
+      background-color 180ms ease,
+      color 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+
+      @media (min-width: 42rem) {
+        min-height: 58px;
+      }
+  }
+
+  .cta-button--primary {
+    background: var(--cta-yellow);
+    color: var(--cta-black);
+    box-shadow:
+      0 8px 30px rgba(255, 204, 54, 0.1),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  }
+
+  .cta-button--primary:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 12px 38px rgba(255, 204, 54, 0.18),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+  }
+
+  .cta-button--copy {
+    min-width: 76px;
+    padding-inline: 18px;
+
+    background: #151515;
+    color: var(--cta-white);
+    border: 1px solid var(--cta-border);
+  }
+
+  .cta-button--copy:hover {
+    background: #202020;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-button--copy.is-copied {
+    background: var(--cta-white);
+    color: var(--cta-black);
+  }
+
+  .cta-button--secondary {
+    background: transparent;
+    color: var(--cta-white);
+    border: 1px solid var(--cta-border);
+    min-height: 34px;
+    padding: 0 10px;
+  }
+
+  .cta-button--secondary:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .cta-button__icon {
+    display: inline-block;
+    font-size: 1.15em;
+    transition: transform 180ms ease;
+  }
+
+  .cta-button--primary:hover .cta-button__icon {
+    transform: translate(2px, -2px);
+  }
+
+  .cta-button--secondary:hover .cta-button__icon {
+    transform: translateY(2px);
+  }
+
+  .cta-button:focus-visible {
+    outline: 3px solid var(--cta-white);
+    outline-offset: 4px;
+  }
+
+  .copy-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  @media (max-width: 520px) {
+    .contact-actions {
+      flex-direction: column;
+      align-items: stretch;
+      width: min(100%, 360px);
+      margin-inline: auto;
+    }
+
+    .email-actions {
+      width: 100%;
+    }
+
+    .cta-button--primary {
+      flex: 1;
+    }
+
+    .cta-button--secondary {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-button,
+    .cta-button__icon {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const chars = [105, 109, 64, 103, 105, 108, 101, 115, 46, 105, 111];
+
+    const getEmail = () => String.fromCharCode(...chars);
+
+    const emailButton = document.getElementById("email-me");
+    const copyButton = document.getElementById("copy-email");
+    const copyLabel = copyButton.querySelector(".copy-label");
+    const copyStatus = document.getElementById("copy-status");
+
+    emailButton.addEventListener("click", () => {
+      const email = getEmail();
+      const subject = encodeURIComponent("Moises: Senior Product Designer");
+
+      window.location.href = `mailto:${email}?subject=${subject}`;
+    });
+
+    copyButton.addEventListener("click", async () => {
+      const email = getEmail();
+
+      try {
+        await navigator.clipboard.writeText(email);
+
+        copyLabel.textContent = "Copied";
+        copyStatus.textContent = "Email address copied";
+        copyButton.classList.add("is-copied");
+
+        window.setTimeout(() => {
+          copyLabel.textContent = "Copy";
+          copyStatus.textContent = "";
+          copyButton.classList.remove("is-copied");
+        }, 1800);
+      } catch {
+        /*
+          Fallback for browsers where Clipboard API
+          is unavailable or blocked.
+        */
+        const textarea = document.createElement("textarea");
+        textarea.value = email;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+
+        copyLabel.textContent = "Copied";
+        copyStatus.textContent = "Email address copied";
+        copyButton.classList.add("is-copied");
+
+        window.setTimeout(() => {
+          copyLabel.textContent = "Copy";
+          copyStatus.textContent = "";
+          copyButton.classList.remove("is-copied");
+        }, 1800);
+      }
+    });
+  })();
+</script>

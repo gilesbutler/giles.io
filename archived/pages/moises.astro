@@ -1,0 +1,623 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Layout from "~/layouts/Layout.astro";
+// import Nav from "~/components/Nav.astro";
+import moisesLogo from "~/assets/images/logos/moises-logo.svg";
+
+import Footer from "~/components/Footer.astro";
+---
+
+<Layout>
+  <!-- <Nav /> -->
+  <main id="main" class="container space-y-8 md:space-y-12">
+    <div class="flex items-center gap-2">
+      <Image src={moisesLogo} alt="Moises Logo" class="w-40" />
+      <span class="block text-slate-300">&vert;</span>
+      <a href="/" class="logo !text-xl" aria-label="Giles Butler home">
+        Giles Butler<span class="logo-dot">.</span>
+      </a>
+    </div>
+
+    <!-- Hero -->
+    <section>
+      <p class="text-sm text-slate-500 mb-6">
+        Senior Product Designer <span class="text-slate-300">&bull;</span>{" "}
+        Design Engineer <span class="text-slate-300">&bull;</span> Music
+        Producer
+      </p>
+
+      <div class="prose">
+        <h1>I design complex creative software and make it feel simple.</h1>
+
+        <p>
+          I have spent 15+ years designing and building digital products, and
+          more than 25 years producing electronic music.
+        </p>
+
+        <p>
+          My career has moved between product design, frontend and full-stack
+          engineering, and design engineering. Today I work across those
+          disciplines: understanding the problem, shaping the product, designing
+          the interaction, and building working prototypes when code is the
+          fastest way to find the answer.
+        </p>
+
+        <p>
+          For the last decade I have worked in startups, building products from
+          zero to one, evolving them through direct customer feedback, creating
+          systems that can scale, and making new technologies such as AI
+          understandable to everyday users.
+        </p>
+
+        <p>
+          Music has run alongside all of it. I started producing and DJing at
+          12, studied Music Production, have used Ableton since Live 4 and
+          previously beta tested it, learnt Logic before the Apple acquisition,
+          released music through labels, and continue to produce and release
+          music from my own studio.
+        </p>
+      </div>
+
+      <div class="flex gap-2 mb-6">
+        <a class="btn-pill !text-white !no-underline" href="#work">
+          <span class="ico">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M5 12h13M12 6l6 6-6 6"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </span>
+          <span>Explore my work</span>
+        </a>
+        <a class="btn-outline btn-pill !no-underline" href="/cv.pdf">
+          <span class="ico rotate-90">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M5 12h13M12 6l6 6-6 6"
+                stroke="currentColor"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </span>
+          <span>Download my CV</span>
+        </a>
+      </div>
+
+      <ul class="grid grid-cols-2 gap-2 list-none">
+        <li class="flex items-center gap-2 bg-slate-100 rounded-sm p-4 ring-1 ring-slate-200 font-semibold text-slate-700">
+          <Icon name="lucide:globe" class="" /> 15+ years Product & technology
+        </li>
+        <li class="flex items-center gap-2 bg-slate-100 rounded-sm p-4 ring-1 ring-slate-200 font-semibold text-slate-700">
+          <Icon name="lucide:music" /> 25+ years Music production
+        </li>
+        <li class="flex items-center gap-2 bg-slate-100 rounded-sm p-4 ring-1 ring-slate-200 font-semibold text-slate-700">
+          <Icon name="lucide:rocket" /> 10+ years Startups
+        </li>
+        <li class="flex items-center gap-2 bg-slate-100 rounded-sm p-4 ring-1 ring-slate-200 font-semibold text-slate-700">
+          <Icon name="lucide:code" /> Code-first Prototyping
+        </li>
+      </ul>
+    </section>
+
+    <!-- Why Moises -->
+    <section class="prose">
+      <h2>Why Moises?</h2>
+      <h3>
+        Music, technology and design have always been the same problem for me.
+      </h3>
+
+      <p>
+        There are not many roles where the different parts of my background
+        converge this directly.
+      </p>
+
+      <p>
+        I have spent my professional career making technically complex software
+        easier to understand and use. I have spent most of my life outside work
+        making electronic music, learning instruments and tools deeply enough
+        that the technology becomes part of the creative process rather than
+        something I have to think about.
+      </p>
+
+      <p>That is the product problem I find most interesting.</p>
+
+      <p>
+        The best creative software can be extraordinarily powerful without
+        constantly reminding you how complicated it is. It helps you move from
+        an idea to a result while preserving control, authorship and the ability
+        to explore.
+      </p>
+
+      <p>
+        AI makes that problem more interesting. A system can now do far more on
+        a musician's behalf, but greater capability also creates new interaction
+        questions: what should be automated, what needs to remain explicit, how
+        should uncertainty be communicated, how can changes remain
+        understandable and reversible, and how do you make the technology feel
+        like part of the instrument rather than a layer sitting on top of it?
+      </p>
+
+      <p>
+        That intersection of music, product design, engineering and emerging
+        technology is where I want to work.
+      </p>
+    </section>
+
+    <!-- Work -->
+    <section class="prose" id="work">
+      <h2>
+        I am most useful when the product is complicated underneath and needs to
+        feel obvious on the surface.
+      </h2>
+
+      <p>
+        My background lets me move comfortably between the experience someone
+        sees and the system making it possible. I can discuss interaction and
+        visual hierarchy with designers, component architecture and
+        implementation constraints with engineers, product direction with
+        founders and PMs, and the actual workflow with customers.
+      </p>
+
+      <p>
+        I use that range to shorten the distance between an idea and something
+        we can put in front of people.
+      </p>
+
+      <h3>Selected work</h3>
+
+      <div>
+        <h4>Mixo</h4>
+
+        <h5>
+          Making powerful AI usable by people who do not think of themselves as
+          technical
+        </h5>
+
+        <h6>
+          Product design <span class="text-slate-300">&bull;</span> Design
+          engineering <span class="text-slate-300">&bull;</span> AI{" "}
+          <span class="text-slate-300">&bull;</span> SaaS
+        </h6>
+
+        <p>
+          Mixo uses AI to turn a short description of a business into a working
+          website.
+        </p>
+
+        <p>
+          My work has sat across product design and engineering, helping turn
+          the complexity of generation, editing and publishing into an
+          experience that feels immediate and approachable.
+        </p>
+
+        <p>
+          Designing an AI-native product changes some of the normal assumptions
+          of interface design. Outputs are probabilistic. Generation takes time.
+          People need to understand what the system has done without
+          understanding the technology behind it. And as the product becomes
+          more capable, additional power cannot simply become additional
+          interface.
+        </p>
+
+        <p>
+          I have worked across those problems through product design, coded
+          prototyping, frontend implementation, component systems, customer
+          feedback and continuous iteration.
+        </p>
+
+        <blockquote>
+          <p>
+            "Make the first result useful quickly, then make everything
+            understandable enough to change."
+          </p>
+        </blockquote>
+
+        <p>Serves more than 750,000 businesses</p>
+        <p>Created over 3 million websites</p>
+      </div>
+
+      <div>
+        <h4>Mixvisor</h4>
+
+        <h5>Designing around how music projects actually exist</h5>
+
+        <h6>
+          Founder <span class="text-slate-300">&bull;</span> Product design{" "}
+          <span class="text-slate-300">&bull;</span> Engineering{" "}
+          <span class="text-slate-300">&bull;</span> Music technology
+        </h6>
+
+        <p>Mixvisor started with a problem from my own studio.</p>
+
+        <p>
+          After years of producing music, sessions accumulate across folders,
+          drives, versions and different DAWs. A generic filesystem knows where
+          those files are, but it knows almost nothing about what they mean to a
+          musician.
+        </p>
+
+        <p>
+          I designed and built Mixvisor around the project as the primary object
+          rather than the file.
+        </p>
+
+        <p>
+          It scans existing music folders, recognises DAW sessions, creates a
+          searchable project library and makes it easier to understand what you
+          have been working on, where it lives and what state it is in.
+        </p>
+
+        <p>
+          The interesting product problem is the gap between the computer's
+          model of a filesystem and the musician's mental model of their work.
+        </p>
+
+        <p>
+          That required designing around imperfect source data, multiple DAW
+          formats, previewable audio, large libraries and workflows that had
+          already evolved organically over years.
+        </p>
+
+        <blockquote>
+          <p>
+            "The filesystem organises files. A producer thinks in songs,
+            sessions, versions and ideas."
+          </p>
+        </blockquote>
+
+        <p>
+          Mixvisor currently recognises projects from Ableton, Logic, FL Studio,
+          Bitwig, Reaper, Studio One, Reason and Cubase.
+        </p>
+      </div>
+
+      <div>
+        <h4>Room for Sound</h4>
+      </div>
+    </section>
+
+    <!-- Music -->
+    <section class="prose">
+      <h2>A product designer that codes. A musician that designs software.</h2>
+      <p>
+        I started producing and DJing when I was 12 and later completed a degree
+        in Music Production.
+      </p>
+      <p>
+        I learnt Logic while it was still an Emagic product and have used
+        Ableton Live since version 4, including participating in its beta
+        programme. I have released electronic music through labels, DJed, and
+        recently returned to releasing independently through Bandcamp.
+      </p>
+      <p>
+        My current practice has moved increasingly towards hardware, sampling
+        and the relationship between physical instruments and software. I
+        maintain my own studio and still make music because making music is what
+        led me towards creative technology in the first place.
+      </p>
+      <img src="" alt="" />
+      soundcloud release quote about process
+    </section>
+
+    <!-- Design -->
+    <section class="prose">
+      <h2>Desgin</h2>
+
+      <h3>Understand the actual workflow</h3>
+
+      <p>
+        I start by understanding what people are really trying to accomplish,
+        not by translating feature requests directly into interfaces.
+      </p>
+
+      <p>
+        That usually means talking to customers, observing existing behaviour
+        and looking closely at the workarounds people have created for
+        themselves. A workaround often contains more useful product information
+        than a stated preference.
+      </p>
+
+      <h3>Find the expensive uncertainty</h3>
+
+      <p>
+        Before increasing fidelity, I want to know what we are uncertain about.
+      </p>
+
+      <p>
+        Sometimes that is whether the concept solves a real problem. Sometimes
+        it is information architecture. Sometimes the entire question is how an
+        interaction feels after 300 milliseconds.
+      </p>
+
+      <p>The prototype should match the uncertainty.</p>
+
+      <h3>Use code when behaviour is the design</h3>
+
+      <p>
+        I spent years working professionally in frontend and full-stack
+        engineering before those skills converged with design engineering.
+      </p>
+
+      <p>
+        For products involving complex state, animation, responsiveness, real
+        data or AI, I usually move into code early. Working software makes
+        assumptions visible and creates something product, design and
+        engineering can reason about together.
+      </p>
+
+      <h3>Design the system behind the screen</h3>
+
+      <p>
+        Interfaces rarely fail because an individual screen was badly drawn.
+        Problems accumulate when states, components, behaviours and concepts do
+        not form a coherent system.
+      </p>
+
+      <p>
+        I therefore think about component architecture, interaction patterns and
+        product models alongside visual design.
+      </p>
+
+      <h3>Ship to learn</h3>
+
+      <p>
+        A decade in startups has made me comfortable working before everything
+        is known.
+      </p>
+
+      <p>
+        I care about craft, but craft and completeness are different things. The
+        useful question is how much fidelity this particular decision deserves
+        before putting it in front of a real person.
+      </p>
+    </section>
+
+    <!-- Design Engineering -->
+    <section class="prose">
+      <h2>Design x Engineering</h2>
+      <h3>
+        For some design questions, the shortest route to an answer is working
+        software.
+      </h3>
+      show an animation cycling: Sketch → model → prototype → test → change →
+      ship
+      <p>
+        I began my career as a designer, moved into frontend development and
+        later full-stack engineering, then found my way back to the point where
+        those disciplines overlap.
+      </p>
+      <p>That history affects how I work today.</p>
+      <p>
+        I can design with implementation constraints in mind without allowing
+        the current implementation to define the solution. I can explore
+        interaction directly in the browser. I can work on a design system as
+        both an interface language and a component architecture. And I can
+        collaborate with engineers at the level of behaviour and systems rather
+        than handing over pictures of finished screens.
+      </p>
+      <p>
+        Agentic coding has accelerated that process significantly. My current
+        workflow combines code agents, structured specifications and independent
+        model review so that I can move from an interaction idea to a
+        functioning prototype extremely quickly while still reviewing
+        architecture and output critically.
+      </p>
+      <button>View current prototyping stack →</button> (OpenCode / OpenSpec /
+      Oh My Pi / Babysitter / local Qwen setup hidden)
+    </section>
+
+    <!-- Experience -->
+    <section class="prose">
+      <h2>Experience</h2>
+
+      <h3>15+ years intersecting between design, engineering and product</h3>
+
+      <p>My career has not followed a clean boundary between disciplines.</p>
+
+      <p>
+        I started in design, moved deeper into frontend and then full-stack
+        engineering, and eventually converged on design engineering and product
+        work. That means I approach products with an understanding of both what
+        the experience needs to become and what is required to build and evolve
+        it.
+      </p>
+
+      <!-- Roles -->
+      <h4>Roles</h4>
+      <ul>
+        <li>
+          Company / product Job title <span class="text-slate-300">&bull;</span>{" "}
+          dates One sentence describing what the product/company actually does.
+          Then only the three strongest pieces of evidence, ideally one each
+          covering: product/design outcome{" "}
+          <span class="text-slate-300">&bull;</span>
+          technical/system contribution{" "}
+          <span class="text-slate-300">&bull;</span> measurable business/user
+          impact Not a conventional responsibility list.
+        </li>
+      </ul>
+    </section>
+
+    <!-- Contact -->
+    <section class="prose">
+      <h2>This is the kind of product work I want to work on.</h2>
+
+      <p>
+        I have spent much of my career at the intersection of design and
+        engineering, and most of my life around music.
+      </p>
+
+      <p>
+        Moises is one of the few places where those backgrounds are not separate
+        advantages. They are parts of the same job.
+      </p>
+
+      <p>
+        Email <span class="text-slate-300">&bull;</span> LinkedIn{" "}
+        <span class="text-slate-300">&bull;</span> GitHub{" "}
+        <span class="text-slate-300">&bull;</span> Bandcamp{" "}
+        <span class="text-slate-300">&bull;</span> Download CV
+      </p>
+    </section>
+  </main>
+</Layout>
+
+<style is:global>
+  :root {
+    --paper: #011316;
+    --line: #005e65;
+  }
+
+  .canvas-bg {
+    background-size: 34px 89px;
+  }
+</style>
+
+<style>
+  @reference "../styles/global.css";
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  .fluid,
+  textarea,
+  input,
+  select,
+  button,
+  th,
+  td {
+    --fl: 0;
+    --font-size-min: 14;
+    --font-size-max: 20;
+    --font-ratio-min: 1.25;
+    --font-ratio-max: 1.3333333333333333;
+    --font-width-min: 320;
+    --font-width-max: 1500;
+    --fluid-min: calc(
+      var(--font-size-min) * pow(var(--font-ratio-min), var(--fl, 0))
+    );
+    --fluid-max: calc(
+      var(--font-size-max) * pow(var(--font-ratio-max), var(--fl, 0))
+    );
+    --fluid-preferred: calc(
+      (var(--fluid-max) - var(--fluid-min)) /
+        (var(--font-width-max) - var(--font-width-min))
+    );
+    --fluid-type: clamp(
+      (var(--fluid-min) / 16) * 1rem,
+      ((var(--fluid-min) / 16) * 1rem) -
+        (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+        (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+      (var(--fluid-max) / 16) * 1rem
+    );
+    font-size: var(--fluid-type);
+  }
+
+  /* This makes containers, with container queries use a cqi unit instead of vi */
+  .fluid-text-container {
+    container-type: inline-size;
+    --variable-unit: 100cqi;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--paper);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+  }
+
+  h1,
+  .h1 {
+    --fl: 4;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  h2,
+  .h2 {
+    --fl: 3;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  h3,
+  .h3 {
+    --fl: 2;
+    font-weight: 500;
+  }
+  h4,
+  .h4 {
+    --fl: 1;
+    font-weight: 500;
+  }
+  h5,
+  .h5 {
+    --fl: 1;
+    font-weight: 500;
+  }
+  h6,
+  .h6 {
+    --fl: 0;
+    font-weight: 500;
+  }
+  p,
+  li,
+  body {
+    --fl: 0;
+  }
+  .fs-xs {
+    --fl: -1;
+  }
+  .fs-base {
+    --fl: 0;
+  }
+  .fs-s {
+    --fl: 1;
+  }
+  .fs-m {
+    --fl: 2;
+  }
+  .fs-l {
+    --fl: 3;
+  }
+  .fs-xl {
+    --fl: 4;
+  }
+  .fs-xxl {
+    --fl: 5;
+  }
+  .fs-xxxl {
+    --fl: 6;
+  }
+
+  .container {
+    @apply mx-auto w-full bg-white py-4 md:py-8 lg:py-16 px-4 md:px-8 lg:px-16 border-x border-slate-100 rounded-xs mt-20 md:mt-32 lg:mt-40;
+    max-width: clamp(300px, 80vw, 1200px);
+  }
+
+  .prose {
+    @apply px-0;
+    max-width: clamp(200px, 80vw, 1200px);
+  }
+</style>

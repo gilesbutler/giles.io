@@ -1,0 +1,1269 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import { Image } from "astro:assets";
+import moisesLogo from "~/assets/images/logos/moises-logo.svg";
+import Pads from "~/components/lab/moises/sampler/Pads.astro";
+import DesignComparison from "~/components/lab/moises/DesignComparison.astro";
+import AnimatedPipe from "~/components/AnimatedPipe.astro";
+import ProductLearningLoop from "~/components/ProductLearningLoop.astro";
+import Clients from "~/components/Clients.astro";
+import WorkShowcase from "~/components/work/WorkShowcase.astro";
+import ContactActions from "~/components/ContactActions.astro";
+---
+
+<Layout>
+  <main>
+    <div id="sticky-logo" class="sticky-logo">
+      <Image src={moisesLogo} alt="Moises Logo" class="w-20 md:w-24" />
+
+      <span class="block text-slate-300">&vert;</span>
+
+      <a href="/" class="logo text-sm shrink-0" aria-label="Giles Butler home">
+        Giles Butler<span class="logo-dot">.</span>
+      </a>
+    </div>
+
+    <!-- Hero -->
+    <section
+      id="hero"
+      class="theme-section section-full flex-center px-fluid"
+      data-scroll
+      data-scroll-call="heroVisibility"
+      data-scroll-repeat
+    >
+      <p
+        class="hand text-2xl md:text-3xl -rotate-3 mb-8 md:mb-12 lg:mb-16 font-bolder self-start"
+        data-scroll
+        data-scroll-speed="0.5"
+      >
+        👋 olá 🇧🇷/🇺🇸, this is a <u>story</u> about&hellip;
+      </p>
+
+      <h1
+        class="display-name selected resizable-heading !text-[#2B2C29]"
+        data-resizable-heading
+        data-scroll
+        data-scroll-speed="0.8"
+      >
+        <!-- prettier-ignore -->
+        <span class="display-name-content"><a class="hover-word hover-word--music" href="#music">Music</a>, <a class="hover-word hover-word--design" href="#design">Design</a>,{""}
+          <span class="relative"><a class="hover-word hover-word--engineering" href="#engineering">Engineering</a><span class="hand and">and</span></span>{" "}
+          <a class="hover-word hover-word--product" href="#product">Product</a>.</span>
+        <span class="h tl" aria-hidden="true"></span>
+        <span class="h tr" aria-hidden="true"></span>
+        <span class="h bl" aria-hidden="true"></span>
+        <span class="h br" aria-hidden="true"></span>
+      </h1>
+
+      <p
+        class="mono-label text-xs md:text-sm mt-6 !text-slate-400 !lowercase !block"
+        data-scroll
+        data-scroll-speed="0.6"
+      >
+        <span class="text-cyan-500">(</span>it's also a job application
+        <span class="text-cyan-500">)</span>
+      </p>
+
+      <div
+        id="hero-logo"
+        class="hero-logo max-w-[90%] mx-auto mt-6"
+        data-scroll
+        data-scroll-css-progress
+        data-scroll-position="start,end"
+      >
+        <div class="flex items-center justify-center">
+          <Image src={moisesLogo} alt="Moises Logo" class="w-26 md:w-40 z-2" />
+
+          <span class="block text-slate-300 ml-2 mr-[7px]">&vert;</span>
+
+          <a
+            href="/"
+            class="logo text-lg md:text-xl z-2"
+            aria-label="Giles Butler home"
+          >
+            Giles Butler<span class="logo-dot">.</span>
+          </a>
+        </div>
+
+        <div
+          class="relative mt-6 flex justify-center"
+          data-scroll
+          data-scroll-speed="0.2"
+        >
+          <img
+            class="avatar flt3 !w-12 z-1"
+            src="/avatar.jpg"
+            alt="Giles' serious artist photo!"
+          />
+          <span
+            class="hand absolute left-[66%] w-12 rotate-3 !text-slate-500 moody"
+            data-scroll-css-progress
+          >
+            moody artist shot
+          </span>
+        </div>
+      </div>
+
+      <div class="mt-20 text-center space-y-4 z-1">
+        <p class="italic text-base md:text-lg text-slate-600">
+          &hellip;so there's one question I've been thinking about:
+        </p>
+
+        <div class="note yellow -rotate-1 !max-w-[280px] md:!max-w-[400px] mx-auto left-0 right-0 !text-amber-950 !relative">
+          <p class="text-2xl md:text-3xl hand text-shadow-sm text-shadow-amber-100/70">
+            When almost anything can be made quickly, what still takes years to
+            learn?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="theme-section section-full flex-center px-fluid">
+      <div
+        data-scroll
+        data-scroll-css-progress
+        class="content-layer flex flex-col items-center opacity-[calc(var(--progress)*2)]"
+      >
+        <p class="chapter-number">Chapter 1</p>
+        <h2 class="display-text" data-scroll data-scroll-position="start,end">
+          Music
+        </h2>
+        <p class="sub-text">Learning to listen.</p>
+
+        <div class="grid md:grid-cols-2 gap-6 mt-12">
+          <div class="mx-auto w-full max-w-96 md:w-96 md:max-w-lg lg:w-full lg:max-w-[500px] lg:mt-4 relative">
+            <Pads />
+            <div class="hand !text-white text-2xl md:text-3xl lg:text-4xl rotate-3 mt-4 text-center tracking-wide">
+              go on play my{" "}
+              <button
+                type="button"
+                class="pads-info"
+                data-popover-trigger
+                aria-controls="handmade-popover"
+                aria-expanded="false"
+              >
+                <u>pads</u>
+              </button>
+              <div
+                id="handmade-popover"
+                class="popover pads-popover"
+                data-popover
+                popover="auto"
+                role="status"
+              >
+                Some things I use AI to create but these I thought would be fun
+                to carve out myself using SVG and{" "}
+                <a
+                  href="https://tonejs.github.io/"
+                  target="_blank"
+                  class="link"
+                >
+                  tone.js
+                </a>
+              </div>
+              <span class="block mt-2 text-xl md:text-2xl lg:text-3xl text-slate-400">
+                (they're hand made)
+              </span>
+            </div>
+          </div>
+
+          <div class="prose lg:text-center">
+            <p>
+              I started producing and DJing when I was 12. Music taught me
+              something I still use every day: making more is easy. Knowing what
+              belongs, what doesn't, and when something is finished is much
+              harder.
+            </p>
+
+            <p>
+              I went on to study Music Production at university, learnt Logic in
+              the{" "}
+              <a
+                href="https://en.wikipedia.org/wiki/Emagic"
+                target="_blank"
+                class="link-subtle"
+              >
+                Emagic
+              </a>
+              era, used Ableton from Live 4{" "}
+              <span class="text-sm italic">
+                (and even participated in its beta programme)
+              </span>
+              . Twenty-five years later, I still produce, release music, collect
+              hardware and spend wayyy too much time sampling things.
+            </p>
+
+            <div class="note blue max-w-sm text-center !relative rotate-2 mt-12 !text-cyan-900 mx-auto">
+              <p class="hand text-2xl md:text-3xl !p-0 !m-0 font-black text-shadow-sm text-shadow-cyan-200/70">
+                But instinct only gets you so far. How do you turn a feeling
+                into a deliberate decision?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Section -->
+    <section
+      id="design"
+      class="theme-section section-full flex-center px-fluid"
+    >
+      <div
+        data-scroll
+        data-scroll-css-progress
+        class="content-layer flex flex-col items-center !opacity-[calc(var(--progress)*4)]"
+      >
+        <p class="chapter-number">Chapter 2</p>
+        <h2 class="display-text" data-scroll data-scroll-position="start,end">
+          <span class="design-title-text">Design</span>
+        </h2>
+        <p class="sub-text mb-8">Learning to choose.</p>
+
+        <div class="prose">
+          <h4>I started my career as a designer.</h4>
+          <p>
+            It taught me to turn instinct into intent: to decide what matters,
+            where attention should go, and what can disappear without losing
+            meaning.
+          </p>
+          <p>
+            Hierarchy. Rhythm. Contrast. Restraint. Not decoration for its own
+            sake, but ways of making complex things feel clear and intuitive.
+          </p>
+
+          <h4>A lot of design is deciding where complexity should live.</h4>
+
+          <p>
+            The same capability can expose every option upfront, or reveal
+            complexity only when it becomes useful. Neither is automatically
+            right. The job is deciding what someone needs now, what can wait,
+            and how much choice helps rather than slows them down.
+          </p>
+
+          <p>
+            This small example makes that trade-off tangible. Switch between the
+            two versions and notice how the capability stays largely the same
+            while the number of decisions changes.
+          </p>
+        </div>
+
+        <DesignComparison />
+
+        <div class="prose mt-8">
+          <p>
+            Over time, I became less interested in designing screens and more
+            interested in designing behaviour: how a product responds, what
+            happens between states, and whether an experience still holds
+            together when real data, real users and edge cases arrive.
+          </p>
+        </div>
+
+        <div class="note pink -rotate-2 !max-w-md mx-auto left-0 right-0 text-center !text-pink-950 !relative mt-8">
+          <p class="text-2xl md:text-3xl hand text-shadow-sm text-shadow-pink-100/70 !m-0">
+            I wanted to design what happened, not just what it looked
+            like&hellip;
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Section -->
+    <section
+      id="engineering"
+      class="theme-section section-full flex-center px-fluid"
+    >
+      <div class="content-layer space-y-8">
+        <p class="chapter-number">Chapter 3</p>
+        <h2 class="display-text">Engineering</h2>
+        <p class="sub-text">So I learnt to build them.</p>
+
+        <AnimatedPipe />
+
+        <div class="prose lg:text-center">
+          <p>
+            Frontend soon became full stack. Code stopped being something that
+            happened after design and became another material I could design
+            with.
+          </p>
+
+          <h4 class="!mt-0 mb-8">
+            Today, working prototypes are often how I think.
+          </h4>
+
+          <p>
+            They expose assumptions that static designs hide: state, timing,
+            responsiveness, latency, edge cases, animation and what happens when
+            real data refuses to fit the happy path.
+          </p>
+
+          <h3 class="statement-text !text-[#344760]">
+            Sometimes the fastest way to answer a design question is to just
+            build it.
+          </h3>
+
+          <div class="note blue max-w-sm text-center !relative rotate-1 mt-12 !text-cyan-900 mx-auto">
+            <p class="hand text-3xl !p-0 !m-0 font-black text-shadow-sm text-shadow-cyan-200/70">
+              Building taught me that the interface is only one part of the
+              product though&hellip;
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Section -->
+    <section
+      id="product"
+      class="theme-section section-full flex-center px-fluid text-shadow-sm text-shadow-amber-200/50"
+    >
+      <div
+        class="content-layer space-y-8 !opacity-[calc(var(--progress)*3)]"
+        data-scroll
+        data-scroll-css-progress
+      >
+        <p class="chapter-number">Chapter 4</p>
+        <h2 class="display-text">Product</h2>
+        <p class="sub-text">Then I learnt to think beyond the interface.</p>
+
+        <div class="prose">
+          <p>
+            The last decade has been spent building products inside startups.
+          </p>
+
+          <p>
+            Talking to customers. Shipping before everything is known. Watching
+            where people get stuck. Changing direction when reality disagrees
+            with the plan. Building systems that survive as both the product and
+            the team grow.
+          </p>
+
+          <h3>Good product work moves at the speed of learning.</h3>
+
+          <p>Speed matters, but not everywhere equally.</p>
+
+          <p>
+            Some decisions deserve days of craft. Some need another customer
+            conversation. Some need a prototype in an afternoon. Some simply
+            need shipping.
+          </p>
+
+          <p>
+            The skill is knowing what needs more thinking, and what needs
+            putting in front of people.
+          </p>
+        </div>
+
+        <ProductLearningLoop />
+
+        <div class="note green -rotate-2 !max-w-md ml-auto w-80 text-center !text-green-900 !relative">
+          <p class="text-2xl md:text-3xl hand text-shadow-sm text-shadow-green-100/70 !m-0">
+            Then suddenly the whole loop got much faster&hellip;
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Section -->
+    <section id="ai" class="theme-section section-full flex-center px-fluid">
+      <div class="content-layer space-y-8" data-scroll data-scroll-css-progress>
+        <p class="chapter-number">Chapter 5</p>
+        <h2 class="display-text">THE TOOLS CHANGED.</h2>
+        <p class="sub-text">The bottleneck moved.</p>
+
+        <div class="prose">
+          <p>
+            AI has radically shortened the distance between an idea and
+            something tangible.
+          </p>
+
+          <p>
+            I can explore more directions, build more prototypes and test more
+            assumptions in a day than I could have in weeks earlier in my
+            career.
+          </p>
+
+          <h3 class="statement-text">
+            When options become abundant, judgement becomes scarce.
+          </h3>
+
+          <p class="hand text-3xl md:text-4xl lg:text-5xl mt-4 text-right text-accent -rotate-2">
+            So what still takes years to learn?
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Taste Section -->
+    <section id="taste" class="theme-section section-full flex-center px-fluid">
+      <div class="content-layer space-y-8" data-scroll data-scroll-css-progress>
+        <p class="chapter-number">Chapter 6</p>
+        <h2 class="display-text text-accent !mb-8">TASTE</h2>
+
+        <div class="prose">
+          <p>Not aesthetic preference.</p>
+
+          <p>Accumulated judgement.</p>
+
+          <figure>
+            <blockquote
+              cite="https://paulgraham.com/taste.html"
+              class="text-blue-400"
+            >
+              <p>We need good taste to make good things.</p>
+              <figcaption class="text-blue-400">
+                —{" "}
+                <cite>
+                  Paul Graham -{" "}
+                  <a
+                    href="https://paulgraham.com/taste.html"
+                    target="_blank"
+                    class="link-subtle"
+                  >
+                    Taste For Makers
+                  </a>
+                </cite>
+              </figcaption>
+            </blockquote>
+          </figure>
+
+          <p>
+            It's the pattern recognition that comes from making things, getting
+            things wrong, seeing what survives contact with reality and
+            developing a clearer sense of what deserves to exist in the first
+            place.
+          </p>
+
+          <figure>
+            <blockquote
+              cite="https://www.workingtheorys.com/p/taste-is-eating-silicon-valley"
+              class="text-blue-400"
+            >
+              <p>
+                In a world of scarcity, we treasure tools. In a world of
+                abundance, we treasure taste.
+              </p>
+              <figcaption class="text-blue-400">
+                <cite>
+                  Anu Atluru -
+                  <a
+                    href="https://www.workingtheorys.com/p/taste-is-eating-silicon-valley"
+                    target="_blank"
+                    class="link-subtle"
+                  >
+                    Taste is Eating Silicon Valley
+                  </a>
+                </cite>
+              </figcaption>
+            </blockquote>
+          </figure>
+
+          <div class="note yellow -rotate-1 max-w-md mx-auto left-0 right-0 text-center !text-amber-950">
+            <p class="text-2xl md:text-3xl hand text-shadow-sm text-shadow-amber-100/70 !m-0">
+              which brings us back to where we started&hellip;
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p
+        class="bg-text"
+        data-scroll
+        data-scroll-speed="1.5"
+        data-scroll-position="start,end"
+      >
+        TASTE
+      </p>
+    </section>
+
+    <!-- Why Section -->
+    <section
+      id="why"
+      class="theme-section section-full flex-center px-fluid border-y border-slate-200"
+    >
+      <div
+        class="content-layer space-y-8 !opacity-[calc(var(--progress)*3)] text-shadow-sm text-shadow-white"
+        data-scroll
+        data-scroll-css-progress
+      >
+        <p class="chapter-number">Chapter 7</p>
+        <h1 class="display-name">
+          <!-- prettier-ignore -->
+          <span class="display-name-content">
+            <span>Music<span class="text-cyan-500">.</span>
+              <p class="why-text">Taught me to listen. To notice what others might miss.</p>
+            </span>
+            <span>Design<span class="text-cyan-500">.</span>
+              <p class="why-text">To choose. To decide what matters and remove what doesn't.</p>
+            </span>
+            <span>
+              Engineering<span class="text-cyan-500">.</span>
+              <p class="why-text">To build. To create. To solve problems. To turn an idea into something real.</p>
+            </span>
+            <span>Product<span class="text-cyan-500">.</span>
+              <p class="why-text">To challenge assumptions. To let customers and reality have the final word.</p>
+            </span>
+          </span>
+        </h1>
+
+        <div class="relative">
+          <div class="md:max-w-[400px] lg:max-w-80 lg:text-center lg:absolute lg:right-[-55px] lg:top-[-34px]">
+            <h2 class="hand text-2xl md:text-3xl lg:text-5xl lg:text-4xl text-[var(--theme-accent)] -rotate-2 lg:-rotate-5 text-shadow-sm text-shadow-red-100/70">
+              Twenty-five years of making things has shaped how I make decisions
+              today!
+            </h2>
+          </div>
+        </div>
+
+        <div class="prose">
+          <p>Most jobs use one or two parts of my background.</p>
+
+          <p>
+            The Senior Product Designer{" "}
+            <a
+              href="https://moises.bamboohr.com/careers/75"
+              class="!underline !decoration-dashed hover:!no-underline"
+              target="_blank"
+              title="Senior Product Designer"
+            >
+              role
+            </a>{" "}
+            at{" "}
+            <Image
+              src={moisesLogo}
+              alt="Moises Logo"
+              class="w-24 inline !m-0 -rotate-1"
+            />{" "}
+            sits directly across all of them.
+          </p>
+
+          <p>
+            I already understand what it feels like to spend hours inside a DAW.
+            I have spent my career designing and building complex software. I
+            work directly in code. I understand startup product development from
+            the inside. And I am already using AI to radically shorten the
+            distance between an idea and something I can test.
+          </p>
+
+          <p>
+            I would not be learning the domain so I could design for it&hellip;
+          </p>
+
+          <h3 class="mt-0">It is already part of how I think and work.</h3>
+
+          <p class="mono-label text-sm -mt-2 !text-slate-500 !lowercase !block">
+            <span class="text-cyan-500">(</span>and I'd like to help shape what
+            comes next<span class="text-cyan-500">)</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="note yellow -rotate-1 max-w-md mt-6 mx-auto left-0 right-0 text-center !text-amber-950 !relative">
+        <p class="text-2xl md:text-3xl hand text-shadow-sm text-shadow-amber-100/70 !m-0">
+          two products probably explain this better than I can&hellip;
+        </p>
+      </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="theme-section section-full flex-center px-fluid">
+      <div class="content-layer" data-scroll data-scroll-css-progress>
+        <p class="chapter-number">Chapter 8</p>
+        <h2 class="display-text">Work</h2>
+        <p class="sub-text">From first idea to everyday use.</p>
+
+        <div class="prose my-8 text-center !text-slate-600">
+          <p>
+            An AI product built for scale. A desktop app built for the studio.
+          </p>
+          <p>
+            Two places where design, engineering and product became the same
+            job.
+          </p>
+        </div>
+      </div>
+
+      <WorkShowcase />
+
+      <Clients label="teams and products I've worked on" />
+    </section>
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="theme-section section-full flex-center px-fluid"
+    >
+      <div class="content-layer" data-scroll data-scroll-css-progress>
+        <p class="chapter-number">The next chapter?</p>
+        <h2 class="display-text text-accent">Say Hello</h2>
+        <div class="prose my-8 text-center">
+          <p>
+            I've spent years making music, designing products and building
+            software.
+          </p>
+          <p>I'd like to bring all of it to Moises.</p>
+        </div>
+        <ContactActions />
+      </div>
+
+      <p class="text-center text-sm text-cyan-200 mt-20 italic">
+        Site designed and built for this application 👋
+      </p>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  import LocomotiveScroll from "locomotive-scroll";
+  import { setupPopovers } from "~/scripts/popover";
+  import { setupResizableSelections } from "~/scripts/resizable-selection";
+
+  const hero = document.querySelector("#hero");
+  const stickyLogo = document.querySelector("#sticky-logo");
+  const designTitle = document.querySelector(".design-title-text");
+
+  function setupDesignPointerEffect() {
+    if (!(designTitle instanceof HTMLElement)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let pointerPosition: { x: number; y: number } | null = null;
+    let frame: number | null = null;
+
+    const updateDesignTitle = () => {
+      frame = null;
+      if (!pointerPosition) return;
+
+      const x = (pointerPosition.x / window.innerWidth) * 2 - 1;
+      const y = (pointerPosition.y / window.innerHeight) * 2 - 1;
+      const titleBounds = designTitle.getBoundingClientRect();
+      const titleCenterX = titleBounds.left + titleBounds.width / 2;
+      const titleCenterY = titleBounds.top + titleBounds.height / 2;
+      const distanceFromTitle = Math.hypot(
+        pointerPosition.x - titleCenterX,
+        pointerPosition.y - titleCenterY,
+      );
+      const fadeDistance =
+        Math.max(window.innerWidth, window.innerHeight) * 0.7;
+      const registerOpacity = Math.max(0, 1 - distanceFromTitle / fadeDistance);
+
+      designTitle.style.setProperty("--design-shift-x", `${-x * 0.025}em`);
+      designTitle.style.setProperty("--design-shift-y", `${-y * 0.015}em`);
+      designTitle.style.setProperty("--design-cyan-x", `${x * 0.05}em`);
+      designTitle.style.setProperty("--design-cyan-y", `${y * 0.25}em`);
+      designTitle.style.setProperty("--design-magenta-x", `${-x * 0.03}em`);
+      designTitle.style.setProperty("--design-magenta-y", `${-y * 0.18}em`);
+      designTitle.style.setProperty(
+        "--design-register-opacity",
+        String(registerOpacity),
+      );
+    };
+
+    window.addEventListener(
+      "pointermove",
+      (event) => {
+        if (event.pointerType !== "mouse") return;
+
+        pointerPosition = { x: event.clientX, y: event.clientY };
+        if (frame === null) frame = requestAnimationFrame(updateDesignTitle);
+      },
+      { passive: true },
+    );
+  }
+
+  function syncStickyLogo() {
+    if (!(hero instanceof HTMLElement)) return;
+    if (!(stickyLogo instanceof HTMLElement)) return;
+
+    const heroHasPassed = hero.getBoundingClientRect().bottom <= 0;
+
+    stickyLogo.classList.toggle("is-visible", heroHasPassed);
+  }
+
+  window.addEventListener("heroVisibility", (event) => {
+    if (!(event instanceof CustomEvent)) return;
+    if (!(stickyLogo instanceof HTMLElement)) return;
+
+    const { way } = event.detail;
+
+    if (way === "enter") {
+      stickyLogo.classList.remove("is-visible");
+    }
+
+    if (way === "leave") {
+      stickyLogo.classList.add("is-visible");
+    }
+  });
+
+  const locomotiveScroll = new LocomotiveScroll();
+
+  window.addEventListener("work-showcase-layout-change", () => {
+    requestAnimationFrame(() => locomotiveScroll.resize());
+  });
+
+  setupDesignPointerEffect();
+  setupPopovers();
+  setupResizableSelections();
+
+  // Correct state if the browser loads/restores further down the page.
+  requestAnimationFrame(syncStickyLogo);
+
+  // Also handle refresh/back-forward cache restoration.
+  window.addEventListener("pageshow", () => {
+    requestAnimationFrame(syncStickyLogo);
+  });
+</script>
+
+<style>
+  @reference "tailwindcss";
+  @import "locomotive-scroll/dist/locomotive-scroll.css";
+
+  :root {
+    /* Default Fallback Theme */
+    /*--theme-bg: #2b2c29;*/
+    --theme-text: #1a1a1a;
+    --theme-accent: #666666;
+    --shadow-color: 205deg 51% 19%;
+    --shadow-custom:
+      0px 0px 0px 1px #0000000f, 0px 1px 2px -1px #0000000f,
+      0px 2px 4px 0px #0000000a;
+    --tw-inset-ring-shadow {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0 0 #0000;
+    }
+    --tw-inset-shadow {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0 0 #0000;
+    }
+    --tw-ring-shadow {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0 0 #0000;
+    }
+    --tw-ring-offset-shadow {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0 0 #0000;
+    }
+    --tw-shadow: var(--shadow-custom);
+  }
+
+  /* Theme Base Class */
+  .theme-section {
+    background-color: var(--theme-bg);
+    color: var(--theme-text);
+    /* Smooth transitions if variables change dynamically */
+    transition:
+      background-color 0.8s ease,
+      color 0.8s ease;
+
+    .prose {
+      @apply text-lg lg:text-2xl mx-auto;
+      color: var(--theme-text);
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      blockquote,
+      figure {
+        color: var(--theme-text);
+      }
+    }
+  }
+
+  .link-subtle {
+    @apply decoration-wavy underline;
+    color: currentColor;
+    font-weight: inherit;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 5px;
+    text-decoration-color: currentColor;
+    &:hover {
+      text-decoration-color: white;
+    }
+  }
+
+  /* Accent text utility */
+  .text-accent {
+    color: var(--theme-accent);
+  }
+
+  .shadow-custom {
+    --tw-shadow: var(--shadow-custom);
+    box-shadow:
+      var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+
+  /* Section Specific Theme Overrides */
+  #hero {
+    /*--theme-bg: #0f0f0f;*/
+    --theme-text: #2b2c29;
+    --theme-accent: #36c5f0;
+  }
+  #music {
+    --theme-bg: #2b2c29;
+    --theme-text: #e7e4d6;
+    --theme-accent: #36c5f0;
+  }
+  #design {
+    --theme-bg: #1c1cf0;
+    --theme-text: #e7e4d6;
+    --theme-accent: #00ffc8;
+    background-image: linear-gradient(
+      30deg,
+      hsl(240deg 88% 53%) 0%,
+      hsl(240deg 88% 53%) 8%,
+      hsl(240deg 88% 54%) 17%,
+      hsl(240deg 88% 54%) 25%,
+      hsl(240deg 88% 55%) 33%,
+      hsl(240deg 88% 55%) 42%,
+      hsl(240deg 88% 56%) 50%,
+      hsl(240deg 88% 56%) 58%,
+      hsl(240deg 88% 57%) 67%,
+      hsl(240deg 88% 57%) 75%,
+      hsl(240deg 88% 58%) 83%,
+      hsl(240deg 88% 58%) 92%,
+      hsl(240deg 88% 58%) 100%
+    );
+  }
+  #engineering {
+    --theme-bg: #f5f5f7;
+    --theme-text: #366180;
+    --theme-accent: #00ffc8;
+    --shadow-color: 240deg 3% 60%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2384c2d5' fill-opacity='0.4'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  #product {
+    --theme-bg: #f5be44;
+    --theme-text: #2b2c29;
+    --theme-accent: #36c5f0;
+  }
+  #why {
+    --theme-bg: #f5f5f7;
+    --theme-text: var(--color-slate-700);
+    --theme-accent: var(--color-rose-500);
+  }
+  #ai {
+    --theme-bg: #2b2c29;
+    --theme-text: #e7e4d6;
+    --theme-accent: #ffcf33;
+    background-image: url("data:image/svg+xml,%3Csvg width='84' height='48' viewBox='0 0 84 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h12v6H0V0zm28 8h12v6H28V8zm14-8h12v6H42V0zm14 0h12v6H56V0zm0 8h12v6H56V8zM42 8h12v6H42V8zm0 16h12v6H42v-6zm14-8h12v6H56v-6zm14 0h12v6H70v-6zm0-16h12v6H70V0zM28 32h12v6H28v-6zM14 16h12v6H14v-6zM0 24h12v6H0v-6zm0 8h12v6H0v-6zm14 0h12v6H14v-6zm14 8h12v6H28v-6zm-14 0h12v6H14v-6zm28 0h12v6H42v-6zm14-8h12v6H56v-6zm0-8h12v6H56v-6zm14 8h12v6H70v-6zm0 8h12v6H70v-6zM14 24h12v6H14v-6zm14-8h12v6H28v-6zM14 8h12v6H14V8zM0 8h12v6H0V8z' fill='%231c1e21' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+  #taste {
+    --theme-bg: #fff;
+    --theme-text: #2b2c29;
+    --theme-accent: #1c1cf0;
+  }
+  #contact {
+    --theme-bg: #000000;
+    --theme-text: #ffffff;
+    --theme-accent: #ffcf33;
+  }
+
+  :root {
+    --shadow-color: 240deg 3% 60%;
+    --shadow-elevation-low:
+      0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+      0.4px 0.8px 1px -1.2px hsl(var(--shadow-color) / 0.34),
+      1px 2px 2.5px -2.5px hsl(var(--shadow-color) / 0.34);
+  }
+
+  /* MINI CSS UTILITIES (Layout & Typography) */
+
+  /* Layout: Full Height & Flex Centering */
+  .section-full {
+    /* Centered flex children must not size the page from their max-content width. */
+    > * {
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    /* Use dvh to prevent mobile toolbar jumpiness, fallback to vh */
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: 100%;
+    position: relative;
+    padding-block: clamp(3rem, 8vh, 6rem);
+  }
+
+  .flex-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Padding utilities */
+  .px-fluid {
+    padding-left: clamp(1rem, 5vw, 4rem);
+    padding-right: clamp(1rem, 5vw, 4rem);
+  }
+
+  /* Typography: Fluid clamp() sizing */
+  .display-text {
+    /* clamp(MIN, VAL, MAX) */
+    font-size: clamp(3rem, 10vw + 1rem, 12rem);
+    font-family: var(--font-display);
+    font-weight: 900;
+    line-height: 0.86;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    /* Prevent text selection while scrolling heavily */
+    user-select: none;
+  }
+
+  #engineering .display-text {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(2.4rem, 10vw, 9rem);
+    letter-spacing: -0.065em;
+  }
+
+  .sub-text {
+    @apply mx-auto;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 500;
+    opacity: 0.8;
+    text-align: center;
+    max-width: 600px;
+  }
+
+  /* The section title uses the same print-registration language as the hero word,
+     but its intensity and direction follow the mouse across the viewport. */
+  #design .design-title-text {
+    --design-shift-x: 0em;
+    --design-shift-y: 0em;
+    --design-cyan-x: 0em;
+    --design-cyan-y: 0em;
+    --design-magenta-x: 0em;
+    --design-magenta-y: 0em;
+    --design-register-opacity: 0;
+    display: inline-block;
+    transform: translate(var(--design-shift-x), var(--design-shift-y));
+    text-shadow:
+      var(--design-cyan-x) var(--design-cyan-y) 0
+        rgb(54 197 240 / calc(var(--design-register-opacity) * 0.55)),
+      var(--design-magenta-x) var(--design-magenta-y) 0
+        rgb(224 30 90 / calc(var(--design-register-opacity) * 0.4));
+    transition:
+      transform 180ms ease-out,
+      text-shadow 180ms ease-out;
+  }
+
+  .bg-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    font-size: clamp(1rem, 30vw, 30rem);
+    opacity: 0.2;
+    font-family: var(--font-display);
+    font-weight: 900;
+    color: var(--theme-accent);
+  }
+
+  /* Ensure content stays above background decorative text */
+  .content-layer {
+    @apply opacity-[calc(var(--progress)*2)];
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  /* Centered layers otherwise let intrinsic-width grids and prose expand the page. */
+  .content-layer > * {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .content-layer > .grid > * {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .chapter-number {
+    font-family: var(--font-hand);
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    opacity: 0.8;
+    margin-bottom: 13px;
+    text-align: center;
+  }
+
+  .statement-text {
+    font-family: var(--font-body);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    font-size: clamp(30px, 5.4vw, 68px);
+    margin: 0 auto;
+  }
+
+  /* Hero Section */
+
+  #hero > p:first-child {
+    align-self: stretch;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Scale against the smaller viewport axis so the title fits wide and short screens. */
+  #hero .resizable-heading {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(2.25rem, min(13vw, 15vh), 10.5rem);
+    font-size: clamp(2.25rem, min(13vw, 15dvh), 10.5rem);
+    overflow-wrap: normal;
+    word-break: normal;
+    text-wrap: balance;
+  }
+
+  #hero .display-name-content .relative {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  /* Each discipline gets its own quiet visual language on hover. */
+  #hero .hover-word {
+    position: relative;
+    display: inline-block;
+    transform-origin: center bottom;
+  }
+
+  #hero .hover-word:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 0.08em;
+    border-radius: 0.08em;
+  }
+
+  /* Music: two soft taps, like a beat resolving. */
+  @keyframes hero-music-beat {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    12% {
+      transform: scale(1.018);
+    }
+    23% {
+      transform: scale(1);
+    }
+    34% {
+      transform: scale(1.01);
+    }
+    48% {
+      transform: scale(1);
+    }
+  }
+
+  #hero .hover-word--music:hover,
+  #hero .hover-word--music:focus-visible {
+    animation: hero-music-beat 1.2s ease-in-out infinite;
+  }
+
+  /* Design: a restrained print-registration misalignment. */
+  @keyframes hero-design-register {
+    0%,
+    100% {
+      transform: translate(0, 0);
+      text-shadow: none;
+    }
+    35% {
+      transform: translate(-0.025em, -0.015em);
+      text-shadow: 0.025em 0 rgba(54, 197, 240, 0.55);
+    }
+    68% {
+      transform: translate(0.018em, 0.01em);
+      text-shadow: -0.018em 0 rgba(224, 30, 90, 0.4);
+    }
+  }
+
+  #hero .hover-word--design:hover,
+  #hero .hover-word--design:focus-visible {
+    animation: hero-design-register 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Engineering: a measured rule draws itself beneath the word. */
+  #hero .hover-word--engineering::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -0.08em;
+    left: 0;
+    height: 0.025em;
+    min-height: 1px;
+    background: var(--cyan);
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  @keyframes hero-engineering-line {
+    0% {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+    18% {
+      opacity: 1;
+    }
+    100% {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+
+  #hero .hover-word--engineering:hover::after,
+  #hero .hover-word--engineering:focus-visible::after {
+    animation: hero-engineering-line 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Product: a small, tactile lift that settles back into place. */
+  @keyframes hero-product-lift {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    42% {
+      transform: translateY(-0.045em) rotate(-0.45deg);
+    }
+    72% {
+      transform: translateY(0.012em) rotate(0.12deg);
+    }
+  }
+
+  #hero .hover-word--product:hover,
+  #hero .hover-word--product:focus-visible {
+    animation: hero-product-lift 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .hero-section {
+    position: relative;
+    min-height: 180dvh;
+  }
+
+  .hero-inner {
+    position: sticky;
+    top: 0;
+
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-logo {
+    position: relative;
+    z-index: 2;
+
+    /* --progress comes from Locomotive Scroll. 1 -> 6 means the logo grows to 6x its original size. */
+    transform: scale(calc(1 + (var(--progress, 0) * 5)));
+
+    transform-origin: center center;
+    will-change: transform;
+
+    /*
+                                                                              Important so the enlarged element doesn't accidentally
+                                                                              block interaction with the whole screen.
+                                                                            */
+    pointer-events: none;
+  }
+
+  .hero-logo a {
+    pointer-events: auto;
+  }
+
+  .sticky-logo {
+    @apply bg-white px-4 py-2 rounded-b-lg inline-flex w-max items-center justify-center gap-2;
+    outline: 1px solid rgba(0, 0, 0, 0.08);
+    outline-offset: -1px;
+    position: fixed;
+    left: 50%;
+    z-index: 100;
+
+    transform: translate(-50%, -20px) scale(0.9);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+      opacity 300ms ease,
+      transform 300ms ease,
+      visibility 300ms;
+  }
+
+  .sticky-logo.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translate(-50%, 0) scale(1);
+  }
+
+  .hand u {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--cyan);
+  }
+
+  .hand.and {
+    @apply lowercase tracking-normal text-3xl md:text-4xl lg:text-5xl absolute -bottom-1 right-[-21px];
+    color: var(--cyan);
+    transform: translate(0.1em, 0.2em);
+    white-space: nowrap;
+  }
+
+  .hand.moody {
+    opacity: var(--progress);
+  }
+
+  .note {
+    @apply !block;
+  }
+
+  /* Chapter 7 is a long-form lockup, so size the display copy against the
+     section width instead of inheriting the global display-name minimum. */
+  #why .display-name {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(2.5rem, 12vw, 10.5rem);
+    line-height: 0.9;
+    text-wrap: balance;
+  }
+
+  #why .display-name-content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 3vw, 2.75rem);
+    width: 100%;
+  }
+
+  #why .display-name-content > span {
+    display: block;
+    width: 100%;
+  }
+
+  .why-text {
+    @apply text-slate-500 tracking-wide leading-snug;
+    display: block;
+    max-width: 44ch;
+    margin: clamp(0.5rem, 1vw, 0.9rem) 0 0;
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 3.4vw, 2rem);
+    font-weight: 500;
+    text-transform: none;
+  }
+</style>

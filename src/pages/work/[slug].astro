@@ -42,3 +42,98 @@ const fmt = (date: Date, slug: string) =>
   </main>
   <Footer />
 </Layout>
+
+<style>
+/* ============ PROSE (post / work-detail body) ============ */
+.prose {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 26px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+.prose h2 {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  margin: 38px 0 14px;
+}
+.prose h3 {
+  font-weight: 700;
+  font-size: 21px;
+  margin: 30px 0 10px;
+}
+.prose p {
+  margin: 0 0 18px;
+}
+.prose ul,
+.prose ol {
+  margin: 0 0 18px;
+  padding-left: 22px;
+}
+.prose li {
+  margin: 0 0 8px;
+}
+.prose a {
+  color: var(--magenta);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose strong {
+  font-weight: 700;
+}
+.prose table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 15px;
+  -webkit-overflow-scrolling: touch;
+}
+.prose th,
+.prose td {
+  border: 1px solid var(--line-strong);
+  padding: 9px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+.prose thead {
+  background: var(--hover);
+}
+.prose th {
+  color: var(--ink);
+  font-weight: 700;
+}
+.prose tbody tr:nth-child(even) {
+  background: var(--bar);
+}
+.prose pre {
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin: 24px 0;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-overflow-scrolling: touch;
+}
+.prose pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: inherit;
+}
+.prose :not(pre) > code {
+  background: var(--hover);
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  padding: 1px 5px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--ink);
+}
+</style>

@@ -11,7 +11,7 @@ const isActive = (url: string) => {
 
 <header class="nav" id="nav">
   <div class="nav-left">
-    <a href="/" class="logo" aria-label={`${name} home`}>{name}<span class="logo-dot">.</span></a>
+    <a href="/" class="logo mr-5 text-2xl" aria-label={`${name} home`}>{name}<span class="logo-dot">.</span></a>
     {navigation.links.map((l) => (
       <a href={l.url} class:list={["navlink", { active: isActive(l.url) }]}>{l.label}</a>
     ))}

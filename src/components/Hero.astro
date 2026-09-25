@@ -10,34 +10,84 @@ const labelRest = labelWords.join(" ");
 ---
 
 <section class="hero">
-  <div class="clock" id="clock">--:--:-- --</div>
+  <div class="clock" id="clock">
+    --:--:-- --
+  </div>
 
-  <div class="note blue flt1" style="top:30%;left:11%;transform:rotate(-7deg);max-width:170px">
+  <div
+    class="note blue flt1"
+    style="top:30%;left:11%;transform:rotate(-7deg);max-width:170px"
+  >
     {s.notes[0].lead} <b>{s.notes[0].strong}</b>
   </div>
-  <div class="note yellow flt2" style="top:31%;right:10%;transform:rotate(6deg);max-width:170px">
+  <div
+    class="note yellow flt2"
+    style="top:31%;right:10%;transform:rotate(6deg);max-width:170px"
+  >
     {s.notes[1].lead} <b>{s.notes[1].strong}</b>
   </div>
-  <img class="avatar flt3" src={hero.avatars[0]} alt="" style="top:45%;left:13%" />
-  <img class="avatar flt4" src={hero.avatars[1]} alt="" style="top:60%;right:14%" />
-  <div class="tag-sticker flt5" style="bottom:20%;left:13%;transform:rotate(-6deg)">{s.role}</div>
+  <img
+    class="avatar flt3 top-[21%] md:top-[55%] left-[13%]"
+    src={hero.avatars[0]}
+    alt=""
+  />
+  <img
+    class="avatar flt4 hidden sm:block"
+    src={hero.avatars[1]}
+    alt=""
+    style="top:60%;right:14%"
+  />
+  <div
+    class="tag-sticker flt5"
+    style="bottom:20%;left:13%;transform:rotate(-6deg)"
+  >
+    {s.role}
+  </div>
   <span class="cursor flt6" style="bottom:24%;left:22%;transform:rotate(8deg)">
-    <svg viewBox="0 0 24 24" fill="var(--amber)"
-      ><path d="M4 2l16 7-7 2-2 7z" stroke="#111" stroke-width="1.4" stroke-linejoin="round"></path></svg
-    >
+    <svg viewBox="0 0 24 24" fill="var(--amber)">
+      <path
+        d="M4 2l16 7-7 2-2 7z"
+        stroke="#111"
+        stroke-width="1.4"
+        stroke-linejoin="round"
+      ></path>
+    </svg>
   </span>
-  <div class="pin flt7" style="bottom:21%;right:14%;transform:rotate(4deg)">{s.location}</div>
+  <div class="pin flt7" style="bottom:21%;right:14%;transform:rotate(4deg)">
+    {s.location}
+  </div>
 
-  <p class="hand myname">{labelRest} <u>{labelLast}</u></p>
-  <h1 class="display-name selected">{hero.name}
-    <span class="h tl"></span><span class="h tr"></span><span class="h bl"></span><span class="h br"></span>
+  <p class="hand myname">
+    {labelRest} <u>{labelLast}</u>
+  </p>
+  <h1 class="display-name selected resizable-heading" data-resizable-heading>
+    <span class="display-name-content">{hero.name}</span>
+    <span class="h tl" aria-hidden="true"></span>
+    <span class="h tr" aria-hidden="true"></span>
+    <span class="h bl" aria-hidden="true"></span>
+    <span class="h br" aria-hidden="true"></span>
   </h1>
-  <p class="mono-label avail"><span class="dot"></span> {hero.availability}</p>
+  <p class="mono-label avail text-xs md:text-sm">
+    <span class="dot"></span> {hero.availability}
+  </p>
   <a href={hero.ctaUrl} class="cta btn-pill">
-    <span class="ico"
-      ><svg viewBox="0 0 24 24" fill="none"
-        ><path d="M5 12h13M12 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg
-      ></span
-    ><span>{hero.ctaLabel}</span>
+    <span class="ico">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path
+          d="M5 12h13M12 6l6 6-6 6"
+          stroke="currentColor"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></path>
+      </svg>
+    </span>
+    <span>{hero.ctaLabel}</span>
   </a>
 </section>
+
+<script>
+  import { setupResizableSelections } from "~/scripts/resizable-selection";
+
+  setupResizableSelections();
+</script>

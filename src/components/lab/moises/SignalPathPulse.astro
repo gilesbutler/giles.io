@@ -1,0 +1,370 @@
+---
+---
+
+<section class="signal-prototype signal-pulse" aria-labelledby="pulse-title">
+  <div class="pulse-orbit pulse-orbit-one" aria-hidden="true"></div>
+  <div class="pulse-orbit pulse-orbit-two" aria-hidden="true"></div>
+  <div class="pulse-header">
+    <span>MOISES / 2026</span>
+    <span>FIELD NOTE 04</span>
+  </div>
+  <div class="pulse-hero">
+    <p class="pulse-kicker">The signal is the system</p>
+    <h2 id="pulse-title">
+      Make work
+      <br />
+      <i>move.</i>
+    </h2>
+    <p class="pulse-intro">
+      A four-part practice for turning taste, constraints and momentum into
+      products with a pulse.
+    </p>
+    <div class="pulse-scroll-cue">
+      <span></span> trace the path
+    </div>
+  </div>
+  <div class="pulse-path" aria-hidden="true">
+    <svg viewBox="0 0 1000 1600" preserveAspectRatio="none">
+      <path
+        class="pulse-thread thread-music"
+        d="M245 0 C350 160 135 260 275 395 C390 505 145 580 300 730 C390 820 225 900 360 1020 C440 1090 445 1270 500 1600"
+      />
+      <path
+        class="pulse-thread thread-design"
+        d="M405 0 C330 170 510 260 400 420 C320 540 545 610 430 760 C350 865 540 950 455 1100 C405 1190 510 1290 500 1600"
+      />
+      <path
+        class="pulse-thread thread-engineering"
+        d="M595 0 C520 180 690 260 590 420 C520 530 730 625 620 760 C540 865 690 950 575 1090 C505 1180 520 1350 500 1600"
+      />
+      <path
+        class="pulse-thread thread-product"
+        d="M755 0 C660 150 855 270 720 410 C625 510 860 625 700 755 C620 820 810 945 645 1080 C570 1145 570 1320 500 1600"
+      />
+      <path class="pulse-core" d="M500 1120 L500 1600" />
+    </svg>
+    <div class="pulse-node node-a"></div>
+    <div class="pulse-node node-b"></div>
+    <div class="pulse-node node-c"></div>
+    <div class="pulse-node node-d"></div>
+    <div class="pulse-end">
+      <span>ONE PRACTICE</span>
+    </div>
+  </div>
+  <div class="pulse-cards">
+    <article>
+      <span class="pulse-number">01</span>
+      <h3>Feel the edge.</h3>
+      <p>
+        Music teaches timing. Design teaches attention. Engineering teaches
+        respect for the constraint.
+      </p>
+    </article>
+    <article>
+      <span class="pulse-number">02</span>
+      <h3>Find the handoff.</h3>
+      <p>Product is where the signals meet someone else's actual day.</p>
+    </article>
+    <article>
+      <span class="pulse-number">03</span>
+      <h3>Keep the pulse.</h3>
+      <p>
+        Build systems that leave room for instinct, iteration and a little
+        surprise.
+      </p>
+    </article>
+  </div>
+  <div class="pulse-bottom">
+    <span>
+      SCROLL POSITION <b>04—16</b>
+    </span>
+    <span>↑ ↓</span>
+  </div>
+</section>
+<style>
+  .signal-prototype {
+    --pulse-bg: #e8e4db;
+    --pulse-ink: #171918;
+    --pulse-muted: #686d67;
+    --pulse-cyan: #1685a9;
+    --pulse-pink: #ba174d;
+    --pulse-amber: #b57b00;
+    --pulse-green: #198254;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: 1900px;
+    background: var(--pulse-bg);
+    color: var(--pulse-ink);
+    font-family: var(--font-body);
+  }
+  .signal-pulse:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        circle at 50% 31%,
+        rgba(255, 255, 255, 0.6),
+        transparent 38%
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0 95px,
+        rgba(23, 25, 24, 0.07) 96px
+      );
+  }
+  .pulse-header,
+  .pulse-bottom {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    justify-content: space-between;
+    padding: 28px clamp(24px, 7vw, 110px);
+    font: 500 11px/1 var(--font-mono);
+    letter-spacing: 0.12em;
+  }
+  .pulse-header {
+    border-bottom: 1px solid rgba(23, 25, 24, 0.17);
+  }
+  .pulse-hero {
+    position: relative;
+    z-index: 3;
+    width: min(760px, calc(100% - 48px));
+    min-height: 610px;
+    margin: 0 auto;
+    padding-top: 105px;
+  }
+  .pulse-kicker {
+    margin: 0 0 28px;
+    color: var(--pulse-pink);
+    font: 500 12px/1 var(--font-mono);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .pulse-hero h2 {
+    margin: 0;
+    font: 900 clamp(82px, 15vw, 190px)/0.77 var(--font-display);
+    letter-spacing: -0.09em;
+    text-transform: uppercase;
+  }
+  .pulse-hero h2 i {
+    color: var(--pulse-cyan);
+    font-style: normal;
+  }
+  .pulse-intro {
+    max-width: 31ch;
+    margin: 42px 0 0 8px;
+    color: var(--pulse-muted);
+    font-size: 17px;
+    line-height: 1.45;
+  }
+  .pulse-scroll-cue {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 44px 0 0 8px;
+    font: 500 11px/1 var(--font-mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .pulse-scroll-cue span {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--pulse-ink);
+  }
+  .pulse-path {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1600px;
+    pointer-events: none;
+  }
+  .pulse-path svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .pulse-thread,
+  .pulse-core {
+    fill: none;
+    stroke-width: 2.2;
+    vector-effect: non-scaling-stroke;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: pulse-draw 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  }
+  .thread-music {
+    stroke: var(--pulse-cyan);
+    animation-delay: 0.05s;
+  }
+  .thread-design {
+    stroke: var(--pulse-pink);
+    animation-delay: 0.15s;
+  }
+  .thread-engineering {
+    stroke: var(--pulse-amber);
+    animation-delay: 0.25s;
+  }
+  .thread-product {
+    stroke: var(--pulse-green);
+    animation-delay: 0.35s;
+  }
+  .pulse-core {
+    stroke: var(--pulse-ink);
+    stroke-width: 3;
+    animation-delay: 1.4s;
+  }
+  .pulse-node {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--pulse-bg);
+    border: 2px solid var(--pulse-ink);
+    transform: translate(-50%, -50%);
+    animation: pulse-node 0.4s cubic-bezier(0.19, 1, 0.22, 1) both;
+  }
+  .node-a {
+    top: 395px;
+    left: 27.5%;
+    animation-delay: 0.65s;
+  }
+  .node-b {
+    top: 730px;
+    left: 30%;
+    animation-delay: 0.82s;
+  }
+  .node-c {
+    top: 1020px;
+    left: 36%;
+    animation-delay: 0.99s;
+  }
+  .node-d {
+    top: 1080px;
+    left: 64.5%;
+    animation-delay: 1.15s;
+  }
+  .pulse-end {
+    position: absolute;
+    top: 1135px;
+    left: 50%;
+    transform: translateX(18px);
+    display: grid;
+    gap: 8px;
+    padding-left: 14px;
+    border-left: 1px solid var(--pulse-ink);
+    font: 500 11px/1 var(--font-mono);
+    letter-spacing: 0.12em;
+  }
+  .pulse-end:before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--pulse-ink);
+  }
+  .pulse-cards {
+    position: relative;
+    z-index: 3;
+    width: min(900px, calc(100% - 48px));
+    margin: 100px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .pulse-cards article {
+    min-height: 260px;
+    padding: 22px;
+    background: rgba(255, 255, 255, 0.38);
+    border: 1px solid rgba(23, 25, 24, 0.2);
+    transition:
+      transform 0.25s cubic-bezier(0.23, 1, 0.32, 1),
+      background-color 0.2s ease;
+  }
+  .pulse-cards article:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.72);
+  }
+  .pulse-number {
+    color: var(--pulse-pink);
+    font: 500 11px/1 var(--font-mono);
+  }
+  .pulse-cards h3 {
+    margin: 48px 0 12px;
+    font: 700 27px/1 var(--font-body);
+    letter-spacing: -0.04em;
+  }
+  .pulse-cards p {
+    margin: 0;
+    color: var(--pulse-muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .pulse-bottom {
+    position: absolute;
+    bottom: 28px;
+    left: 0;
+    right: 0;
+    border-top: 1px solid rgba(23, 25, 24, 0.17);
+    padding-top: 22px;
+  }
+  .pulse-bottom b {
+    color: var(--pulse-pink);
+    font-weight: 500;
+  }
+  @keyframes pulse-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes pulse-node {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.7);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  @media (max-width: 700px) {
+    .pulse-hero {
+      min-height: 630px;
+      padding-top: 90px;
+    }
+    .pulse-hero h2 {
+      font-size: clamp(78px, 23vw, 140px);
+    }
+    .pulse-cards {
+      grid-template-columns: 1fr;
+      margin-top: 160px;
+    }
+    .pulse-end {
+      font-size: 9px;
+    }
+    .pulse-bottom {
+      font-size: 9px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pulse-thread,
+    .pulse-core {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+    .pulse-node {
+      animation: none;
+    }
+    .pulse-cards article:hover {
+      transform: none;
+    }
+  }
+</style>

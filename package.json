@@ -22,7 +22,10 @@
     "@fontsource/dm-mono": "^5.2.5",
     "@fontsource/just-me-again-down-here": "^5.2.5",
     "astro": "^7.3.2",
-    "astro-icon": "^1.2.0"
+    "astro-icon": "^1.2.0",
+    "locomotive-scroll": "^5.0.1",
+    "tone": "^15.1.22",
+    "umbrellajs": "^3.3.3"
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.133",
@@ -30,10 +33,10 @@
     "@storybook/addon-mcp": "^10.6.0",
     "@storybook/builder-vite": "^10.6.0",
     "@tailwindcss/typography": "^0.5.20",
-    "@tailwindcss/vite": "^4.3.0",
+    "@tailwindcss/vite": "^4.3.3",
     "patch-package": "^8.0.1",
     "storybook": "^10.6.0",
-    "tailwindcss": "^4.3.0",
+    "tailwindcss": "^4.3.3",
     "typescript": "^5.7.0"
   },
   "overrides": {

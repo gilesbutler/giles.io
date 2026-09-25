@@ -1,0 +1,1653 @@
+---
+---
+
+<section
+  class="moises-comparison !mt-8"
+  data-comparison
+  data-mode="less"
+  aria-labelledby="comparison-title"
+>
+  <div class="comparison-topline">
+    <div class="play-cue" aria-hidden="true">
+      <span class="hand">Play with it</span>
+      <svg viewBox="0 0 90 56" role="presentation">
+        <path d="M4 7c27 3 48 16 61 38" />
+        <path d="m54 42 12 4 1-12" />
+      </svg>
+    </div>
+
+    <div
+      class="mode-switch"
+      role="group"
+      aria-label="Choose the interface detail level"
+    >
+      <button type="button" data-mode-button="more" aria-pressed="false">
+        More
+      </button>
+      <button type="button" data-mode-button="less" aria-pressed="true">
+        Less
+      </button>
+    </div>
+  </div>
+
+  <div class="comparison-stage">
+    <article
+      class="comparison-card interface-frame"
+      aria-labelledby="comparison-title"
+    >
+      <div class="card-header">
+        <div class="product-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48">
+            <path d="M4 25h4m4-8v16m5-22v28m6-34v40m6-32v24m6-17v10m6-4v0" />
+          </svg>
+        </div>
+        <div class="card-heading">
+          <h3 id="comparison-title">Vocal Separation</h3>
+          <p data-mode-copy="more" hidden>
+            Separate vocals, drums, bass and other instruments
+          </p>
+          <p data-mode-copy="less">Extract vocals, drums, bass and more.</p>
+        </div>
+        <div class="mode-actions" data-more-only hidden>
+          <div class="card-actions">
+            <button
+              type="button"
+              class="version-button"
+              aria-label="Change version"
+            >
+              v2 <span aria-hidden="true">⌄</span>
+            </button>
+            <button type="button" class="more-button" aria-label="More options">
+              <i></i>
+              <i></i>
+              <i></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="interface-view more-view" data-panel="more" hidden>
+        <div class="more-interface">
+          <div class="category-tabs" role="tablist" aria-label="Audio type">
+            <button
+              type="button"
+              class="is-active"
+              data-tab="Music"
+              role="tab"
+              aria-selected="true"
+            >
+              Music
+            </button>
+            <button
+              type="button"
+              data-tab="Podcast"
+              role="tab"
+              aria-selected="false"
+            >
+              Podcast
+            </button>
+            <button
+              type="button"
+              data-tab="Interview"
+              role="tab"
+              aria-selected="false"
+            >
+              Interview
+            </button>
+            <button
+              type="button"
+              data-tab="Other"
+              role="tab"
+              aria-selected="false"
+            >
+              Other
+            </button>
+          </div>
+
+          <div class="controls-grid">
+            <div class="stem-controls">
+              <div class="stem-grid" aria-label="Choose stems">
+                <button
+                  type="button"
+                  class="stem is-selected"
+                  data-stem
+                  aria-pressed="true"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 18.5a3 3 0 1 1-2-2.83V5l10-2v10.5a3 3 0 1 1-2-2.83V6.8L9 8.1v10.4Z" />
+                  </svg>
+                  <span>Vocals</span>
+                  <i class="stem-check" aria-hidden="true"></i>
+                </button>
+                <button
+                  type="button"
+                  class="stem is-selected"
+                  data-stem
+                  aria-pressed="true"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 10h2v5H4zm3-3h2v11H7zm3 2h4v6h-4zm5-4h2v14h-2zm3 3h2v8h-2zM3 18h18" />
+                  </svg>
+                  <span>Drums</span>
+                  <i class="stem-check" aria-hidden="true"></i>
+                </button>
+                <button
+                  type="button"
+                  class="stem is-selected"
+                  data-stem
+                  aria-pressed="true"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m14 4-2 4 3 2-4 7.5a3.25 3.25 0 1 1-1.35-1.25L13 10l-3-2 4-4Zm-7.4 14.5a1.2 1.2 0 1 0 1.2 1.2 1.2 1.2 0 0 0-1.2-1.2Z" />
+                  </svg>
+                  <span>Bass</span>
+                  <i class="stem-check" aria-hidden="true"></i>
+                </button>
+                <button
+                  type="button"
+                  class="stem"
+                  data-stem
+                  aria-pressed="false"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M3 12h3m3-4v8m3-11v14m3-10v4m3-7v10m3-5h2" />
+                  </svg>
+                  <span>Other</span>
+                  <i class="stem-check" aria-hidden="true"></i>
+                </button>
+              </div>
+
+              <div class="field-group file-field">
+                <span class="field-label">File format</span>
+                <button type="button" class="select-button">
+                  WAV (High quality)<span aria-hidden="true">⌄</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="advanced-settings">
+              <button
+                type="button"
+                class="settings-heading"
+                data-settings-toggle
+                aria-expanded="true"
+              >
+                Advanced settings <span aria-hidden="true">⌄</span>
+              </button>
+              <div class="settings-fields" data-settings-fields>
+                <label class="field-group">
+                  <span class="field-label">Model</span>
+                  <span class="select-button">
+                    Balanced<span aria-hidden="true">⌄</span>
+                  </span>
+                </label>
+                <label class="field-group">
+                  <span class="field-label">Quality</span>
+                  <span class="select-button">
+                    High (Slower)<span aria-hidden="true">⌄</span>
+                  </span>
+                </label>
+                <span class="switch-row">
+                  <span>Noise reduction</span>
+                  <i class="switch is-on" aria-hidden="true"></i>
+                </span>
+                <span class="switch-row">
+                  <span>Keep reverb</span>
+                  <i class="switch" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="upload-row">
+            <div class="upload-zone">
+              <span class="plus" aria-hidden="true">
+                +
+              </span>
+              <span>
+                <strong>Drag and drop an audio file</strong>
+                <small>MP3, WAV, M4A, FLAC up to 500MB</small>
+              </span>
+            </div>
+            <button type="button" class="primary-action" data-separate>
+              Separate Audio
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="interface-view less-view" data-panel="less">
+        <div class="simple-interface">
+          <button type="button" class="drop-zone">
+            <span class="drop-plus" aria-hidden="true">
+              +
+            </span>
+            <strong>Drop your audio file</strong>
+            <small>MP3, WAV, M4A, FLAC</small>
+          </button>
+          <div class="simple-controls">
+            <button
+              type="button"
+              class="advanced-toggle"
+              data-simple-settings
+              aria-expanded="false"
+            >
+              Advanced options <span aria-hidden="true">⌄</span>
+            </button>
+            <button type="button" class="primary-action" data-separate>
+              Separate
+            </button>
+          </div>
+          <div class="simple-settings" data-simple-settings-panel hidden>
+            <div class="simple-settings-heading">
+              <span class="field-label">Customize separation</span>
+            </div>
+
+            <div class="simple-option-block">
+              <span class="field-label">Audio type</span>
+              <div
+                class="simple-mode-tabs"
+                role="tablist"
+                aria-label="Audio type"
+              >
+                <button
+                  type="button"
+                  class="is-active"
+                  data-simple-tab
+                  role="tab"
+                  aria-selected="true"
+                >
+                  Music
+                </button>
+                <button
+                  type="button"
+                  data-simple-tab
+                  role="tab"
+                  aria-selected="false"
+                >
+                  Podcast
+                </button>
+                <button
+                  type="button"
+                  data-simple-tab
+                  role="tab"
+                  aria-selected="false"
+                >
+                  Interview
+                </button>
+                <button
+                  type="button"
+                  data-simple-tab
+                  role="tab"
+                  aria-selected="false"
+                >
+                  Other
+                </button>
+              </div>
+            </div>
+
+            <div class="simple-option-block">
+              <span class="field-label">Stems</span>
+              <div class="simple-stem-list" aria-label="Choose stems">
+                <button
+                  type="button"
+                  class="simple-chip is-selected"
+                  data-simple-stem
+                  aria-pressed="true"
+                >
+                  Vocals
+                </button>
+                <button
+                  type="button"
+                  class="simple-chip is-selected"
+                  data-simple-stem
+                  aria-pressed="true"
+                >
+                  Drums
+                </button>
+                <button
+                  type="button"
+                  class="simple-chip is-selected"
+                  data-simple-stem
+                  aria-pressed="true"
+                >
+                  Bass
+                </button>
+                <button
+                  type="button"
+                  class="simple-chip"
+                  data-simple-stem
+                  aria-pressed="false"
+                >
+                  Other
+                </button>
+              </div>
+            </div>
+
+            <div class="simple-option-grid">
+              <div class="simple-option">
+                <span class="field-label">File format</span>
+                <button type="button" class="compact-select">
+                  WAV <span>High quality</span>
+                  <b aria-hidden="true">⌄</b>
+                </button>
+              </div>
+              <div class="simple-option">
+                <span class="field-label">Model</span>
+                <button type="button" class="compact-select">
+                  Balanced<b aria-hidden="true">⌄</b>
+                </button>
+              </div>
+              <div class="simple-option">
+                <span class="field-label">Quality</span>
+                <button type="button" class="compact-select">
+                  High <span>Slower</span>
+                  <b aria-hidden="true">⌄</b>
+                </button>
+              </div>
+            </div>
+
+            <div class="simple-toggle-grid">
+              <button
+                type="button"
+                class="simple-toggle is-on"
+                data-simple-toggle
+                aria-pressed="true"
+              >
+                <span>Noise reduction</span>
+                <i class="mini-switch" aria-hidden="true"></i>
+              </button>
+              <button
+                type="button"
+                class="simple-toggle"
+                data-simple-toggle
+                aria-pressed="false"
+              >
+                <span>Keep reverb</span>
+                <i class="mini-switch" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <p class="comparison-status" data-status aria-live="polite"></p>
+
+  <div class="comparison-foot !mt-4 md:!mt-12">
+    <article>
+      <span class="foot-label">More options</span>
+      <ul>
+        <li>Multiple modes</li>
+        <li>Individual stem selection</li>
+        <li>Advanced settings</li>
+        <li>File format, noise reduction</li>
+        <li>
+          <em>More decisions, more complexity</em>
+        </li>
+      </ul>
+    </article>
+    <span class="foot-divider" aria-hidden="true"></span>
+    <article>
+      <span class="foot-label">Less, but better</span>
+      <ul>
+        <li>Same powerful technology</li>
+        <li>Fewer decisions</li>
+        <li>A clearer path to the result</li>
+        <li>Designed for focus</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<script>
+  const comparison = document.querySelector("[data-comparison]");
+
+  if (comparison instanceof HTMLElement) {
+    const modeButtons =
+      comparison.querySelectorAll<HTMLButtonElement>("[data-mode-button]");
+    const tabs = comparison.querySelectorAll<HTMLButtonElement>("[data-tab]");
+    const stems = comparison.querySelectorAll<HTMLButtonElement>("[data-stem]");
+    const panels = comparison.querySelectorAll<HTMLElement>("[data-panel]");
+    const modeCopies =
+      comparison.querySelectorAll<HTMLElement>("[data-mode-copy]");
+    const moreOnly =
+      comparison.querySelectorAll<HTMLElement>("[data-more-only]");
+    const status = comparison.querySelector("[data-status]");
+
+    const setMode = (mode: string) => {
+      comparison.dataset.mode = mode;
+      modeButtons.forEach((button) => {
+        const isActive = button.dataset.modeButton === mode;
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+      panels.forEach((panel) => {
+        const isActive = panel.dataset.panel === mode;
+        panel.toggleAttribute("hidden", !isActive);
+        panel.setAttribute("aria-hidden", String(!isActive));
+      });
+      modeCopies.forEach((copy) => {
+        copy.toggleAttribute("hidden", copy.dataset.modeCopy !== mode);
+      });
+      moreOnly.forEach((element) =>
+        element.toggleAttribute("hidden", mode !== "more"),
+      );
+    };
+
+    setMode(comparison.dataset.mode || "less");
+
+    modeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const mode = button.dataset.modeButton;
+        if (mode) setMode(mode);
+      });
+    });
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((item) => {
+          const isActive = item === tab;
+          item.classList.toggle("is-active", isActive);
+          item.setAttribute("aria-selected", String(isActive));
+        });
+      });
+    });
+
+    stems.forEach((stem) => {
+      stem.addEventListener("click", () => {
+        const isSelected = stem.classList.toggle("is-selected");
+        stem.setAttribute("aria-pressed", String(isSelected));
+      });
+    });
+
+    const settingsToggle = comparison.querySelector<HTMLButtonElement>(
+      "[data-settings-toggle]",
+    );
+    const settingsFields = comparison.querySelector<HTMLElement>(
+      "[data-settings-fields]",
+    );
+    settingsToggle?.addEventListener("click", () => {
+      const isExpanded =
+        settingsToggle.getAttribute("aria-expanded") === "true";
+      settingsToggle.setAttribute("aria-expanded", String(!isExpanded));
+      settingsFields?.toggleAttribute("hidden", isExpanded);
+    });
+
+    const simpleSettingsToggle = comparison.querySelector<HTMLButtonElement>(
+      "[data-simple-settings]",
+    );
+    const simpleSettingsPanel = comparison.querySelector<HTMLElement>(
+      "[data-simple-settings-panel]",
+    );
+    simpleSettingsToggle?.addEventListener("click", () => {
+      const isExpanded =
+        simpleSettingsToggle.getAttribute("aria-expanded") === "true";
+      simpleSettingsToggle.setAttribute("aria-expanded", String(!isExpanded));
+      simpleSettingsPanel?.toggleAttribute("hidden", isExpanded);
+    });
+
+    const simpleTabs =
+      comparison.querySelectorAll<HTMLButtonElement>("[data-simple-tab]");
+    simpleTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        simpleTabs.forEach((item) => {
+          const isActive = item === tab;
+          item.classList.toggle("is-active", isActive);
+          item.setAttribute("aria-selected", String(isActive));
+        });
+      });
+    });
+
+    const simpleStems =
+      comparison.querySelectorAll<HTMLButtonElement>("[data-simple-stem]");
+    simpleStems.forEach((stem) => {
+      stem.addEventListener("click", () => {
+        const isSelected = stem.classList.toggle("is-selected");
+        stem.setAttribute("aria-pressed", String(isSelected));
+      });
+    });
+
+    const simpleToggles = comparison.querySelectorAll<HTMLButtonElement>(
+      "[data-simple-toggle]",
+    );
+    simpleToggles.forEach((toggle) => {
+      toggle.addEventListener("click", () => {
+        const isOn = toggle.classList.toggle("is-on");
+        toggle.setAttribute("aria-pressed", String(isOn));
+      });
+    });
+
+    comparison
+      .querySelectorAll<HTMLButtonElement>("[data-separate]")
+      .forEach((button) => {
+        button.addEventListener("click", () => {
+          if (status) status.textContent = "Ready for your audio file.";
+          window.setTimeout(() => {
+            if (status) status.textContent = "";
+          }, 2600);
+        });
+      });
+  }
+</script>
+
+<style>
+  @reference "tailwindcss";
+  :root {
+    --shadow-custom:
+      0px 0px 0px 1px #0000000f, 0px 1px 2px -1px #0000000f,
+      0px 2px 4px 0px #0000000a;
+    --tw-inset-ring-shadow {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0 0 #0000;
+    }
+    --tw-inset-shadow {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0 0 #0000;
+    }
+    --tw-ring-offset-shadow {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0 0 #0000;
+    }
+    --tw-ring-shadow {
+      syntax: "*";
+      inherits: false;
+      initial-value: 0 0 #0000;
+    }
+    --tw-shadow: var(--shadow-custom);
+  }
+
+  .moises-comparison {
+    --pure-black: #000000;
+    --aqua: #00dae8;
+    --slate: #3f4c59;
+    --turquoise: #3ddbb5;
+    --pure-white: #ffffff;
+    --cream: #e7e4d6;
+    --muted: #aeb2b2;
+    --line: rgb(255 255 255 / 0.13);
+    position: relative;
+    isolation: isolate;
+    width: min(1320px, calc(100vw - 2rem), 100%);
+    max-width: 100%;
+    min-width: 0;
+    margin: clamp(5rem, 10vw, 9rem) auto 2rem;
+    color: var(--pure-white);
+    font-family: var(--font-body);
+  }
+
+  .moises-comparison,
+  .moises-comparison *,
+  .moises-comparison *::before,
+  .moises-comparison *::after {
+    box-sizing: border-box;
+  }
+
+  .moises-comparison::before {
+    position: absolute;
+    z-index: -1;
+    top: 17%;
+    left: 50%;
+    width: min(80vw, 860px);
+    height: min(45vw, 480px);
+    border-radius: 50%;
+    background: rgb(0 0 0 / 0.12);
+    content: "";
+    filter: blur(50px);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .comparison-topline {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    width: min(100%, 1160px);
+    margin: 0 auto clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .play-cue {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    gap: 0.45rem;
+    color: var(--cream);
+    transform: translateX(-2rem) rotate(-4deg);
+    position: relative;
+  }
+
+  .play-cue .hand {
+    font-size: clamp(1.45rem, 2.3vw, 2rem);
+    white-space: nowrap;
+  }
+
+  .play-cue svg {
+    width: 5.2rem;
+    height: 3rem;
+    overflow: visible;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    position: relative;
+    top: -15px;
+    transform: scaleY(-1);
+
+    @media (width >= 42rem) {
+      top: 21px;
+      transform: scaleY(1);
+    }
+  }
+
+  .mode-switch {
+    box-shadow:
+      var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: clamp(11rem, 17vw, 20rem);
+    padding: 8px;
+    border-radius: 20px;
+    background: var(--cream);
+  }
+
+  .mode-switch button {
+    min-height: 1.65rem;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: hsl(240, 857.6%, 62.5%);
+    cursor: pointer;
+    font: 500 1rem var(--font-body);
+    transition:
+      background 220ms ease,
+      color 220ms ease,
+      transform 220ms ease;
+  }
+
+  .mode-switch button:hover {
+    color: var(--pure-black);
+  }
+
+  .mode-switch button[aria-pressed="true"] {
+    background: hsl(240, 857.6%, 62.5%);
+    color: var(--cream);
+    box-shadow:
+      var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
+      var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+
+  .mode-switch button:focus-visible,
+  .comparison-card button:focus-visible {
+    outline: 2px solid var(--aqua);
+    outline-offset: 3px;
+  }
+
+  .comparison-tag {
+    justify-self: end;
+    margin: 0;
+    color: rgb(255 255 255 / 0.7);
+    font: 500 0.66rem/1.7 var(--font-mono);
+    letter-spacing: 0.22em;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  .comparison-stage {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .comparison-card {
+    border: 1px solid hsl(240, 81.3%, 56.9%);
+    background: linear-gradient(
+      145deg,
+      rgb(20 23 23 / 0.98),
+      rgb(0 0 0 / 0.92)
+    );
+    box-shadow:
+      0 1.3rem 3rem rgb(0 0 0 / 0.2),
+      0 0 0 1px rgb(0 218 232 / 0.08),
+      inset 0 1px 0 rgb(255 255 255 / 0.08);
+    transition:
+      max-width 420ms cubic-bezier(0.19, 1, 0.22, 1),
+      border-color 260ms ease,
+      box-shadow 260ms ease,
+      transform 260ms ease;
+  }
+
+  .interface-frame {
+    width: 100%;
+    max-width: 39rem;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 1.3rem;
+    padding: clamp(1.35rem, 2.5vw, 2rem);
+    transform: translateY(-0.35rem);
+  }
+
+  .moises-comparison[data-mode="more"] .interface-frame {
+    max-width: 50rem;
+  }
+
+  .moises-comparison[data-mode="less"] .interface-frame {
+    max-width: 39rem;
+  }
+
+  .interface-view[hidden],
+  [data-mode-copy][hidden],
+  [data-more-only][hidden] {
+    display: none;
+  }
+
+  .interface-view {
+    animation: interface-in 320ms cubic-bezier(0.19, 1, 0.22, 1) both;
+  }
+
+  @keyframes interface-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.45rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .card-header {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .card-less .card-header {
+    gap: 1.1rem;
+  }
+
+  .product-mark {
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: clamp(3.1rem, 5vw, 4.15rem);
+    aspect-ratio: 1;
+    border-radius: 0.9rem;
+    background: var(--slate);
+    color: var(--aqua);
+  }
+
+  .product-mark svg {
+    width: 67%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.3;
+    stroke-linecap: round;
+  }
+
+  .card-heading {
+    min-width: 0;
+  }
+
+  .card-heading h3 {
+    overflow: hidden;
+    margin: 0;
+    color: var(--pure-white);
+    font-size: clamp(1rem, 1.55vw, 1.35rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .card-heading p {
+    overflow: hidden;
+    margin: 0.25rem 0 0;
+    color: var(--muted);
+    font-size: clamp(0.74rem, 1vw, 0.88rem);
+    line-height: 1.35;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .card-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .version-button,
+  .more-button,
+  .select-button,
+  .settings-heading,
+  .advanced-toggle {
+    border: 0;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .version-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.06);
+    font-size: 0.75rem;
+  }
+
+  .version-button span,
+  .select-button span,
+  .settings-heading span,
+  .advanced-toggle span {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .more-button {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.35rem;
+    background: transparent;
+  }
+
+  .more-button i {
+    display: block;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 50%;
+    background: var(--muted);
+  }
+
+  .more-interface {
+    margin-top: 1.65rem;
+  }
+
+  .category-tabs {
+    display: flex;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.07);
+    scrollbar-width: none;
+  }
+
+  .category-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .category-tabs button {
+    flex: 0 0 auto;
+    padding: 0.65rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    background: transparent;
+    color: rgb(255 255 255 / 0.76);
+    cursor: pointer;
+    font: 500 0.78rem var(--font-body);
+  }
+
+  .category-tabs button.is-active {
+    border-color: rgb(255 255 255 / 0.38);
+    background: rgb(255 255 255 / 0.05);
+    color: var(--pure-white);
+  }
+
+  .controls-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(13rem, 1fr);
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .stem-controls,
+  .advanced-settings {
+    min-width: 0;
+  }
+
+  .stem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .stem {
+    display: grid;
+    grid-template-columns: 1.35rem minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+    min-height: 4.1rem;
+    padding: 0 0.9rem;
+    border: 1px solid transparent;
+    border-radius: 0.7rem;
+    background: rgb(255 255 255 / 0.07);
+    color: var(--pure-white);
+    cursor: pointer;
+    text-align: left;
+    transition:
+      border-color 180ms ease,
+      background 180ms ease;
+  }
+
+  .stem:hover,
+  .stem.is-selected {
+    border-color: rgb(255 255 255 / 0.1);
+    background: rgb(255 255 255 / 0.11);
+  }
+
+  .stem svg {
+    width: 1.35rem;
+    height: 1.35rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.45;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    color: var(--cream);
+  }
+
+  .stem span:not(.stem-check) {
+    overflow: hidden;
+    font-size: 0.82rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .stem-check {
+    display: grid;
+    width: 1.05rem;
+    height: 1.05rem;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 0.5);
+    border-radius: 0.22rem;
+  }
+
+  .stem-check::after {
+    color: var(--pure-black);
+    content: "✓";
+    font-size: 0.8rem;
+    font-weight: 800;
+    opacity: 0;
+  }
+
+  .stem.is-selected .stem-check {
+    border-color: var(--aqua);
+    background: var(--aqua);
+  }
+
+  .stem.is-selected .stem-check::after {
+    opacity: 1;
+  }
+
+  .field-group {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .file-field {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+  }
+
+  .field-label {
+    color: var(--muted);
+    font-size: 0.72rem;
+  }
+
+  .select-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    min-height: 2.5rem;
+    padding: 0 0.8rem;
+    border: 1px solid rgb(255 255 255 / 0.09);
+    border-radius: 0.65rem;
+    background: rgb(255 255 255 / 0.08);
+    color: var(--cream);
+    font-size: 0.77rem;
+    text-align: left;
+  }
+
+  .advanced-settings {
+    padding-left: 1.1rem;
+    border-left: 1px solid rgb(255 255 255 / 0.1);
+  }
+
+  .settings-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.1rem 0 0.8rem;
+    background: transparent;
+    color: var(--cream);
+    font-size: 0.78rem;
+    text-align: left;
+  }
+
+  .settings-fields {
+    display: grid;
+    gap: 0.8rem;
+  }
+
+  .settings-fields[hidden],
+  .simple-settings[hidden] {
+    display: none;
+  }
+
+  .switch-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--cream);
+    font-size: 0.73rem;
+  }
+
+  .switch {
+    position: relative;
+    display: block;
+    width: 2.2rem;
+    height: 1.2rem;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.35);
+  }
+
+  .switch::after {
+    position: absolute;
+    top: 0.17rem;
+    left: 0.18rem;
+    width: 0.86rem;
+    height: 0.86rem;
+    border-radius: 50%;
+    background: var(--cream);
+    content: "";
+    transition: transform 180ms ease;
+  }
+
+  .switch.is-on {
+    background: var(--aqua);
+  }
+
+  .switch.is-on::after {
+    transform: translateX(0.98rem);
+  }
+
+  .upload-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.8rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+  }
+
+  .upload-zone {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 0;
+    padding: 0.75rem 0.9rem;
+    border: 1px dashed rgb(255 255 255 / 0.3);
+    border-radius: 0.75rem;
+    color: var(--cream);
+  }
+
+  .plus,
+  .drop-plus {
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid rgb(255 255 255 / 0.38);
+    border-radius: 50%;
+    color: var(--cream);
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .upload-zone strong,
+  .upload-zone small {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .upload-zone strong {
+    font-size: 0.76rem;
+    font-weight: 500;
+  }
+
+  .upload-zone small {
+    margin-top: 0.15rem;
+    color: var(--muted);
+    font-size: 0.69rem;
+  }
+
+  .primary-action {
+    min-height: 3.3rem;
+    padding: 0 1.5rem;
+    border: 0;
+    border-radius: 0.75rem;
+    background: var(--aqua);
+    color: var(--pure-black);
+    cursor: pointer;
+    font: 600 0.87rem var(--font-body);
+    white-space: nowrap;
+    transition:
+      background 180ms ease,
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  .primary-action:hover {
+    background: var(--turquoise);
+    box-shadow: 0 0.5rem 1.2rem rgb(0 218 232 / 0.16);
+    transform: translateY(-2px);
+  }
+
+  .primary-action:active {
+    transform: translateY(0);
+  }
+
+  .stage-arrow {
+    display: grid;
+    place-items: center;
+    color: var(--cream);
+  }
+
+  .stage-arrow svg {
+    width: 100%;
+    max-width: 3rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.35;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .simple-interface {
+    margin-top: 1.55rem;
+  }
+
+  .drop-zone {
+    display: grid;
+    justify-items: center;
+    width: 100%;
+    min-height: 8.6rem;
+    padding: 1rem;
+    border: 1px dashed rgb(255 255 255 / 0.32);
+    border-radius: 0.85rem;
+    background: transparent;
+    color: var(--cream);
+    cursor: pointer;
+    font-family: inherit;
+    transition:
+      border-color 180ms ease,
+      background 180ms ease;
+  }
+
+  .drop-zone:hover {
+    border-color: var(--aqua);
+    background: rgb(0 218 232 / 0.04);
+  }
+
+  .drop-plus {
+    width: 2rem;
+    height: 2rem;
+    margin-bottom: 0.6rem;
+    color: var(--muted);
+    font-size: 1.5rem;
+  }
+
+  .drop-zone strong {
+    font-size: 0.83rem;
+    font-weight: 500;
+  }
+
+  .drop-zone small {
+    margin-top: 0.3rem;
+    color: var(--muted);
+    font-size: 0.68rem;
+  }
+
+  .simple-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem;
+    margin-top: 0.9rem;
+  }
+
+  .advanced-toggle {
+    padding: 0;
+    background: transparent;
+    font-size: 0.72rem;
+  }
+
+  .advanced-toggle span {
+    display: inline-block;
+    margin-left: 0.25rem;
+    transition: transform 180ms ease;
+  }
+
+  .advanced-toggle[aria-expanded="true"] span,
+  .settings-heading[aria-expanded="true"] span {
+    transform: rotate(180deg);
+  }
+
+  .simple-controls .primary-action {
+    min-height: 3.1rem;
+    min-width: 8.8rem;
+  }
+
+  .simple-settings {
+    display: grid;
+    gap: 1rem;
+    margin-top: 0.85rem;
+    padding: 1rem;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    border-radius: 0.85rem;
+    background: rgb(255 255 255 / 0.045);
+    color: var(--muted);
+    font-size: 0.7rem;
+  }
+
+  .simple-settings[hidden] {
+    display: none;
+  }
+
+  .simple-settings-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgb(255 255 255 / 0.1);
+  }
+
+  .simple-settings-heading > span:last-child {
+    color: rgb(255 255 255 / 0.42);
+    font: 0.62rem var(--font-mono);
+    text-align: right;
+  }
+
+  .simple-option-block,
+  .simple-option {
+    display: grid;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .simple-mode-tabs {
+    display: flex;
+    max-width: 100%;
+    overflow-x: auto;
+    border-radius: 0.55rem;
+    background: rgb(255 255 255 / 0.05);
+    scrollbar-width: none;
+  }
+
+  .simple-mode-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .simple-mode-tabs button {
+    flex: 0 0 auto;
+    padding: 0.52rem 0.72rem;
+    border: 1px solid transparent;
+    border-radius: 0.48rem;
+    background: transparent;
+    color: rgb(255 255 255 / 0.58);
+    cursor: pointer;
+    font: 500 0.68rem var(--font-body);
+  }
+
+  .simple-mode-tabs button.is-active {
+    border-color: rgb(0 218 232 / 0.38);
+    background: rgb(0 218 232 / 0.1);
+    color: var(--cream);
+  }
+
+  .simple-stem-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .simple-chip {
+    padding: 0.48rem 0.7rem;
+    border: 1px solid rgb(255 255 255 / 0.14);
+    border-radius: 999px;
+    background: transparent;
+    color: rgb(255 255 255 / 0.62);
+    cursor: pointer;
+    font: 500 0.68rem var(--font-body);
+    transition:
+      border-color 180ms ease,
+      background 180ms ease,
+      color 180ms ease;
+  }
+
+  .simple-chip.is-selected {
+    border-color: rgb(0 218 232 / 0.52);
+    background: rgb(0 218 232 / 0.12);
+    color: var(--cream);
+  }
+
+  .simple-option-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .compact-select {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    min-width: 0;
+    min-height: 2.4rem;
+    padding: 0 0.7rem;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    border-radius: 0.55rem;
+    background: rgb(255 255 255 / 0.065);
+    color: var(--cream);
+    cursor: pointer;
+    font: 500 0.68rem var(--font-body);
+    text-align: left;
+  }
+
+  .compact-select span {
+    overflow: hidden;
+    color: var(--muted);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .compact-select b {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-weight: 400;
+  }
+
+  .simple-toggle-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .simple-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.65rem;
+    min-height: 2.45rem;
+    padding: 0 0.7rem;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    border-radius: 0.55rem;
+    background: transparent;
+    color: rgb(255 255 255 / 0.65);
+    cursor: pointer;
+    font: 500 0.68rem var(--font-body);
+    text-align: left;
+  }
+
+  .simple-toggle.is-on {
+    border-color: rgb(0 218 232 / 0.35);
+    color: var(--cream);
+  }
+
+  .mini-switch {
+    position: relative;
+    display: block;
+    flex: 0 0 auto;
+    width: 1.9rem;
+    height: 1rem;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.25);
+  }
+
+  .mini-switch::after {
+    position: absolute;
+    top: 0.13rem;
+    left: 0.13rem;
+    width: 0.74rem;
+    height: 0.74rem;
+    border-radius: 50%;
+    background: var(--cream);
+    content: "";
+    transition: transform 180ms ease;
+  }
+
+  .simple-toggle.is-on .mini-switch {
+    background: var(--aqua);
+  }
+
+  .simple-toggle.is-on .mini-switch::after {
+    transform: translateX(0.9rem);
+  }
+
+  .comparison-foot {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+    gap: clamp(2rem, 7vw, 7rem);
+    width: min(100%, 780px);
+    margin: clamp(2rem, 2vw, 4rem) auto 0;
+    color: hsl(240, 87.8%, 89%);
+  }
+
+  .comparison-foot article {
+    min-width: 0;
+  }
+
+  .foot-label {
+    display: block;
+    margin-bottom: 0.85rem;
+    color: hsl(240, 87.7%, 95.3%);
+    font: 500 1rem var(--font-mono);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .comparison-foot p {
+    margin: 0;
+    font-size: clamp(0.83rem, 1.3vw, 1rem);
+    line-height: 1.45;
+  }
+
+  .foot-divider {
+    width: 1px;
+    background: rgb(255 255 255 / 0.2);
+  }
+
+  .comparison-status {
+    min-height: 1.4em;
+    margin: 1rem 0 0;
+    color: var(--aqua);
+    font: 500 0.68rem var(--font-mono);
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 980px) {
+    .comparison-topline {
+      grid-template-columns: 1fr auto;
+    }
+
+    .play-cue {
+      justify-self: start;
+      transform: translateX(0) rotate(-4deg);
+    }
+
+    .comparison-tag {
+      display: none;
+    }
+
+    .interface-frame {
+      max-width: 46rem;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .moises-comparison {
+      width: min(1320px, calc(100vw - 2rem), 100%);
+      max-width: 100%;
+      margin-top: 4.5rem;
+    }
+
+    .comparison-topline,
+    .comparison-stage,
+    .interface-frame,
+    .more-interface,
+    .controls-grid,
+    .upload-row {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .comparison-topline {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .play-cue {
+      order: 2;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .mode-switch {
+      width: min(100%, 19rem);
+      margin: 0 auto;
+    }
+
+    .comparison-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+
+    .interface-frame {
+      max-width: 100%;
+    }
+
+    .controls-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .advanced-settings {
+      padding-top: 0.9rem;
+      padding-left: 0;
+      border-top: 1px solid rgb(255 255 255 / 0.1);
+      border-left: 0;
+    }
+
+    .upload-row {
+      grid-template-columns: 1fr;
+    }
+
+    .primary-action {
+      width: 100%;
+    }
+
+    .comparison-foot {
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+      margin-top: 3.5rem;
+    }
+
+    .foot-divider {
+      width: 100%;
+      height: 1px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .card-header {
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 0.7rem;
+    }
+
+    .mode-actions {
+      grid-column: 2;
+      justify-content: flex-start;
+      margin-top: -0.35rem;
+    }
+
+    .card-heading p {
+      white-space: normal;
+    }
+
+    .category-tabs button {
+      padding-inline: 0.9rem;
+    }
+
+    .stem {
+      grid-template-columns: 1.2rem minmax(0, 1fr) auto;
+      gap: 0.5rem;
+      padding-inline: 0.65rem;
+    }
+
+    .upload-zone {
+      align-items: flex-start;
+    }
+
+    .simple-controls {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .advanced-toggle {
+      align-self: flex-start;
+    }
+
+    .simple-settings-heading {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .simple-settings-heading > span:last-child {
+      text-align: left;
+    }
+
+    .simple-option-grid,
+    .simple-toggle-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .comparison-card,
+    .mode-switch button,
+    .primary-action,
+    .stem,
+    .drop-zone,
+    .switch::after {
+      transition: none;
+    }
+  }
+</style>

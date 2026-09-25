@@ -1,0 +1,119 @@
+---
+interface Props {
+  x?: number;
+  y?: number;
+  sound?: string;
+  color?: string; // Hex, HSL, RGB, or named colors
+}
+
+const { x = 0, y = 0, sound, color = "#d84750" } = Astro.props;
+---
+
+<g
+  class="pad"
+  role="button"
+  tabindex="0"
+  aria-label={sound}
+  data-sound={sound}
+  transform={`translate(${x}, ${y})`}
+  style={`--pad-color: ${color}; cursor: pointer; outline: none;`}
+>
+  <!-- Bottom Base Slot (Original 129.5 x 133 Plate) -->
+  <rect
+    x="-6"
+    y="-4"
+    width="129.5"
+    height="133"
+    rx="16"
+    fill="rgba(11, 12, 14, 0.8)"
+    stroke="rgba(255, 255, 255, 0.2)"
+    stroke-width="1.5"
+  />
+
+  <!-- Top Interactive Pad Group -->
+  <g class="pad-top">
+    <!-- Shadow (Calculated: 60% opacity of base color + dark stroke) -->
+    <rect
+      x="-2"
+      width="123"
+      height="123"
+      rx="13"
+      stroke-width="1.5"
+      class="shadow"
+    />
+
+    <!-- Sub pad -->
+    <rect
+      width="120"
+      height="120"
+      rx="13"
+      stroke-width="1"
+      filter="url(#pad-noise)"
+      class="pad-body"
+    />
+
+    <!-- Inner Shadow Highlight -->
+    <rect
+      x="2"
+      y="2"
+      width="116"
+      height="116"
+      rx="10"
+      fill="none"
+      stroke="rgba(255, 255, 255, 0.1)"
+      stroke-width="1.5"
+    />
+  </g>
+</g>
+
+<style>
+  /* --- DYNAMIC COLOR CALCULATIONS --- */
+
+  .pad-body {
+    fill: var(--pad-color);
+    /* Mixes 35% black into the base color for the bevel stroke */
+    stroke: color-mix(in srgb, var(--pad-color), #000 35%);
+  }
+
+  .shadow {
+    /* 60% opacity shadow tint */
+    fill: color-mix(in srgb, var(--pad-color) 60%, transparent);
+    /* Mixes 40% black for dark shadow outline */
+    stroke: color-mix(in srgb, var(--pad-color), #000 40%);
+  }
+
+  /* --- ANIMATIONS & STATES --- */
+
+  .pad-top {
+    transition:
+      transform 0.06s cubic-bezier(0.1, 0.9, 0.2, 1),
+      filter 0.06s ease;
+  }
+
+  .shadow {
+    transition:
+      opacity 0.06s ease,
+      transform 0.06s ease;
+  }
+
+  /* Active / Pressed State */
+  .pad:active .pad-top,
+  .pad.is-pressed .pad-top {
+    transform: translateY(3px);
+    filter: brightness(1.18);
+  }
+
+  .pad:active .shadow,
+  .pad.is-pressed .shadow {
+    opacity: 0.2;
+  }
+
+  /* Keyboard Focus Ring (Mixes 40% white for highlight stroke) */
+  .pad:focus-visible {
+    outline: none;
+  }
+  .pad:focus-visible .pad-body {
+    stroke: color-mix(in srgb, var(--pad-color), #fff 40%);
+    stroke-width: 2.5px;
+  }
+</style>

@@ -322,11 +322,12 @@ export const siteConfig = {
   },
 
   analytics: {
-    provider: null as null | "google" | "plausible" | "umami",
+    provider: "umami",
+    // provider: null as null | "google" | "plausible" | "umami",
     googleId: "",
     plausibleDomain: "giles.io",
-    umamiWebsiteId: "",
-    umamiScriptUrl: "",
+    umamiWebsiteId: "1eec3a70-d3e5-49b8-86e4-f501d28c701d",
+    umamiScriptUrl: "https://cloud.umami.is/script.js",
   },
 
   headScripts: "" as string,

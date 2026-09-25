@@ -1,0 +1,393 @@
+---
+---
+
+<section class="signal-prototype signal-rail" aria-labelledby="rail-title">
+  <div class="signal-rail-ambient" aria-hidden="true"></div>
+  <div class="signal-rail-hero">
+    <p class="signal-eyebrow">01 / signal path / rail system</p>
+    <div class="signal-rail-copy">
+      <p class="signal-hand">four inputs, one practice</p>
+      <h2 id="rail-title">
+        Make the invisible <em>legible.</em>
+      </h2>
+      <p class="signal-dek">
+        Music, design, engineering and product enter on their own frequency.
+        Scroll to watch the routes align.
+      </p>
+    </div>
+    <div class="signal-rail-legend" aria-label="Signal inputs">
+      <span>
+        <i class="rail-dot rail-music"></i>Music
+      </span>
+      <span>
+        <i class="rail-dot rail-design"></i>Design
+      </span>
+      <span>
+        <i class="rail-dot rail-engineering"></i>Engineering
+      </span>
+      <span>
+        <i class="rail-dot rail-product"></i>Product
+      </span>
+    </div>
+  </div>
+
+  <div class="rail-field" aria-hidden="true">
+    <svg class="rail-svg" viewBox="0 0 1200 1540" preserveAspectRatio="none">
+      <path
+        class="rail-line rail-music-line"
+        pathLength="1"
+        d="M110 0 C80 160 150 260 112 390 S72 610 160 760 C225 875 178 940 420 1070 S530 1290 600 1540"
+      />
+      <path
+        class="rail-line rail-design-line"
+        pathLength="1"
+        d="M390 0 C350 170 430 290 360 440 C300 570 410 650 335 810 C280 930 395 1000 515 1100 S585 1320 600 1540"
+      />
+      <path
+        class="rail-line rail-engineering-line"
+        pathLength="1"
+        d="M770 0 L770 235 L700 305 L700 540 L820 660 L820 890 L650 1030 L650 1240 L600 1300 L600 1540"
+      />
+      <path
+        class="rail-line rail-product-line"
+        pathLength="1"
+        d="M1080 0 C1125 160 1030 235 1040 390 L940 500 L1080 650 L990 790 L900 790 L780 960 L670 1050 L600 1160 L600 1540"
+      />
+      <path class="rail-spine" pathLength="1" d="M600 1100 L600 1540" />
+      <g class="rail-nodes">
+        <circle cx="700" cy="305" r="6" />
+        <circle cx="700" cy="540" r="6" />
+        <circle cx="820" cy="660" r="6" />
+        <circle cx="940" cy="500" r="6" />
+        <circle cx="900" cy="790" r="6" />
+        <circle cx="600" cy="1160" r="8" />
+      </g>
+    </svg>
+    <span class="rail-label rail-label-music">MUSIC</span>
+    <span class="rail-label rail-label-design">DESIGN</span>
+    <span class="rail-label rail-label-engineering">ENGINEERING</span>
+    <span class="rail-label rail-label-product">PRODUCT</span>
+    <span class="rail-converged">CONVERGED / 01</span>
+  </div>
+
+  <div class="signal-rail-sections">
+    <article>
+      <span class="signal-index">01</span>
+      <h3>Listen for the pattern.</h3>
+      <p>
+        Start with the raw signal: the feeling, constraint, or opportunity
+        beneath the brief.
+      </p>
+    </article>
+    <article>
+      <span class="signal-index">02</span>
+      <h3>Route it through the system.</h3>
+      <p>
+        Make the handoffs visible so the right detail survives every
+        transformation.
+      </p>
+    </article>
+    <article>
+      <span class="signal-index">03</span>
+      <h3>Ship one clear frequency.</h3>
+      <p>
+        The output is simple on purpose: a product people can understand and
+        use.
+      </p>
+    </article>
+  </div>
+
+  <div class="signal-rail-footer">
+    <span>GILES / CREATIVE TECHNOLOGIST</span>
+    <span>SCROLL TO TRACE</span>
+  </div>
+</section>
+
+<style>
+  .signal-prototype {
+    --signal-bg: #f7f8f4;
+    --signal-ink: #141817;
+    --signal-muted: #66716d;
+    --signal-grid: rgba(20, 24, 23, 0.1);
+    --signal-accent: #32c3ed;
+    position: relative;
+    overflow: hidden;
+    background: var(--signal-bg);
+    color: var(--signal-ink);
+    min-height: 1900px;
+    isolation: isolate;
+  }
+  .signal-rail-ambient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        circle at 50% 18%,
+        rgba(50, 195, 237, 0.15),
+        transparent 31%
+      ),
+      linear-gradient(
+        90deg,
+        transparent calc(50% - 1px),
+        var(--signal-grid) 50%,
+        transparent calc(50% + 1px)
+      );
+    pointer-events: none;
+  }
+  .signal-rail-hero {
+    position: relative;
+    z-index: 2;
+    min-height: 610px;
+    padding: 98px clamp(24px, 8vw, 130px) 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .signal-eyebrow,
+  .signal-rail-footer,
+  .signal-index,
+  .rail-label,
+  .rail-converged {
+    font: 500 11px/1 var(--font-mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .signal-rail-copy {
+    max-width: 650px;
+    padding-top: 62px;
+  }
+  .signal-hand {
+    font: 28px/1 var(--font-hand);
+    transform: rotate(-3deg);
+    margin: 0 0 22px;
+  }
+  .signal-rail-copy h2 {
+    max-width: 8ch;
+    margin: 0;
+    font: 900 clamp(55px, 9vw, 124px)/0.86 var(--font-display);
+    letter-spacing: -0.065em;
+    text-transform: uppercase;
+  }
+  .signal-rail-copy h2 em {
+    color: var(--signal-accent);
+    font-style: normal;
+  }
+  .signal-dek {
+    max-width: 35ch;
+    margin: 30px 0 0;
+    color: var(--signal-muted);
+    font-size: 16px;
+    line-height: 1.45;
+  }
+  .signal-rail-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 25px;
+    font: 500 12px/1 var(--font-mono);
+    text-transform: uppercase;
+  }
+  .signal-rail-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .rail-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--signal-accent);
+  }
+  .rail-design {
+    background: #e01e5a;
+  }
+  .rail-engineering {
+    background: #ecb22e;
+  }
+  .rail-product {
+    background: #2eb67d;
+  }
+  .rail-field {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .rail-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 1540px;
+    overflow: visible;
+  }
+  .rail-line,
+  .rail-spine {
+    fill: none;
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: rail-draw 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  }
+  .rail-music-line {
+    stroke: #32c3ed;
+    animation-delay: 0.05s;
+  }
+  .rail-design-line {
+    stroke: #e01e5a;
+    animation-delay: 0.16s;
+  }
+  .rail-engineering-line {
+    stroke: #ecb22e;
+    animation-delay: 0.27s;
+  }
+  .rail-product-line {
+    stroke: #2eb67d;
+    animation-delay: 0.38s;
+  }
+  .rail-spine {
+    stroke: var(--signal-ink);
+    stroke-width: 3;
+    animation-delay: 1.15s;
+  }
+  .rail-nodes circle {
+    fill: var(--signal-bg);
+    stroke: var(--signal-ink);
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+    animation: rail-node-in 0.4s cubic-bezier(0.19, 1, 0.22, 1) both;
+  }
+  .rail-nodes circle:nth-child(1) {
+    animation-delay: 0.5s;
+  }
+  .rail-nodes circle:nth-child(2) {
+    animation-delay: 0.62s;
+  }
+  .rail-nodes circle:nth-child(3) {
+    animation-delay: 0.74s;
+  }
+  .rail-nodes circle:nth-child(4) {
+    animation-delay: 0.86s;
+  }
+  .rail-nodes circle:nth-child(5) {
+    animation-delay: 0.98s;
+  }
+  .rail-nodes circle:nth-child(6) {
+    animation-delay: 1.1s;
+  }
+  .rail-label {
+    position: absolute;
+    opacity: 0.7;
+  }
+  .rail-label-music {
+    top: 185px;
+    left: 8%;
+    color: #1685a9;
+  }
+  .rail-label-design {
+    top: 255px;
+    left: 30%;
+    color: #b10c42;
+  }
+  .rail-label-engineering {
+    top: 160px;
+    right: 29%;
+    color: #9e7100;
+  }
+  .rail-label-product {
+    top: 205px;
+    right: 7%;
+    color: #148153;
+  }
+  .rail-converged {
+    top: 1100px;
+    left: calc(50% + 16px);
+    color: var(--signal-ink);
+    writing-mode: vertical-rl;
+  }
+  .signal-rail-sections {
+    position: relative;
+    z-index: 2;
+    width: min(520px, calc(100% - 48px));
+    margin: 0 auto;
+    padding-top: 90px;
+  }
+  .signal-rail-sections article {
+    min-height: 210px;
+    padding: 34px 0 0 32px;
+    border-top: 1px solid var(--signal-grid);
+  }
+  .signal-rail-sections article:last-child {
+    border-bottom: 1px solid var(--signal-grid);
+  }
+  .signal-rail-sections h3 {
+    margin: 14px 0 10px;
+    font: 700 27px/1.05 var(--font-body);
+    letter-spacing: -0.035em;
+  }
+  .signal-rail-sections p {
+    max-width: 30ch;
+    margin: 0;
+    color: var(--signal-muted);
+  }
+  .signal-index {
+    color: var(--signal-accent);
+  }
+  .signal-rail-footer {
+    position: absolute;
+    z-index: 2;
+    bottom: 30px;
+    left: clamp(24px, 8vw, 130px);
+    right: clamp(24px, 8vw, 130px);
+    display: flex;
+    justify-content: space-between;
+    color: var(--signal-muted);
+  }
+  @keyframes rail-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes rail-node-in {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+      transform-origin: center;
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      transform-origin: center;
+    }
+  }
+  @media (max-width: 680px) {
+    .signal-rail-hero {
+      min-height: 590px;
+      padding-inline: 24px;
+    }
+    .signal-rail-copy h2 {
+      font-size: clamp(52px, 17vw, 88px);
+    }
+    .rail-label {
+      display: none;
+    }
+    .signal-rail-sections {
+      padding-top: 160px;
+    }
+    .signal-rail-footer {
+      left: 24px;
+      right: 24px;
+      font-size: 9px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rail-line,
+    .rail-spine {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+    .rail-nodes circle {
+      animation: none;
+    }
+  }
+</style>

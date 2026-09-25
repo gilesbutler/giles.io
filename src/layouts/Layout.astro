@@ -8,6 +8,7 @@ interface Props {
   ogImage?: string;
   canonical?: string;
   noindex?: boolean;
+  showBg?: boolean;
 }
 
 const {
@@ -16,6 +17,7 @@ const {
   ogImage = siteConfig.seo.ogImage,
   canonical = Astro.url.pathname,
   noindex = false,
+  showBg = true,
 } = Astro.props;
 
 const canonicalURL = new URL(canonical, Astro.site ?? Astro.url);
@@ -39,7 +41,10 @@ function getAnalytics() {
   }
   return "";
 }
-const analytics = getAnalytics();
+
+const isGilesDomain =
+  Astro.url.hostname === "giles.io" || Astro.url.hostname === "www.giles.io";
+const analytics = import.meta.env.PROD && isGilesDomain ? getAnalytics() : "";
 ---
 
 <!doctype html>
@@ -95,7 +100,9 @@ const analytics = getAnalytics();
     {siteConfig.headScripts && <Fragment set:html={siteConfig.headScripts} />}
   </head>
   <body>
-    <div class="canvas-bg"></div>
+    {
+      showBg && <div class="canvas-bg"></div>
+    }
     <slot />
 
     <script is:inline>

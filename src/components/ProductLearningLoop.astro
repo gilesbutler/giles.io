@@ -1,0 +1,1635 @@
+---
+interface Props {
+  autoplay?: boolean;
+  noOutro?: boolean;
+}
+
+const { autoplay = true, noOutro = true } = Astro.props;
+---
+
+<product-learning-loop
+  autoplay={autoplay}
+  no-outro={noOutro}
+  class="text-shadow-none"
+>
+  <noscript>
+    <p class="pl-noscript">
+      The product learning loop is an interactive illustration of how small
+      prototypes, real use, feedback, and safer alternatives shape what gets
+      built next.
+    </p>
+  </noscript>
+</product-learning-loop>
+
+<style is:global>
+  product-learning-loop {
+    --loop-ink: #262721;
+    --loop-surface: #252620;
+    --loop-panel: #30312a;
+    --loop-paper: #f3efdf;
+    --loop-muted: #babbae;
+    --loop-accent: #f5be44;
+    --loop-mint: #c9ffdc;
+    --loop-font: var(--font-body, inherit);
+    --loop-mono: var(
+      --font-mono,
+      ui-monospace,
+      SFMono-Regular,
+      Consolas,
+      "Liberation Mono",
+      monospace
+    );
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    margin-inline: auto;
+    color: var(--loop-paper);
+    font-family: var(--loop-font);
+    -webkit-font-smoothing: antialiased;
+    isolation: isolate;
+  }
+
+  product-learning-loop *,
+  product-learning-loop *::before,
+  product-learning-loop *::after {
+    box-sizing: border-box;
+  }
+
+  product-learning-loop [hidden] {
+    display: none !important;
+  }
+
+  product-learning-loop button,
+  product-learning-loop a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  product-learning-loop button {
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+
+  product-learning-loop button:focus-visible,
+  product-learning-loop a:focus-visible,
+  product-learning-loop [tabindex="0"]:focus-visible {
+    outline: 3px solid var(--loop-mint);
+    outline-offset: 5px;
+  }
+
+  product-learning-loop svg {
+    display: block;
+  }
+
+  product-learning-loop .pl-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  product-learning-loop .pl-noscript {
+    margin: 0;
+    padding: 1rem;
+    border: 1px solid var(--loop-ink);
+    color: var(--loop-ink);
+  }
+
+  product-learning-loop .pl-machine {
+    position: relative;
+    padding: clamp(20px, 3.7vw, 36px);
+    border: 1px solid #44453b;
+    border-radius: 26px;
+    background: linear-gradient(
+      135deg,
+      #303129 0%,
+      var(--loop-surface) 38%,
+      #22231e 100%
+    );
+    box-shadow:
+      0 3px 0 #1d1e18,
+      0 10px 0 -5px #b5802740,
+      0 22px 45px -22px #392a2770,
+      inset 0 1px 0 #ffffff10;
+  }
+
+  product-learning-loop .pl-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  product-learning-loop .pl-label,
+  product-learning-loop .pl-counter,
+  product-learning-loop .pl-eyebrow,
+  product-learning-loop .pl-caption,
+  product-learning-loop .pl-footer-note {
+    font-family: var(--loop-mono);
+    font-size: 12px;
+    letter-spacing: 0.095em;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  product-learning-loop .pl-label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--loop-muted);
+  }
+
+  product-learning-loop .pl-power-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--loop-mint);
+    box-shadow: 0 0 0 4px #c9ffdc09;
+  }
+
+  product-learning-loop .pl-counter {
+    color: var(--loop-muted);
+  }
+
+  product-learning-loop .pl-counter strong {
+    color: var(--loop-paper);
+    font-weight: 500;
+  }
+
+  /* The HTML buttons and SVG use the same four 25% columns. */
+  product-learning-loop .pl-route {
+    position: relative;
+    margin-inline: -10px;
+  }
+
+  product-learning-loop .pl-wiring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 148px;
+    overflow: visible;
+  }
+
+  product-learning-loop .pl-wire {
+    fill: none;
+    stroke: #5f6051;
+    stroke-width: 1.4;
+    vector-effect: non-scaling-stroke;
+  }
+
+  product-learning-loop .pl-wire-arrow {
+    fill: none;
+    stroke: #858675;
+    stroke-width: 1.5;
+    vector-effect: non-scaling-stroke;
+  }
+
+  product-learning-loop .pl-wire-active {
+    fill: none;
+    stroke: var(--loop-accent);
+    stroke-width: 2;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+  }
+
+  product-learning-loop .pl-signal {
+    fill: var(--loop-accent);
+  }
+
+  product-learning-loop .pl-signal-halo {
+    fill: var(--loop-accent);
+    opacity: 0.13;
+  }
+
+  product-learning-loop .pl-tabs {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding-top: 8px;
+  }
+
+  product-learning-loop .pl-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: 116px;
+    height: 89px;
+    max-width: calc(100% - 12px);
+    justify-self: center;
+    border: 1px solid #525448;
+    border-radius: 13px;
+    background: linear-gradient(160deg, #44463b, #32342b);
+    color: #d6d6c8;
+    box-shadow:
+      inset 0 1px 0 #ffffff0d,
+      0 4px 0 #151610,
+      0 6px 7px #00000025;
+    transform: translateY(0);
+    transition:
+      background-color 0.2s,
+      color 0.2s,
+      border-color 0.2s,
+      transform 0.2s,
+      box-shadow 0.2s;
+  }
+
+  product-learning-loop .pl-step-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  product-learning-loop .pl-step-text {
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: 0.1em;
+    line-height: 1.3;
+  }
+
+  product-learning-loop .pl-step[aria-selected="true"] {
+    color: var(--loop-ink);
+    border-color: #ffe6a4;
+    background: linear-gradient(155deg, #ffdc87, var(--loop-accent));
+    box-shadow:
+      inset 0 1px 0 #fff6d899,
+      0 2px 0 #966c1f,
+      0 6px 18px #f5be4414;
+    transform: translateY(3px);
+  }
+
+  @media (hover: hover) {
+    product-learning-loop .pl-step:hover:not([aria-selected="true"]) {
+      color: #fff;
+      border-color: #8e917a;
+      transform: translateY(-2px);
+    }
+
+    product-learning-loop .pl-control:hover {
+      background: #ffffff0c;
+      border-color: #787a68;
+    }
+  }
+
+  product-learning-loop .pl-loop-label {
+    position: relative;
+    z-index: 1;
+    width: max-content;
+    max-width: 70%;
+    margin: 32px auto 26px;
+    padding: 0 12px;
+    background: var(--loop-surface);
+    color: #b9bba8;
+    font: 11px/18px var(--loop-mono);
+    letter-spacing: 0.12em;
+    text-align: center;
+  }
+
+  product-learning-loop .pl-panels {
+    position: relative;
+  }
+
+  product-learning-loop .pl-panel {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    align-items: center;
+    gap: 36px;
+    min-height: 275px;
+  }
+
+  product-learning-loop .pl-panel.pl-enter {
+    animation: pl-enter 0.32s cubic-bezier(0.2, 0.65, 0.3, 1) both;
+  }
+
+  @keyframes pl-enter {
+    from {
+      opacity: 0;
+      transform: translateY(7px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  product-learning-loop .pl-eyebrow {
+    margin: 0 0 15px;
+    color: var(--loop-accent);
+    font-size: 10px;
+  }
+
+  product-learning-loop .pl-heading {
+    max-width: 11em;
+    margin: 0 0 15px;
+    color: var(--loop-paper);
+    font-family: var(--loop-font);
+    font-size: clamp(25px, 3.5vw, 38px);
+    font-weight: 750;
+    letter-spacing: -0.045em;
+    line-height: 1.09;
+  }
+
+  product-learning-loop .pl-description {
+    max-width: 30em;
+    margin: 0;
+    color: #c8c9bb;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  product-learning-loop .pl-question {
+    margin-top: 23px;
+    padding-left: 12px;
+    border-left: 2px solid #686b56;
+    color: #e6e6d7;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  product-learning-loop .pl-question small {
+    display: block;
+    margin-bottom: 4px;
+    color: #b4b7a3;
+    font: 13px/1.4 var(--loop-mono);
+    letter-spacing: 0.07em;
+  }
+
+  /* Mini product artefacts. The example is deliberately fictional. */
+  product-learning-loop .pl-artefact {
+    min-width: 0;
+  }
+
+  product-learning-loop .pl-browser {
+    overflow: hidden;
+    border: 1px solid #fcf9ec;
+    border-radius: 11px;
+    background: var(--loop-paper);
+    color: var(--loop-ink);
+    box-shadow: 0 10px 25px -15px #00000099;
+  }
+
+  product-learning-loop .pl-browser-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 13px;
+    border-bottom: 1px solid #d7d4c7;
+    background: #e8e5d9;
+    color: #5a5d50;
+    font: 9px/1.4 var(--loop-mono);
+  }
+
+  product-learning-loop .pl-window-dots {
+    display: flex;
+    gap: 4px;
+  }
+
+  product-learning-loop .pl-window-dots i {
+    width: 5px;
+    height: 5px;
+    border: 1px solid #989c88;
+    border-radius: 50%;
+  }
+
+  product-learning-loop .pl-site {
+    padding: 19px 19px 17px;
+  }
+
+  product-learning-loop .pl-site-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  product-learning-loop .pl-site-brand {
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 0.07em;
+  }
+
+  product-learning-loop .pl-site-nav span:last-child {
+    color: #666a5b;
+    font: 8px/1 var(--loop-mono);
+  }
+
+  product-learning-loop .pl-site-body {
+    display: grid;
+    grid-template-columns: 1fr 78px;
+    align-items: center;
+    gap: 9px;
+    margin-top: 20px;
+  }
+
+  product-learning-loop .pl-site-title {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 850;
+    letter-spacing: -0.05em;
+    line-height: 0.99;
+  }
+
+  product-learning-loop .pl-site-lines {
+    margin-top: 10px;
+  }
+
+  product-learning-loop .pl-site-lines i {
+    display: block;
+    width: 90%;
+    height: 3px;
+    margin: 5px 0;
+    border-radius: 5px;
+    background: #c7c9b8;
+  }
+
+  product-learning-loop .pl-site-lines i:last-child {
+    width: 64%;
+  }
+
+  product-learning-loop .pl-art {
+    width: 76px;
+    height: 76px;
+  }
+
+  product-learning-loop .pl-mock-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 9px 12px;
+    border-radius: 6px;
+    background: var(--loop-ink);
+    color: var(--loop-paper);
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  product-learning-loop .pl-caption {
+    margin-top: 11px;
+    color: #b5b8a4;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+
+  product-learning-loop .pl-live-strip {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 12px;
+    background: #d5f1db;
+    color: #294c35;
+    font: 9px/1.5 var(--loop-mono);
+  }
+
+  product-learning-loop .pl-live-strip::before {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #427f58;
+    content: "";
+  }
+
+  product-learning-loop .pl-listen-card {
+    padding: 19px;
+    border: 1px solid #5a5d4a;
+    border-radius: 11px;
+    background: #35372d;
+  }
+
+  product-learning-loop .pl-feedback-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 15px;
+    color: #c8cab8;
+    font: 9px/1.4 var(--loop-mono);
+    letter-spacing: 0.06em;
+  }
+
+  product-learning-loop .pl-quote {
+    margin: 0 0 10px;
+    padding: 13px 14px;
+    border-radius: 8px 8px 8px 2px;
+    background: #f9e2ec;
+    color: #42323d;
+    font-size: 13px;
+    line-height: 1.5;
+    box-shadow: 0 3px 0 #00000012;
+  }
+
+  product-learning-loop .pl-quote:nth-of-type(2) {
+    margin-left: 20px;
+    background: #ecebdd;
+    color: #34392e;
+  }
+
+  product-learning-loop .pl-observation {
+    margin: 17px 0 0;
+    padding-left: 9px;
+    border-left: 2px solid var(--loop-accent);
+    color: #dbdfc9;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  product-learning-loop .pl-versions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 12px;
+    background: #e1e7d7;
+  }
+
+  product-learning-loop .pl-version-chip {
+    color: #526044;
+    font: 9px/1.4 var(--loop-mono);
+  }
+
+  product-learning-loop .pl-version-current {
+    margin-left: auto;
+    padding: 3px 7px;
+    border: 1px solid #bfc9b0;
+    border-radius: 4px;
+    background: #f4f6ec;
+    font: 9px/1.4 var(--loop-mono);
+  }
+
+  product-learning-loop .pl-try {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    width: 100%;
+    min-height: 38px;
+    margin-top: 15px;
+    padding: 8px 12px;
+    border: 1px solid #22261b;
+    border-radius: 6px;
+    background: var(--loop-ink);
+    color: var(--loop-paper);
+    font-size: 11px;
+    font-weight: 650;
+  }
+
+  product-learning-loop .pl-try:focus-visible,
+  product-learning-loop .pl-restore:focus-visible {
+    outline-color: #294fc2;
+    outline-offset: 2px;
+  }
+
+  product-learning-loop .pl-restore {
+    padding: 2px 0;
+    border: 0;
+    border-bottom: 1px solid #69805d;
+    background: transparent;
+    color: #435b35;
+    font: 9px/1.4 var(--loop-mono);
+  }
+
+  product-learning-loop .pl-learn-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-height: 23px;
+    margin-top: 9px;
+    color: #546648;
+    font: 9px/1.4 var(--loop-mono);
+  }
+
+  product-learning-loop .pl-learn-status span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  product-learning-loop .pl-learn-site {
+    padding-bottom: 10px;
+  }
+
+  product-learning-loop .pl-learn-site .pl-site-body {
+    grid-template-columns: 1fr 62px;
+    margin-top: 13px;
+  }
+
+  product-learning-loop .pl-learn-site .pl-site-title {
+    font-size: 23px;
+  }
+
+  product-learning-loop .pl-learn-site .pl-art {
+    width: 62px;
+    height: 62px;
+  }
+
+  /* A transport, not an endless autoplay decoration. */
+  product-learning-loop .pl-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 27px;
+    padding-top: 17px;
+    border-top: 1px solid #4c4e41;
+  }
+
+  product-learning-loop .pl-pace {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  product-learning-loop .pl-pace-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 17px;
+  }
+
+  product-learning-loop .pl-pace-bars i {
+    width: 3px;
+    border-radius: 1px;
+    background: #626651;
+  }
+
+  product-learning-loop .pl-pace-bars i:nth-child(1) {
+    height: 7px;
+  }
+
+  product-learning-loop .pl-pace-bars i:nth-child(2) {
+    height: 12px;
+  }
+
+  product-learning-loop .pl-pace-bars i:nth-child(3) {
+    height: 17px;
+  }
+
+  product-learning-loop .pl-pace-bars i.pl-lit {
+    background: var(--loop-accent);
+  }
+
+  product-learning-loop .pl-pace-text {
+    color: #c7cbb7;
+    font: 13px/1.4 var(--loop-mono);
+  }
+
+  product-learning-loop .pl-controls {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  product-learning-loop .pl-control {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-width: 42px;
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid #5c5e50;
+    border-radius: 7px;
+    background: transparent;
+    color: #eeeedf;
+    font-size: 11px;
+    font-weight: 500;
+    transition:
+      background-color 0.18s,
+      border-color 0.18s;
+  }
+
+  product-learning-loop .pl-control.pl-replay {
+    padding-inline: 10px;
+  }
+
+  product-learning-loop .pl-track-progress {
+    height: 2px;
+    margin-top: 16px;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #494d3b;
+  }
+
+  product-learning-loop .pl-track-progress span {
+    display: block;
+    height: 100%;
+    background: var(--loop-accent);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+  }
+
+  product-learning-loop .pl-below {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 17px;
+    color: var(--ink, var(--loop-ink));
+  }
+
+  product-learning-loop .pl-footer-note {
+    max-width: 41em;
+    margin: 0 auto;
+    font-size: 13px;
+    letter-spacing: 0.015em;
+    opacity: 0.86;
+    text-align: center;
+  }
+
+  product-learning-loop .pl-outro-slot {
+    display: flex;
+    justify-content: flex-end;
+    min-height: 100px;
+    margin-top: 18px;
+  }
+
+  product-learning-loop .pl-outro {
+    align-self: start;
+    max-width: 350px;
+    margin: 0 7px 0 0;
+    padding: 15px 25px;
+    border-radius: 3px;
+    background: var(--loop-mint);
+    color: #234b32;
+    font-family: var(--font-hand, cursive);
+    font-size: 21px;
+    line-height: 1.3;
+    text-align: center;
+    box-shadow: 0 9px 16px -11px #38401888;
+    transform: translateY(8px) rotate(-1.8deg);
+    opacity: 0;
+    transition:
+      transform 0.55s cubic-bezier(0.2, 0.75, 0.25, 1),
+      opacity 0.4s;
+  }
+
+  product-learning-loop[data-complete="true"] .pl-outro,
+  product-learning-loop[data-reduced-motion="true"] .pl-outro {
+    opacity: 1;
+    transform: translateY(0) rotate(-1.8deg);
+  }
+
+  product-learning-loop[no-outro] .pl-outro-slot {
+    display: none;
+  }
+
+  product-learning-loop[data-paused="true"] .pl-power-dot {
+    background: #b7b9a6;
+    box-shadow: none;
+  }
+
+  product-learning-loop[data-complete="true"] .pl-power-dot {
+    background: var(--loop-mint);
+  }
+
+  product-learning-loop[data-complete="true"] .pl-track-progress span {
+    background: var(--loop-mint);
+  }
+
+  @media (max-width: 640px) {
+    product-learning-loop .pl-machine {
+      padding: 21px 18px;
+      border-radius: 20px;
+    }
+
+    product-learning-loop .pl-topbar {
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    product-learning-loop .pl-label,
+    product-learning-loop .pl-counter {
+      font-size: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    product-learning-loop .pl-step {
+      width: 77px;
+      height: 78px;
+      max-width: calc(100% - 8px);
+      gap: 7px;
+      border-radius: 10px;
+    }
+
+    product-learning-loop .pl-step-text {
+      font-size: 9px;
+      letter-spacing: 0.07em;
+    }
+
+    product-learning-loop .pl-step-icon {
+      width: 23px;
+      height: 23px;
+    }
+
+    product-learning-loop .pl-wiring {
+      height: 137px;
+    }
+
+    product-learning-loop .pl-loop-label {
+      max-width: 70%;
+      margin-top: 32px;
+      margin-bottom: 20px;
+      padding-inline: 7px;
+      font-size: 7px;
+      letter-spacing: 0.06em;
+    }
+
+    product-learning-loop .pl-panel {
+      grid-template-columns: 1fr;
+      align-content: start;
+      gap: 21px;
+      min-height: 512px;
+    }
+
+    product-learning-loop .pl-heading {
+      max-width: 12em;
+      margin-bottom: 11px;
+      font-size: 30px;
+    }
+
+    product-learning-loop .pl-eyebrow {
+      margin-bottom: 10px;
+      font-size: 9px;
+    }
+
+    product-learning-loop .pl-description {
+      font-size: 13px;
+    }
+
+    product-learning-loop .pl-question {
+      margin-top: 14px;
+      font-size: 11px;
+    }
+
+    product-learning-loop .pl-copy {
+      min-height: 202px;
+    }
+
+    product-learning-loop .pl-artefact {
+      width: 100%;
+      max-width: 380px;
+      margin-inline: auto;
+    }
+
+    product-learning-loop .pl-site-body {
+      grid-template-columns: 1fr 67px;
+    }
+
+    product-learning-loop .pl-site-title {
+      font-size: 26px;
+    }
+
+    product-learning-loop .pl-art {
+      width: 65px;
+      height: 65px;
+    }
+
+    product-learning-loop .pl-listen-card {
+      min-height: 230px;
+    }
+
+    product-learning-loop .pl-footer {
+      margin-top: 22px;
+    }
+
+    product-learning-loop .pl-pace-text {
+      font-size: 9px;
+    }
+
+    product-learning-loop .pl-control {
+      min-height: 42px;
+    }
+
+    product-learning-loop .pl-below {
+      flex-direction: column;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    product-learning-loop .pl-footer-note {
+      font-size: 9px;
+    }
+
+    product-learning-loop .pl-outro-slot {
+      min-height: 94px;
+    }
+
+    product-learning-loop .pl-outro {
+      max-width: 300px;
+      font-size: 20px;
+    }
+  }
+
+  @media (max-width: 370px) {
+    product-learning-loop .pl-machine {
+      padding-inline: 13px;
+    }
+
+    product-learning-loop .pl-label {
+      max-width: 160px;
+    }
+
+    product-learning-loop .pl-panel {
+      min-height: 550px;
+    }
+
+    product-learning-loop .pl-copy {
+      min-height: 226px;
+    }
+
+    product-learning-loop .pl-counter {
+      letter-spacing: 0;
+    }
+
+    product-learning-loop .pl-heading {
+      font-size: 28px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    product-learning-loop *,
+    product-learning-loop *::before,
+    product-learning-loop *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  product-learning-loop[data-reduced-motion="true"] .pl-panel {
+    animation: none !important;
+  }
+
+  product-learning-loop[data-reduced-motion="true"] .pl-step,
+  product-learning-loop[data-reduced-motion="true"] .pl-outro {
+    transition: none;
+  }
+
+  @media (forced-colors: active) {
+    product-learning-loop .pl-step[aria-selected="true"] {
+      outline: 3px solid Highlight;
+    }
+
+    product-learning-loop .pl-wire-active {
+      stroke: Highlight;
+    }
+  }
+</style>
+
+<script>
+  // The custom element intentionally uses dynamic DOM handles, like the original standalone JS.
+  // @ts-nocheck
+  (() => {
+    "use strict";
+
+    if (
+      typeof window === "undefined" ||
+      !window.customElements ||
+      customElements.get("product-learning-loop")
+    ) {
+      return;
+    }
+
+    const NAMES = ["Build", "Ship", "Listen", "Learn"];
+    const DEFAULT_DURATIONS = [4600, 1800, 900];
+    let instanceCount = 0;
+
+    const paths = {
+      build:
+        '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7m-3.5-3.5h7"/>',
+      ship: '<path d="M12 15V3m-4 4 4-4 4 4M5 12H3v8a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-8h-2"/><path d="M3 15h5l2 3h4l2-3h5"/>',
+      listen:
+        '<path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-3 2 1.7-5.7A8.5 8.5 0 1 1 21 11.5Z"/><path d="M7 10v3m4-5v7m4-5v3"/>',
+      learn:
+        '<path d="M9 17h6m-5 4h4M8.5 14.5a6 6 0 1 1 7 0L15 17H9zM12 1v1M2 7l2 1m16 0 2-1"/>',
+      pause: '<path d="M8 5v14M16 5v14"/>',
+      play: '<path d="m8 5 11 7-11 7V5Z"/>',
+      replay: '<path d="M3 10a9 9 0 1 1 .6 7M3 3v7h7"/>',
+      arrow: '<path d="M4 12h16m-6-6 6 6-6 6"/>',
+      check: '<path d="m5 12 4 4L19 6"/>',
+      sparkle:
+        '<path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z"/>',
+      undo: '<path d="m9 4-5 5 5 5M4 9h10a6 6 0 0 1 0 12" />',
+    };
+
+    function icon(name, size = 18, className = "") {
+      return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" class="${className}">${paths[name] || ""}</svg>`;
+    }
+
+    function art() {
+      return `<svg class="pl-art" viewBox="0 0 96 96" aria-hidden="true" focusable="false">
+        <rect width="96" height="96" rx="48" fill="#cdabed"/>
+        <g fill="none" stroke="#473257" stroke-width="1.2" opacity=".82">
+          <ellipse cx="48" cy="48" rx="29" ry="37"/><ellipse cx="48" cy="48" rx="18" ry="37"/>
+          <ellipse cx="48" cy="48" rx="7" ry="37"/><path d="M15 34h66M11 48h74M15 62h66"/>
+        </g><circle cx="72" cy="21" r="8" fill="#f6d576"/></svg>`;
+    }
+
+    function site(learn = false) {
+      return `<div class="pl-site ${learn ? "pl-learn-site" : ""}">
+        <div class="pl-site-nav"><span class="pl-site-brand">RHYTHM ROOM</span><span>ABOUT / CONTACT</span></div>
+        <div class="pl-site-body"><div><p class="pl-site-title" ${learn ? "data-draft-title" : ""}>A home for<br>late-night ideas.</p>
+        <div class="pl-site-lines" aria-hidden="true"><i></i><i></i></div></div>${art()}</div>
+        ${
+          learn
+            ? `<button class="pl-try" type="button" data-try>${icon("sparkle", 13)}Try another version</button>
+        <div class="pl-learn-status"><span>${icon("check", 12)}Original saved</span><button type="button" class="pl-restore" data-restore>Restore original</button></div>`
+            : `<div class="pl-mock-action">Try another version ${icon("arrow", 12)}</div>`
+        }
+      </div>`;
+    }
+
+    const browserTop = `<div class="pl-browser-top"><span class="pl-window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>website / first draft</span>${icon("sparkle", 11)}</div>`;
+
+    function template(id) {
+      const tabs = NAMES.map(
+        (name, i) =>
+          `<button type="button" class="pl-step" role="tab" id="${id}-tab-${i}" aria-controls="${id}-panel-${i}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}" data-stage="${i}">${icon(name.toLowerCase(), 25, "pl-step-icon")}<span class="pl-step-text">${name.toUpperCase()}</span></button>`,
+      ).join("");
+
+      const content = [
+        {
+          eyebrow: "01 / BUILD",
+          heading: "Make the assumption tangible.",
+          description:
+            "Start with something small enough to test, not a finished product built on an untested idea.",
+          question: "A useful first result is enough to get started.",
+          label: "THE ASSUMPTION",
+          visual: `<div class="pl-browser">${browserTop}${site()}</div><div class="pl-caption">ONE PROMPT → ONE WEBSITE DRAFT</div>`,
+        },
+        {
+          eyebrow: "02 / SHIP",
+          heading: "Let the idea meet real use.",
+          description:
+            "Put a working version in front of a small group. Watch what happens after the first result.",
+          question: "Will people feel ready to keep going?",
+          label: "THE QUESTION",
+          visual: `<div class="pl-browser"><div class="pl-live-strip">Shared with a small test group</div>${site()}</div><div class="pl-caption">A WORKING PRODUCT, NOT A PRESENTATION</div>`,
+        },
+        {
+          eyebrow: "03 / LISTEN",
+          heading: "Look for the hesitation.",
+          description:
+            "The first result is useful. But trying again feels risky. The question has changed.",
+          question: "People want to explore without losing their work.",
+          label: "THE SIGNAL",
+          visual: `<div class="pl-listen-card"><p class="pl-feedback-heading">${icon("listen", 14)}ILLUSTRATIVE FEEDBACK</p><blockquote class="pl-quote">“Will this replace what I already made?”</blockquote><blockquote class="pl-quote">“Can I try another version safely?”</blockquote><p class="pl-observation">The hesitation is about control, not generation.</p></div><div class="pl-caption">LISTEN FOR WHAT THE QUESTION REVEALS</div>`,
+        },
+        {
+          eyebrow: "04 / LEARN",
+          heading: "Change what you build next.",
+          description:
+            "Keep the original. Make alternatives reversible. Then test whether that gives people confidence to explore.",
+          question: "Does a safe way back make it easier to try again?",
+          label: "THE NEXT HYPOTHESIS",
+          visual: `<div class="pl-browser"><div class="pl-versions"><span class="pl-version-chip">${icon("check", 11)}</span><span class="pl-version-chip">Original kept</span><span class="pl-version-current" data-version>Version 01</span></div>${site(true)}</div><div class="pl-caption">TRY THE BUTTON. YOUR ORIGINAL STAYS.</div>`,
+        },
+      ];
+
+      const panels = content
+        .map(
+          (stage, i) =>
+            `<section class="pl-panel" role="tabpanel" id="${id}-panel-${i}" aria-labelledby="${id}-tab-${i}" tabindex="0" ${i ? "hidden" : ""}>
+              <div class="pl-copy"><p class="pl-eyebrow">${stage.eyebrow}</p><h3 class="pl-heading">${stage.heading}</h3><p class="pl-description">${stage.description}</p><div class="pl-question"><small>${stage.label}</small>${stage.question}</div></div>
+              <div class="pl-artefact">${stage.visual}</div>
+            </section>`,
+        )
+        .join("");
+
+      return `<div class="pl-machine" role="region" aria-label="An interactive product learning loop">
+        <div class="pl-topbar"><div class="pl-label"><span class="pl-power-dot" aria-hidden="true"></span>THE PRODUCT LEARNING LOOP</div><div class="pl-counter">PASS <strong data-pass>01</strong> / 03</div></div>
+        <div class="pl-route">
+          <svg class="pl-wiring" viewBox="0 0 1000 148" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <g class="pl-paths">
+              <path class="pl-wire" d="M125 53H375"/>
+              <path class="pl-wire" d="M375 53H625"/>
+              <path class="pl-wire" d="M625 53H875"/>
+              <path class="pl-wire" d="M875 53V115Q875 138 852 138H148Q125 138 125 115V53"/>
+            </g>
+            <g class="pl-wire-arrow"><path d="m247 49 5 4-5 4"/><path d="m497 49 5 4-5 4"/><path d="m747 49 5 4-5 4"/><path d="m291 134-5 4 5 4"/><path d="m131 109-6-5-6 5"/></g>
+            <path class="pl-wire-active" d="M125 53H375" pathLength="100" stroke-dasharray="0 100"/>
+            <ellipse class="pl-signal-halo" cx="125" cy="53" rx="12" ry="12"/>
+            <ellipse class="pl-signal" cx="125" cy="53" rx="4" ry="4"/>
+          </svg>
+          <div class="pl-tabs" role="tablist" aria-label="Explore the four stages">${tabs}</div>
+          <div class="pl-loop-label">EVERY ANSWER SHAPES THE NEXT QUESTION</div>
+        </div>
+        <div class="pl-panels">${panels}</div>
+        <div class="pl-footer">
+          <div class="pl-pace"><span class="pl-pace-bars" aria-hidden="true"><i class="pl-lit"></i><i></i><i></i></span><span class="pl-pace-text" data-pace>Explore the loop</span></div>
+          <div class="pl-controls"><button type="button" class="pl-control" data-play aria-label="Play the product learning loop">${icon("play", 14)}<span>Play</span></button><button type="button" class="pl-control pl-replay" data-replay aria-label="Restart the product learning loop" title="Replay">${icon("replay", 14)}</button></div>
+        </div>
+        <div class="pl-track-progress" aria-hidden="true"><span></span></div>
+        <div class="pl-sr" role="status" aria-live="polite" aria-atomic="true" data-status></div>
+        <div class="pl-sr" role="status" aria-live="polite" aria-atomic="true" data-draft-status></div>
+      </div>
+      <div class="pl-below"><p class="pl-footer-note">Click a stage to explore. Fictional example, not reported customer research. Pace is illustrative. This one was made with <span title="GPT 6 Astra if you're wondering 🤓">ai.</span></p></div>
+      <div class="pl-outro-slot"><p class="pl-outro">Then suddenly the whole loop<br>got much faster...</p></div>`;
+    }
+
+    class ProductLearningLoop extends HTMLElement {
+      constructor() {
+        super();
+        this._id = `product-loop-${++instanceCount}`;
+        this._time = 0;
+        this._stage = -1;
+        this._pass = -1;
+        this._wanted = false;
+        this._inView = false;
+        this._complete = false;
+        this._started = false;
+        this._raf = null;
+        this._lastTime = null;
+        this._ready = false;
+        this._draft = 0;
+        this._tick = this._tick.bind(this);
+      }
+
+      connectedCallback() {
+        if (!this._ready) {
+          this.innerHTML = template(this._id);
+          this._tabs = [...this.querySelectorAll(".pl-step")];
+          this._panels = [...this.querySelectorAll(".pl-panel")];
+          this._wires = [...this.querySelectorAll(".pl-paths path")];
+          this._activeWire = this.querySelector(".pl-wire-active");
+          this._signal = this.querySelector(".pl-signal");
+          this._halo = this.querySelector(".pl-signal-halo");
+          this._progress = this.querySelector(".pl-track-progress span");
+          this._playButton = this.querySelector("[data-play]");
+          this._status = this.querySelector("[data-status]");
+          this._pace = this.querySelector("[data-pace]");
+          this._passLabel = this.querySelector("[data-pass]");
+          this._bars = [...this.querySelectorAll(".pl-pace-bars i")];
+          this._durations = this._readDurations();
+          this._total = this._durations.reduce((sum, ms) => sum + ms * 4, 0);
+          this._ready = true;
+        }
+
+        this._abort?.abort();
+        this._abort = new AbortController();
+        const opts = { signal: this._abort.signal };
+        this._motionQuery = matchMedia("(prefers-reduced-motion: reduce)");
+        this._reduced = this._motionQuery.matches;
+        this.dataset.reducedMotion = String(this._reduced);
+
+        this._tabs.forEach((tab, i) => {
+          tab.addEventListener("click", () => this.selectStage(i), opts);
+          tab.addEventListener(
+            "keydown",
+            (event) => this._onTabKey(event, i),
+            opts,
+          );
+        });
+
+        this._playButton.addEventListener(
+          "click",
+          () => {
+            if (this._reduced) this.selectStage((this._stage + 1) % 4);
+            else if (this._wanted) this.pause();
+            else this.play();
+          },
+          opts,
+        );
+        this.querySelector("[data-replay]").addEventListener(
+          "click",
+          () => this.restart(),
+          opts,
+        );
+        this.querySelector("[data-try]").addEventListener(
+          "click",
+          () => this._changeDraft(false),
+          opts,
+        );
+        this.querySelector("[data-restore]").addEventListener(
+          "click",
+          () => this._changeDraft(true),
+          opts,
+        );
+
+        this.addEventListener(
+          "focusin",
+          (event) => {
+            if (
+              this._wanted &&
+              !event.target.closest("[data-play], [data-replay]")
+            )
+              this.pause();
+          },
+          opts,
+        );
+        this._motionQuery.addEventListener(
+          "change",
+          (event) => {
+            this._reduced = event.matches;
+            this.dataset.reducedMotion = String(this._reduced);
+            if (this._reduced) this.pause();
+            this._updateTransport();
+          },
+          opts,
+        );
+        document.addEventListener(
+          "visibilitychange",
+          () => this._syncClock(),
+          opts,
+        );
+
+        this._resizeObserver?.disconnect();
+        if ("ResizeObserver" in window) {
+          this._resizeObserver = new ResizeObserver(() => this._sizeSignal());
+          this._resizeObserver.observe(this.querySelector(".pl-wiring"));
+        }
+
+        const link = this.querySelector(".pl-next");
+
+        this._observer?.disconnect();
+        if ("IntersectionObserver" in window) {
+          this._observer = new IntersectionObserver(
+            (entries) => {
+              const entry = entries[entries.length - 1];
+              this._inView =
+                entry.isIntersecting &&
+                entry.intersectionRect.height >=
+                  Math.min(150, innerHeight * 0.2);
+              if (
+                this._inView &&
+                !this._started &&
+                this.hasAttribute("autoplay") &&
+                !this._reduced
+              )
+                this.play();
+              this._syncClock();
+            },
+            { threshold: [0, 0.05, 0.1, 0.2, 0.3, 0.45, 0.6, 1] },
+          );
+          this._observer.observe(this.querySelector(".pl-machine"));
+        } else {
+          this._inView = true;
+        }
+
+        this._render();
+        this._sizeSignal();
+        this._updateTransport();
+        if (
+          !("IntersectionObserver" in window) &&
+          this.hasAttribute("autoplay") &&
+          !this._reduced
+        )
+          this.play();
+        this._syncClock();
+      }
+
+      disconnectedCallback() {
+        this._cancelFrame();
+        this._observer?.disconnect();
+        this._resizeObserver?.disconnect();
+        this._abort?.abort();
+      }
+
+      _readDurations() {
+        if (!this.hasAttribute("durations")) return [...DEFAULT_DURATIONS];
+        try {
+          const values = JSON.parse(this.getAttribute("durations"));
+          if (
+            Array.isArray(values) &&
+            values.length === 3 &&
+            values.every(
+              (value) =>
+                Number.isFinite(value) && value >= 600 && value <= 60000,
+            )
+          ) {
+            return values;
+          }
+        } catch (_) {
+          // Invalid input falls back to safe defaults.
+        }
+        console.warn(
+          "product-learning-loop: durations must be three numbers between 600 and 60000 ms. Using defaults.",
+        );
+        return [...DEFAULT_DURATIONS];
+      }
+
+      play() {
+        if (!this._ready) return;
+        this._started = true;
+        if (this._reduced) {
+          this._wanted = false;
+          this._updateTransport();
+          return;
+        }
+        if (this._complete) {
+          this._time = 0;
+          this._complete = false;
+          this._stage = -1;
+          this._resetDraft();
+        }
+        this._wanted = true;
+        this._render();
+        this._updateTransport();
+        this._syncClock();
+      }
+
+      pause() {
+        this._started = true;
+        this._wanted = false;
+        this._cancelFrame();
+        if (this._ready) this._updateTransport();
+      }
+
+      restart() {
+        if (!this._ready) return;
+        this.pause();
+        this._time = 0;
+        this._complete = false;
+        this._stage = -1;
+        this._pass = -1;
+        this._resetDraft();
+        this._render();
+        if (!this._reduced) this.play();
+        else {
+          this._updateTransport();
+          this._announce("Build. Make the assumption tangible.");
+        }
+      }
+
+      selectStage(index) {
+        if (!Number.isInteger(index) || index < 0 || index > 3) {
+          throw new RangeError("selectStage expects an integer from 0 to 3.");
+        }
+        if (!this._ready) return;
+        this.pause();
+        this._complete = false;
+        this._time = index * this._durations[0];
+        this._render("manual");
+        this._updateTransport();
+        this._announce(
+          `${NAMES[index]}. ${this._panels[index].querySelector(".pl-heading").textContent}`,
+        );
+      }
+
+      setProgress(progress) {
+        if (!Number.isFinite(progress))
+          throw new TypeError("setProgress expects a finite number.");
+        if (!this._ready) return;
+        this.pause();
+        this._time = Math.min(1, Math.max(0, progress)) * this._total;
+        if (this._time < this._total) this._complete = false;
+        this._render("scrub");
+        this._updateTransport();
+      }
+
+      get progress() {
+        return this._total ? this._time / this._total : 0;
+      }
+
+      get playing() {
+        return (
+          this._wanted && this._inView && !document.hidden && !this._reduced
+        );
+      }
+
+      get stage() {
+        return Math.max(0, this._stage);
+      }
+
+      _syncClock() {
+        if (
+          this._wanted &&
+          this._inView &&
+          !document.hidden &&
+          !this._reduced &&
+          this.isConnected &&
+          !this._complete
+        ) {
+          if (this._raf === null) {
+            this._lastTime = null;
+            this._raf = requestAnimationFrame(this._tick);
+          }
+        } else {
+          this._cancelFrame();
+        }
+        this.dataset.paused = String(!this.playing);
+      }
+
+      _cancelFrame() {
+        if (this._raf !== null) cancelAnimationFrame(this._raf);
+        this._raf = null;
+        this._lastTime = null;
+      }
+
+      _tick(now) {
+        this._raf = null;
+        if (!this.playing || !this.isConnected) {
+          this._lastTime = null;
+          return;
+        }
+        if (this._lastTime !== null)
+          this._time += Math.min(now - this._lastTime, 100);
+        this._lastTime = now;
+        this._time = Math.min(this._time, this._total);
+        this._render("playback");
+        if (!this._complete && this.playing)
+          this._raf = requestAnimationFrame(this._tick);
+      }
+
+      _positionAt(time) {
+        let remainder = Math.min(time, this._total - 0.001);
+        for (let pass = 0; pass < this._durations.length; pass += 1) {
+          const length = this._durations[pass] * 4;
+          if (remainder < length) {
+            const stage = Math.floor(remainder / this._durations[pass]);
+            return {
+              pass,
+              stage,
+              fraction:
+                (remainder % this._durations[pass]) / this._durations[pass],
+            };
+          }
+          remainder -= length;
+        }
+        return { pass: 2, stage: 3, fraction: 1 };
+      }
+
+      _render(source = "initial") {
+        if (!this._ready) return;
+        const { pass, stage, fraction } = this._positionAt(this._time);
+
+        if (stage !== this._stage) {
+          this._stage = stage;
+          this._tabs.forEach((tab, i) => {
+            tab.setAttribute("aria-selected", String(i === stage));
+            tab.tabIndex = i === stage ? 0 : -1;
+            this._panels[i].hidden = i !== stage;
+            this._panels[i].classList.remove("pl-enter");
+          });
+          if (!this._reduced && source !== "scrub")
+            this._panels[stage].classList.add("pl-enter");
+          const path = this._wires[stage];
+          const d = path.getAttribute("d");
+          this._activeWire.setAttribute("d", d);
+          this._pathLength = path.getTotalLength();
+          this.dispatchEvent(
+            new CustomEvent("product-loop:stagechange", {
+              bubbles: true,
+              detail: { stage, name: NAMES[stage].toLowerCase(), pass, source },
+            }),
+          );
+        }
+
+        if (pass !== this._pass) {
+          this._pass = pass;
+          this._passLabel.textContent = String(pass + 1).padStart(2, "0");
+          this._bars.forEach((bar, i) =>
+            bar.classList.toggle("pl-lit", i <= pass),
+          );
+          this._updateTransport();
+        }
+
+        const point = this._wires[stage].getPointAtLength(
+          (this._pathLength || 0) * fraction,
+        );
+        this._signal.setAttribute("cx", point.x);
+        this._signal.setAttribute("cy", point.y);
+        this._halo.setAttribute("cx", point.x);
+        this._halo.setAttribute("cy", point.y);
+        this._activeWire.setAttribute(
+          "stroke-dasharray",
+          `${fraction * 100} 100`,
+        );
+        this._progress.style.transform = `scaleX(${this.progress})`;
+        if (this._time >= this._total && !this._complete) this._finish();
+        this.dataset.complete = String(this._complete);
+        this.dataset.stage = NAMES[stage].toLowerCase();
+      }
+
+      _finish() {
+        this._complete = true;
+        this._wanted = false;
+        this._cancelFrame();
+        this._updateTransport();
+        this._announce(
+          "Loop complete. Faster tools still leave a decision to make. You can explore any stage or replay.",
+        );
+        this.dispatchEvent(
+          new CustomEvent("product-loop:complete", {
+            bubbles: true,
+            detail: { source: "sequence", passes: 3 },
+          }),
+        );
+      }
+
+      _updateTransport() {
+        if (!this._ready) return;
+        this.dataset.paused = String(!this.playing);
+        const mode = this._reduced
+          ? "next"
+          : this._complete
+            ? "replay"
+            : this._wanted
+              ? "pause"
+              : "play";
+        if (this._playButton.dataset.mode !== mode) {
+          this._playButton.dataset.mode = mode;
+          const name = {
+            next: "Next step",
+            replay: "Replay",
+            pause: "Pause",
+            play: "Play",
+          }[mode];
+          const image = {
+            next: "arrow",
+            replay: "replay",
+            pause: "pause",
+            play: "play",
+          }[mode];
+          this._playButton.innerHTML = `${icon(image, 14)}<span>${name}</span>`;
+          this._playButton.setAttribute(
+            "aria-label",
+            mode === "next"
+              ? "Show the next stage without animation"
+              : `${name} the product learning loop`,
+          );
+        }
+        this._pace.textContent = this._reduced
+          ? "Motion reduced"
+          : this._complete
+            ? "A new question. Repeat."
+            : !this._wanted
+              ? "Explore at your pace"
+              : [
+                  "First, understand.",
+                  "Then, iterate.",
+                  "The loop gets faster.",
+                ][Math.max(0, this._pass)];
+      }
+
+      _sizeSignal() {
+        if (!this._ready) return;
+        const rect = this.querySelector(".pl-wiring").getBoundingClientRect();
+        if (!rect.width || !rect.height) return;
+        this._signal.setAttribute("rx", 3.5 * (1000 / rect.width));
+        this._signal.setAttribute("ry", 3.5 * (148 / rect.height));
+        this._halo.setAttribute("rx", 10 * (1000 / rect.width));
+        this._halo.setAttribute("ry", 10 * (148 / rect.height));
+      }
+
+      _onTabKey(event, index) {
+        let next;
+        if (event.key === "ArrowRight") next = (index + 1) % 4;
+        else if (event.key === "ArrowLeft") next = (index + 3) % 4;
+        else if (event.key === "Home") next = 0;
+        else if (event.key === "End") next = 3;
+        else return;
+        event.preventDefault();
+        this.selectStage(next);
+        this._tabs[next].focus();
+      }
+
+      _announce(message) {
+        this._status.textContent = message;
+      }
+
+      _resetDraft() {
+        this._draft = 0;
+        this._drawDraft();
+        this.querySelector("[data-draft-status]").textContent = "";
+      }
+
+      _changeDraft(restore) {
+        this.pause();
+        this._draft = restore ? 0 : (this._draft + 1) % 3;
+        this._drawDraft();
+        this.querySelector("[data-draft-status]").textContent = restore
+          ? "Original version restored."
+          : `Showing version ${this._draft + 1}. The original is still saved.`;
+      }
+
+      _drawDraft() {
+        const titles = [
+          "A home for<br>late-night ideas.",
+          "Make room<br>for your next idea.",
+          "Good things<br>start with a sound.",
+        ];
+        this.querySelector("[data-draft-title]").innerHTML =
+          titles[this._draft];
+        this.querySelector("[data-version]").textContent =
+          `Version ${String(this._draft + 1).padStart(2, "0")}`;
+        const svg = this.querySelector(".pl-learn-site .pl-art");
+        svg
+          .querySelector("rect")
+          .setAttribute("fill", ["#cdabed", "#b2cce9", "#d8db9a"][this._draft]);
+      }
+    }
+
+    customElements.define("product-learning-loop", ProductLearningLoop);
+  })();
+</script>

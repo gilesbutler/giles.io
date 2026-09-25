@@ -1,0 +1,557 @@
+---
+---
+
+<div class="animated-pipe" data-animated-pipe>
+  <svg
+    viewBox="0 0 1120 400"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-labelledby="animated-pipe-title animated-pipe-description"
+  >
+    <title id="animated-pipe-title">Animated grey-blue binary pipeline</title>
+    <desc id="animated-pipe-description">
+      A continuous grey-blue pipe returns into recessed wall sockets at both
+      ends. Ones and zeros flow through the two straight glass sections.
+    </desc>
+    <defs>
+      <path
+        id="animated-pipe-flow-route"
+        d="M 105.000 240.224 L 178.225 282.500 Q 212.000 302.000 245.775 282.500 L 526.225 120.582 Q 560.000 101.082 593.775 120.582 L 874.225 282.500 Q 908.000 302.000 941.775 282.500 L 1015.000 240.224"
+      />
+      <path
+        id="animated-pipe-glass-window"
+        d="M 0.000 -52 H 275.836 A 18 52 0 0 1 275.836 52 H 0.000 A 18 52 0 0 0 0.000 -52 Z"
+      />
+      <linearGradient
+        id="animated-pipe-metal"
+        x1="0"
+        y1="50"
+        x2="0"
+        y2="355"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#53677f" />
+        <stop offset=".34" stop-color="#40536e" />
+        <stop offset=".68" stop-color="#2d405b" />
+        <stop offset="1" stop-color="#1c2c44" />
+      </linearGradient>
+      <linearGradient
+        id="animated-pipe-return-metal"
+        x1="0"
+        y1="-53"
+        x2="0"
+        y2="53"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#52667f" />
+        <stop offset=".25" stop-color="#465b75" />
+        <stop offset=".65" stop-color="#30435f" />
+        <stop offset="1" stop-color="#22334c" />
+      </linearGradient>
+      <linearGradient
+        id="animated-pipe-elbow-face"
+        x1="190"
+        y1="220"
+        x2="255"
+        y2="350"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#40536e" />
+        <stop offset=".5" stop-color="#33465f" />
+        <stop offset="1" stop-color="#24354d" />
+      </linearGradient>
+      <path
+        id="animated-pipe-end-elbow-face"
+        d="M 239.694 225.967 C 223.5 216.5 201 226 184 245 C 153 279 152 321 181 338 C 210 355 260 344 291.694 316.033 A 18 52 -30 0 0 239.694 225.967 Z"
+      />
+      <linearGradient
+        id="animated-pipe-glass"
+        x1="0"
+        y1="-52"
+        x2="0"
+        y2="52"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#9cafc4" />
+        <stop offset=".13" stop-color="#c0d1e1" />
+        <stop offset=".3" stop-color="#9aafc6" />
+        <stop offset=".58" stop-color="#7792ae" />
+        <stop offset=".83" stop-color="#546e8b" />
+        <stop offset="1" stop-color="#344f6c" />
+      </linearGradient>
+      <linearGradient
+        id="animated-pipe-wall-socket"
+        x1="0"
+        y1="-62"
+        x2="0"
+        y2="62"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#1c1cf0" />
+        <stop offset=".6" stop-color="#14223a" />
+        <stop offset="1" stop-color="#21334c" />
+      </linearGradient>
+      <linearGradient
+        id="animated-pipe-rim"
+        x1="0"
+        y1="-52"
+        x2="0"
+        y2="52"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#d6e3ef" stop-opacity=".72" />
+        <stop offset=".45" stop-color="#b3c6da" stop-opacity=".22" />
+        <stop offset="1" stop-color="#263c56" stop-opacity=".7" />
+      </linearGradient>
+      <clipPath
+        id="animated-pipe-straight-sections"
+        clipPathUnits="userSpaceOnUse"
+      >
+        <path
+          d="M 6.000 -49 H 269.836 A 18 49 0 0 1 269.836 49 H 6.000 A 18 49 0 0 0 6.000 -49 Z"
+          transform="translate(265.694 271.000) rotate(-30)"
+        />
+        <path
+          d="M 6.000 -49 H 269.836 A 18 49 0 0 1 269.836 49 H 6.000 A 18 49 0 0 0 6.000 -49 Z"
+          transform="translate(1120 0) scale(-1 1) translate(265.694 271.000) rotate(-30)"
+        />
+      </clipPath>
+      <clipPath id="animated-pipe-local-glass-clip">
+        <use href="#animated-pipe-glass-window" />
+      </clipPath>
+      <mask
+        id="animated-pipe-silhouette"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="30"
+        width="1120"
+        height="340"
+      >
+        <use
+          href="#animated-pipe-flow-route"
+          fill="none"
+          stroke="white"
+          stroke-width="106"
+        />
+      </mask>
+      <filter
+        id="animated-pipe-soft-highlight"
+        x="-10%"
+        y="-40%"
+        width="120%"
+        height="180%"
+      >
+        <feGaussianBlur stdDeviation="5" />
+      </filter>
+    </defs>
+
+    <g
+      pointer-events="none"
+      fill="url(#animated-pipe-wall-socket)"
+      stroke="#18283e"
+      stroke-width="2"
+    >
+      <ellipse transform="translate(100 235.224) rotate(30)" rx="38" ry="61" />
+      <ellipse
+        transform="translate(1017 235.224) rotate(-30)"
+        rx="38"
+        ry="61"
+      />
+    </g>
+
+    <g fill="none" stroke-linejoin="round">
+      <use
+        href="#animated-pipe-flow-route"
+        stroke="#182b42"
+        stroke-width="110"
+      />
+      <use
+        href="#animated-pipe-flow-route"
+        stroke="url(#animated-pipe-metal)"
+        stroke-width="106"
+      />
+      <g mask="url(#animated-pipe-silhouette)">
+        <use
+          href="#animated-pipe-flow-route"
+          transform="translate(0 -24)"
+          stroke="#c7d9eb"
+          stroke-width="18"
+          opacity=".16"
+          filter="url(#animated-pipe-soft-highlight)"
+        />
+      </g>
+    </g>
+
+    <g
+      pointer-events="none"
+      fill="url(#animated-pipe-return-metal)"
+      stroke="#182b42"
+      stroke-width="1.8"
+    >
+      <g transform="translate(105 240.224) rotate(30)">
+        <path d="M 0 -53 H 105 V 53 H 0 A 30 53 0 0 1 0 -53 Z" />
+      </g>
+      <g transform="translate(1120 0) scale(-1 1) translate(105 240.224) rotate(30)">
+        <path d="M 0 -53 H 105 V 53 H 0 A 30 53 0 0 1 0 -53 Z" />
+      </g>
+    </g>
+
+    <g
+      fill="url(#animated-pipe-elbow-face)"
+      stroke="#182b42"
+      stroke-width="1.8"
+      pointer-events="none"
+    >
+      <use href="#animated-pipe-end-elbow-face" />
+      <use
+        href="#animated-pipe-end-elbow-face"
+        transform="translate(1120 0) scale(-1 1)"
+      />
+    </g>
+
+    <g fill="url(#animated-pipe-glass)" stroke="#324b67" stroke-width="1.5">
+      <use
+        href="#animated-pipe-glass-window"
+        transform="translate(265.694 271.000) rotate(-30)"
+      />
+      <use
+        href="#animated-pipe-glass-window"
+        transform="translate(1120 0) scale(-1 1) translate(265.694 271.000) rotate(-30)"
+      />
+    </g>
+
+    <g
+      clip-path="url(#animated-pipe-straight-sections)"
+      data-pipe-stream
+      aria-hidden="true"
+    ></g>
+
+    <g transform="translate(265.694 271.000) rotate(-30)" pointer-events="none">
+      <g clip-path="url(#animated-pipe-local-glass-clip)">
+        <path
+          d="M -20 -36 H 300.836"
+          stroke="#f1f7ff"
+          stroke-width="9"
+          opacity=".25"
+        />
+        <path
+          d="M -20 -27 H 300.836"
+          stroke="#f1f7ff"
+          stroke-width="1.2"
+          opacity=".3"
+        />
+        <path
+          d="M -20 39 H 300.836"
+          stroke="#142b46"
+          stroke-width="7"
+          opacity=".18"
+        />
+      </g>
+      <path
+        d="M 0.000 -52 H 7.000 A 18 52 0 0 1 7.000 52 H 0.000 A 18 52 0 0 0 0.000 -52 Z"
+        fill="url(#animated-pipe-rim)"
+      />
+      <path
+        d="M 268.836 -52 H 275.836 A 18 52 0 0 1 275.836 52 H 268.836 A 18 52 0 0 0 268.836 -52 Z"
+        fill="url(#animated-pipe-rim)"
+      />
+      <path
+        d="M 0 -52 A 18 52 0 0 1 0 52 M 275.836 -52 A 18 52 0 0 1 275.836 52"
+        fill="none"
+        stroke="#233a54"
+        stroke-width="2"
+      />
+      <path
+        d="M 7 -51 A 18 51 0 0 1 7 51 M 268.836 -51 A 18 51 0 0 1 268.836 51"
+        fill="none"
+        stroke="#d7e6f4"
+        stroke-width="1.2"
+        opacity=".44"
+      />
+    </g>
+    <g
+      transform="translate(1120 0) scale(-1 1) translate(265.694 271.000) rotate(-30)"
+      pointer-events="none"
+    >
+      <g clip-path="url(#animated-pipe-local-glass-clip)">
+        <path
+          d="M -20 -36 H 300.836"
+          stroke="#f1f7ff"
+          stroke-width="9"
+          opacity=".25"
+        />
+        <path
+          d="M -20 -27 H 300.836"
+          stroke="#f1f7ff"
+          stroke-width="1.2"
+          opacity=".3"
+        />
+        <path
+          d="M -20 39 H 300.836"
+          stroke="#142b46"
+          stroke-width="7"
+          opacity=".18"
+        />
+      </g>
+      <path
+        d="M 0.000 -52 H 7.000 A 18 52 0 0 1 7.000 52 H 0.000 A 18 52 0 0 0 0.000 -52 Z"
+        fill="url(#animated-pipe-rim)"
+      />
+      <path
+        d="M 268.836 -52 H 275.836 A 18 52 0 0 1 275.836 52 H 268.836 A 18 52 0 0 0 268.836 -52 Z"
+        fill="url(#animated-pipe-rim)"
+      />
+      <path
+        d="M 0 -52 A 18 52 0 0 1 0 52 M 275.836 -52 A 18 52 0 0 1 275.836 52"
+        fill="none"
+        stroke="#233a54"
+        stroke-width="2"
+      />
+      <path
+        d="M 7 -51 A 18 51 0 0 1 7 51 M 268.836 -51 A 18 51 0 0 1 268.836 51"
+        fill="none"
+        stroke="#d7e6f4"
+        stroke-width="1.2"
+        opacity=".44"
+      />
+    </g>
+  </svg>
+</div>
+
+<script>
+  (() => {
+    const CONFIG = {
+      basePixelsPerSecond: 64,
+      digitSpacing: 32,
+      lanes: [-17, 17],
+      binary: "10110010100110100111010010110100",
+      maximumInteractionBoost: 2.4,
+    };
+
+    const clamp = (value: number, min: number, max: number) =>
+      Math.min(Math.max(value, min), max);
+
+    document
+      .querySelectorAll<HTMLElement>("[data-animated-pipe]")
+      .forEach((container) => {
+        const svg = container.querySelector<SVGSVGElement>("svg");
+        const route = svg?.querySelector<SVGPathElement>(
+          "#animated-pipe-flow-route",
+        );
+        const stream = svg?.querySelector<SVGGElement>("[data-pipe-stream]");
+        if (!svg || !route || !stream) return;
+
+        const engineeringSection =
+          container.closest<HTMLElement>("#engineering");
+        const interactionArea = engineeringSection ?? container;
+        const reducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        );
+        const length = route.getTotalLength();
+        const sampleCount = Math.ceil(length);
+        const samples = Array.from({ length: sampleCount + 1 }, (_, index) => {
+          const distance = Math.min(index, length);
+          const point = route.getPointAtLength(distance);
+          const previous = route.getPointAtLength(Math.max(0, distance - 0.5));
+          const next = route.getPointAtLength(Math.min(length, distance + 0.5));
+          const magnitude =
+            Math.hypot(next.x - previous.x, next.y - previous.y) || 1;
+
+          return {
+            x: point.x,
+            y: point.y,
+            tx: (next.x - previous.x) / magnitude,
+            ty: (next.y - previous.y) / magnitude,
+          };
+        });
+
+        const count = Math.ceil(length / CONFIG.digitSpacing);
+        const spacing = length / count;
+        const fragment = document.createDocumentFragment();
+        const digits: Array<{
+          node: SVGTextElement;
+          distance: number;
+          lane: number;
+        }> = [];
+
+        CONFIG.lanes.forEach((lane, row) => {
+          for (let index = 0; index < count; index += 1) {
+            const text = document.createElementNS(
+              "http://www.w3.org/2000/svg",
+              "text",
+            );
+            text.textContent =
+              CONFIG.binary[(index + row * 11) % CONFIG.binary.length];
+            text.setAttribute("opacity", row === 0 ? "0.97" : "0.77");
+            text.setAttribute("font-family", "DM Mono, monospace");
+            text.setAttribute("font-size", "26");
+            text.setAttribute("font-weight", "500");
+            text.setAttribute("fill", "#eef6ff");
+            text.setAttribute("text-anchor", "middle");
+            text.setAttribute("dominant-baseline", "middle");
+            fragment.appendChild(text);
+            digits.push({
+              node: text,
+              distance: index * spacing + (row * spacing) / 2,
+              lane,
+            });
+          }
+        });
+        stream.appendChild(fragment);
+
+        let travel = 0;
+        let interaction = 0;
+        let interactionTarget = 0;
+        let previousTime: number | null = null;
+        let animationId = 0;
+        let isInView = true;
+        let lastPointer: { x: number; y: number; time: number } | null = null;
+        let lastInteractionAt = 0;
+        let lastScrollY = window.scrollY;
+        let lastScrollAt = performance.now();
+
+        const render = () => {
+          for (const digit of digits) {
+            const distance = (digit.distance + travel) % length;
+            const index = Math.floor(distance);
+            const first = samples[index];
+            const second = samples[Math.min(index + 1, sampleCount)];
+            const progress = distance - index;
+            const tx = first.tx + (second.tx - first.tx) * progress;
+            const ty = first.ty + (second.ty - first.ty) * progress;
+            const x =
+              first.x + (second.x - first.x) * progress - ty * digit.lane;
+            const y =
+              first.y + (second.y - first.y) * progress + tx * digit.lane;
+            const angle = (Math.atan2(ty, tx) * 180) / Math.PI;
+
+            digit.node.setAttribute(
+              "transform",
+              `translate(${x.toFixed(2)} ${y.toFixed(2)}) rotate(${angle.toFixed(2)})`,
+            );
+          }
+        };
+
+        const sectionIsVisible = () => {
+          const bounds = interactionArea.getBoundingClientRect();
+          return bounds.bottom > 0 && bounds.top < window.innerHeight;
+        };
+
+        const frame = (now: number) => {
+          animationId = 0;
+          if (reducedMotion.matches || document.hidden || !isInView) return;
+
+          const delta =
+            previousTime === null
+              ? 0
+              : Math.min((now - previousTime) / 1000, 0.05);
+          previousTime = now;
+
+          if (now - lastInteractionAt > 120) interactionTarget = 0;
+          interaction +=
+            (interactionTarget - interaction) * Math.min(delta * 8, 1);
+          const speed = 1 + interaction * CONFIG.maximumInteractionBoost;
+          travel =
+            (travel + delta * CONFIG.basePixelsPerSecond * speed) % length;
+          render();
+          animationId = requestAnimationFrame(frame);
+        };
+
+        const syncPlayback = () => {
+          cancelAnimationFrame(animationId);
+          previousTime = null;
+          if (!reducedMotion.matches && !document.hidden && isInView) {
+            animationId = requestAnimationFrame(frame);
+          }
+        };
+
+        const onPointerMove = (event: PointerEvent) => {
+          if (event.pointerType !== "mouse" || reducedMotion.matches) return;
+
+          const now = performance.now();
+          if (lastPointer) {
+            const elapsed = Math.max(now - lastPointer.time, 8);
+            const distance = Math.hypot(
+              event.clientX - lastPointer.x,
+              event.clientY - lastPointer.y,
+            );
+            interactionTarget = clamp(distance / elapsed / 0.9, 0, 1);
+          }
+          lastPointer = { x: event.clientX, y: event.clientY, time: now };
+          lastInteractionAt = now;
+        };
+
+        const onPointerLeave = () => {
+          lastPointer = null;
+          interactionTarget = 0;
+          lastInteractionAt = performance.now();
+        };
+
+        const onScroll = () => {
+          const now = performance.now();
+          const elapsed = Math.max(now - lastScrollAt, 16);
+          const distance = Math.abs(window.scrollY - lastScrollY);
+          lastScrollY = window.scrollY;
+          lastScrollAt = now;
+
+          const isMobile = window.matchMedia(
+            "(max-width: 767px), (pointer: coarse)",
+          ).matches;
+          if (!sectionIsVisible() || !isMobile || reducedMotion.matches) return;
+
+          interactionTarget = clamp(distance / elapsed / 1.25, 0, 1);
+          lastInteractionAt = now;
+        };
+
+        const onVisibilityChange = () => syncPlayback();
+        interactionArea.addEventListener("pointermove", onPointerMove, {
+          passive: true,
+        });
+        interactionArea.addEventListener("pointerleave", onPointerLeave, {
+          passive: true,
+        });
+        window.addEventListener("scroll", onScroll, { passive: true });
+        document.addEventListener("visibilitychange", onVisibilityChange);
+        reducedMotion.addEventListener("change", syncPlayback);
+
+        const observer =
+          "IntersectionObserver" in window
+            ? new IntersectionObserver(
+                ([entry]) => {
+                  isInView = entry.isIntersecting;
+                  syncPlayback();
+                },
+                { threshold: 0 },
+              )
+            : null;
+        observer?.observe(container);
+
+        render();
+        syncPlayback();
+      });
+  })();
+</script>
+
+<style>
+  .animated-pipe {
+    width: min(1120px, 100%);
+    margin: clamp(1rem, 3vw, 2.5rem) auto clamp(2rem, 5vw, 4rem);
+    aspect-ratio: 1120 / 400;
+    pointer-events: none;
+  }
+
+  .animated-pipe svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  @media (max-width: 640px) {
+    .animated-pipe {
+      width: calc(100% + 1.5rem);
+      margin-left: -0.75rem;
+      margin-right: -0.75rem;
+    }
+  }
+</style>

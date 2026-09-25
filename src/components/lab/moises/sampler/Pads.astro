@@ -1,0 +1,79 @@
+---
+import Pad from "./Pad.astro";
+---
+
+<svg viewBox="0 0 330 210" class="w-full h-auto overflow-visible">
+  <defs>
+    <filter id="pad-noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="0.85"
+        numOctaves="3"
+        result="noise"
+      />
+      <feColorMatrix
+        type="matrix"
+        values="0 0 0 0 1
+                    0 0 0 0 1
+                    0 0 0 0 1
+                    0 0 0 0.55 0"
+        in="noise"
+        result="white-noise"
+      />
+      <feComposite
+        operator="in"
+        in="white-noise"
+        in2="SourceGraphic"
+        result="masked-noise"
+      />
+      <feBlend mode="overlay" in="masked-noise" in2="SourceGraphic" />
+    </filter>
+  </defs>
+
+  <!-- Pad group -->
+  <g transform="translate(0, 59) scale(1, 0.5774) rotate(-21)">
+    <!-- Top Row -->
+    <Pad x={0} y={0} sound="bass" color="#3b82f6" /> <!-- Blue -->
+    <Pad x={136} y={0} sound="pad" color="#a855f7" /> <!-- Purple -->
+    <!-- Bottom Row -->
+    <Pad x={0} y={141} sound="kick" color="#d84750" /> <!-- Original Red -->
+    <Pad x={136} y={141} sound="clap" color="#eab308" /> <!-- Yellow -->
+  </g>
+</svg>
+
+<script>
+  import u from "umbrellajs";
+  import * as Tone from "tone";
+  import { playSound } from "./sounds.js";
+
+  const triggerPad = async (padEl: SVGElement) => {
+    if (Tone.context.state !== "running") {
+      await Tone.start();
+    }
+
+    const pad = u(padEl);
+    const sound = pad.data("sound");
+
+    pad.addClass("is-pressed");
+    playSound(sound);
+
+    setTimeout(() => {
+      pad.removeClass("is-pressed");
+    }, 80);
+  };
+
+  // Pointer / Mouse / Touch Handler
+  u(".pad").on("pointerdown", (e) => {
+    e.preventDefault();
+    triggerPad(e.currentTarget as SVGElement);
+  });
+
+  // Keyboard Handler (Enter / Spacebar)
+  u(".pad").on("keydown", (e) => {
+    const keyEvent = e as KeyboardEvent;
+    if (keyEvent.key === " " || keyEvent.key === "Enter") {
+      keyEvent.preventDefault();
+      triggerPad(e.currentTarget as SVGElement);
+    }
+  });
+</script>
