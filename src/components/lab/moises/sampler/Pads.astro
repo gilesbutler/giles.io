@@ -2,7 +2,7 @@
 import Pad from "./Pad.astro";
 ---
 
-<svg viewBox="0 0 330 210" class="w-full h-auto overflow-visible">
+<svg viewBox="0 0 330 210" class="w-full h-auto overflow-visible" data-sampler-pads>
   <defs>
     <filter id="pad-noise" x="0%" y="0%" width="100%" height="100%">
       <feTurbulence
@@ -42,38 +42,52 @@ import Pad from "./Pad.astro";
 </svg>
 
 <script>
-  import u from "umbrellajs";
-  import * as Tone from "tone";
-  import { playSound } from "./sounds.js";
+  type SoundModule = typeof import("./sounds.js");
 
-  const triggerPad = async (padEl: SVGElement) => {
-    if (Tone.context.state !== "running") {
-      await Tone.start();
-    }
+  let soundModulePromise: Promise<SoundModule> | null = null;
 
-    const pad = u(padEl);
-    const sound = pad.data("sound");
-
-    pad.addClass("is-pressed");
-    playSound(sound);
-
-    setTimeout(() => {
-      pad.removeClass("is-pressed");
-    }, 80);
+  const loadAudio = () => {
+    soundModulePromise ??= import("./sounds.js");
+    return soundModulePromise;
   };
 
-  // Pointer / Mouse / Touch Handler
-  u(".pad").on("pointerdown", (e) => {
-    e.preventDefault();
-    triggerPad(e.currentTarget as SVGElement);
-  });
+  const triggerPad = async (padEl: SVGElement) => {
+    try {
+      const { startAudio, playSound } = await loadAudio();
+      await startAudio();
 
-  // Keyboard Handler (Enter / Spacebar)
-  u(".pad").on("keydown", (e) => {
-    const keyEvent = e as KeyboardEvent;
-    if (keyEvent.key === " " || keyEvent.key === "Enter") {
-      keyEvent.preventDefault();
-      triggerPad(e.currentTarget as SVGElement);
+      const sound = padEl.getAttribute("data-sound");
+      if (!sound) return;
+
+      padEl.classList.add("is-pressed");
+      playSound(sound);
+
+      window.setTimeout(() => {
+        padEl.classList.remove("is-pressed");
+      }, 80);
+    } catch (error) {
+      console.error("Unable to start sampler audio", error);
     }
-  });
+  };
+
+  document
+    .querySelectorAll<SVGElement>("[data-sampler-pads] .pad")
+    .forEach((pad) => {
+      // Warm the optional audio chunk when intent is clear, while keeping
+      // Tone.js out of the initial bundle for visitors who never use the pads.
+      pad.addEventListener("pointerenter", () => void loadAudio(), { once: true });
+      pad.addEventListener("focus", () => void loadAudio(), { once: true });
+
+      pad.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        void triggerPad(pad);
+      });
+
+      pad.addEventListener("keydown", (event) => {
+        if (event.key === " " || event.key === "Enter") {
+          event.preventDefault();
+          void triggerPad(pad);
+        }
+      });
+    });
 </script>
