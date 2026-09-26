@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#fafaf8"/>
+  <g stroke="#e7e9e8" stroke-width="1">
+    <path d="M0 64H1200M0 128H1200M0 192H1200M0 256H1200M0 320H1200M0 384H1200M0 448H1200M0 512H1200M0 576H1200"/>
+    <path d="M64 0V630M128 0V630M192 0V630M256 0V630M320 0V630M384 0V630M448 0V630M512 0V630M576 0V630M640 0V630M704 0V630M768 0V630M832 0V630M896 0V630M960 0V630M1024 0V630M1088 0V630M1152 0V630"/>
+  </g>
+  <text x="78" y="82" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#526276">olá, this is a story about...</text>
+  <g font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" fill="#141413">
+    <text x="78" y="200" font-size="94">MUSIC, DESIGN,</text>
+    <text x="78" y="312" font-size="94">ENGINEERING</text>
+    <text x="78" y="424" font-size="94">PRODUCT.</text>
+  </g>
+  <text x="865" y="314" font-family="Arial, Helvetica, sans-serif" font-style="italic" font-size="42" fill="#36c5f0">and</text>
+  <text x="78" y="570" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#526276">Senior Product Designer application</text>
+  <g transform="translate(825 545)">
+    <path d="M0 16c12 14 24 14 36 0M0 8c12 14 24 14 36 0M0 24c12 14 24 14 36 0" fill="none" stroke="#36c5f0" stroke-width="3"/>
+    <text x="48" y="24" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#141413">moises | GILES BUTLER.</text>
+  </g>
+</svg>
