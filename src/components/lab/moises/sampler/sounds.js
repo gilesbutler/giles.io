@@ -69,6 +69,12 @@ const clap = new Tone.NoiseSynth({
   },
 }).connect(clapFilter);
 
+export async function startAudio() {
+  if (Tone.context.state !== "running") {
+    await Tone.start();
+  }
+}
+
 export function playSound(soundType) {
   const time = Tone.now();
 
