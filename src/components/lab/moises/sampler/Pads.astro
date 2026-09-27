@@ -47,7 +47,13 @@ import Pad from "./Pad.astro";
   let soundModulePromise: Promise<SoundModule> | null = null;
 
   const loadAudio = () => {
-    soundModulePromise ??= import("./sounds.js");
+    if (!soundModulePromise) {
+      soundModulePromise = import("./sounds.js").catch((error) => {
+        soundModulePromise = null;
+        throw error;
+      });
+    }
+
     return soundModulePromise;
   };
 
@@ -73,11 +79,6 @@ import Pad from "./Pad.astro";
   document
     .querySelectorAll<SVGElement>("[data-sampler-pads] .pad")
     .forEach((pad) => {
-      // Warm the optional audio chunk when intent is clear, while keeping
-      // Tone.js out of the initial bundle for visitors who never use the pads.
-      pad.addEventListener("pointerenter", () => void loadAudio(), { once: true });
-      pad.addEventListener("focus", () => void loadAudio(), { once: true });
-
       pad.addEventListener("pointerdown", (event) => {
         event.preventDefault();
         void triggerPad(pad);
@@ -90,4 +91,5 @@ import Pad from "./Pad.astro";
         }
       });
     });
+
 </script>

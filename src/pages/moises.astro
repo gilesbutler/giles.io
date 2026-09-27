@@ -15,7 +15,7 @@ import ContactActions from "~/components/ContactActions.astro";
   noindex={true}
   title="Giles Butler × Moises — Senior Product Designer"
   description="A story about music, design, engineering and product, and why I want to bring 15+ years of product experience and 25+ years of music production to Moises."
-  ogImage="/moises-og.svg"
+  ogImage="/moises-og.png"
 >
   <main>
     <div id="sticky-logo" class="sticky-logo">
@@ -232,9 +232,9 @@ import ContactActions from "~/components/ContactActions.astro";
       <a
         href="#work"
         data-astro-prefetch="false"
-        class="hand mt-10 md:mt-14 text-xl md:text-2xl text-slate-500 hover:text-slate-900 underline decoration-wavy underline-offset-4 transition-colors"
+        class="hand mt-10 md:mt-14 text-xl md:text-2xl !text-slate-500 hover:!text-slate-900 underline decoration-wavy underline-offset-4 transition-colors"
       >
-        short on time? skip to the work ↓
+        short on time? skip to the work <span class="text-sm">↓</span>
       </a>
     </section>
 
@@ -314,10 +314,10 @@ import ContactActions from "~/components/ContactActions.astro";
               hardware and spend wayyy too much time sampling things.
             </p>
 
-            <p class="!text-base md:!text-lg !text-slate-300">
-              <strong>Current practice:</strong> recording, MIDI, mixing, routing,
-              signal flow, VST/AU plugins, hardware synths, samplers and hybrid
-              software/hardware workflows.
+            <p class="!text-base md:!text-lg">
+              <strong class="text-[var(--theme-text)]">Current practice:</strong> Recording, MIDI, mixing, routing,
+              signal flow, hardware synths, samplers and hybrid
+              software/hardware workflows. Ableton with mainly stock plugins, select VSTs and Max For Live devices.
             </p>
 
             <div class="note blue max-w-sm text-center !relative rotate-2 mt-12 !text-cyan-900 mx-auto">
@@ -1388,8 +1388,8 @@ import ContactActions from "~/components/ContactActions.astro";
   .section-drawer__close {
     cursor: pointer;
     display: inline-flex;
-    width: 2rem;
-    height: 2rem;
+    width: 2.7rem;
+    height: 2.7rem;
     align-items: center;
     justify-content: center;
     flex: none;
@@ -1400,6 +1400,11 @@ import ContactActions from "~/components/ContactActions.astro";
       background-color 160ms ease,
       border-color 160ms ease,
       transform 160ms ease;
+
+    @media (min-width: 580px) {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 
   .section-menu-button:hover,
@@ -1422,11 +1427,16 @@ import ContactActions from "~/components/ContactActions.astro";
 
   .section-menu-button svg,
   .section-drawer__close svg {
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 1.6rem;
+    height: 1.6rem;
     stroke: currentColor;
-    stroke-width: 1.7;
+    stroke-width: 1.8;
     stroke-linecap: round;
+
+    @media (min-width: 580px) {
+      width: 1.1rem;
+      height: 1.1rem;
+    }
   }
 
   .section-drawer:not([open]) {
@@ -1463,7 +1473,7 @@ import ContactActions from "~/components/ContactActions.astro";
 
   .section-drawer__header {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: 1rem;
     padding-bottom: 1.5rem;
