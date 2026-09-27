@@ -15,6 +15,7 @@ import ContactActions from "~/components/ContactActions.astro";
   noindex={true}
   title="Giles Butler × Moises — Senior Product Designer"
   description="A story about music, design, engineering and product, and why I want to bring 15+ years of product experience and 25+ years of music production to Moises."
+  ogImage="/moises-og.png"
 >
   <main>
     <div id="sticky-logo" class="sticky-logo">
@@ -22,7 +23,7 @@ import ContactActions from "~/components/ContactActions.astro";
 
       <span class="block text-slate-300">&vert;</span>
 
-      <a href="/moises" class="logo text-sm shrink-0" aria-label="Giles Butler home">
+      <a href="/moises" data-astro-prefetch="false" class="logo text-sm shrink-0" aria-label="Giles Butler home">
         Giles Butler<span class="logo-dot">.</span>
       </a>
 
@@ -186,7 +187,7 @@ import ContactActions from "~/components/ContactActions.astro";
           <span class="block text-slate-300 ml-2 mr-[7px]">&vert;</span>
 
           <a
-            href="/moises"
+            href="/moises" data-astro-prefetch="false"
             class="logo text-lg md:text-xl z-2"
             aria-label="Giles Butler home"
           >
@@ -227,6 +228,14 @@ import ContactActions from "~/components/ContactActions.astro";
           </p>
         </div>
       </div>
+
+      <a
+        href="#work"
+        data-astro-prefetch="false"
+        class="hand mt-10 md:mt-14 text-xl md:text-2xl !text-slate-500 hover:!text-slate-900 underline decoration-wavy underline-offset-4 transition-colors"
+      >
+        short on time? skip to the work <span class="text-sm">↓</span>
+      </a>
     </section>
 
     <!-- Music Section -->
@@ -303,6 +312,12 @@ import ContactActions from "~/components/ContactActions.astro";
               </span>
               . Twenty-five years later, I still produce, release music, collect
               hardware and spend wayyy too much time sampling things.
+            </p>
+
+            <p class="!text-base md:!text-lg">
+              <strong class="text-[var(--theme-text)]">Current practice:</strong> Recording, MIDI, mixing, routing,
+              signal flow, hardware synths, samplers and hybrid
+              software/hardware workflows. Ableton with mainly stock plugins, select VSTs and Max For Live devices.
             </p>
 
             <div class="note blue max-w-sm text-center !relative rotate-2 mt-12 !text-cyan-900 mx-auto">
@@ -410,8 +425,8 @@ import ContactActions from "~/components/ContactActions.astro";
           </p>
 
           <h3 class="statement-text !text-[#344760]">
-            Sometimes the fastest way to answer a design question is to just
-            build it.
+            Sometimes the fastest way to answer a design question is to build
+            it.
           </h3>
 
           <div class="note blue max-w-sm text-center !relative rotate-1 mt-12 !text-cyan-900 mx-auto">
@@ -622,7 +637,7 @@ import ContactActions from "~/components/ContactActions.astro";
           <div class="xl:max-w-80 xl:text-center xl:absolute xl:right-[45px] xl:top-[-144px]">
             <h2 class="hand text-3xl md:text-4xl xl:text-4xl xl:text-5xl text-[var(--theme-accent)] -rotate-2 xl:-rotate-5 text-shadow-sm text-shadow-red-100/70">
               Twenty-five years of making things has shaped how I make decisions
-              today!
+              today.
             </h2>
           </div>
         </div>
@@ -841,11 +856,19 @@ import ContactActions from "~/components/ContactActions.astro";
     }
   });
 
-  const locomotiveScroll = new LocomotiveScroll();
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let locomotiveScroll: LocomotiveScroll | null = null;
 
-  window.addEventListener("work-showcase-layout-change", () => {
-    requestAnimationFrame(() => locomotiveScroll.resize());
-  });
+  if (reducedMotion.matches) {
+    document.documentElement.classList.add("moises-reduced-motion");
+    window.addEventListener("scroll", syncStickyLogo, { passive: true });
+  } else {
+    locomotiveScroll = new LocomotiveScroll();
+
+    window.addEventListener("work-showcase-layout-change", () => {
+      requestAnimationFrame(() => locomotiveScroll?.resize());
+    });
+  }
 
   setupSectionDrawer();
   setupDesignPointerEffect();
@@ -1365,8 +1388,8 @@ import ContactActions from "~/components/ContactActions.astro";
   .section-drawer__close {
     cursor: pointer;
     display: inline-flex;
-    width: 2rem;
-    height: 2rem;
+    width: 2.7rem;
+    height: 2.7rem;
     align-items: center;
     justify-content: center;
     flex: none;
@@ -1377,6 +1400,11 @@ import ContactActions from "~/components/ContactActions.astro";
       background-color 160ms ease,
       border-color 160ms ease,
       transform 160ms ease;
+
+    @media (min-width: 580px) {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 
   .section-menu-button:hover,
@@ -1399,11 +1427,16 @@ import ContactActions from "~/components/ContactActions.astro";
 
   .section-menu-button svg,
   .section-drawer__close svg {
-    width: 1.1rem;
-    height: 1.1rem;
+    width: 1.6rem;
+    height: 1.6rem;
     stroke: currentColor;
-    stroke-width: 1.7;
+    stroke-width: 1.8;
     stroke-linecap: round;
+
+    @media (min-width: 580px) {
+      width: 1.1rem;
+      height: 1.1rem;
+    }
   }
 
   .section-drawer:not([open]) {
@@ -1440,7 +1473,7 @@ import ContactActions from "~/components/ContactActions.astro";
 
   .section-drawer__header {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     gap: 1rem;
     padding-bottom: 1.5rem;
@@ -1527,6 +1560,34 @@ import ContactActions from "~/components/ContactActions.astro";
   }
 
   @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+
+    .theme-section {
+      transition: none;
+    }
+
+    [data-scroll-css-progress] {
+      --progress: 1 !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    #hero [data-scroll-css-progress] {
+      --progress: 0 !important;
+    }
+
+    .flt1,
+    .flt2,
+    .flt3,
+    .flt4,
+    .flt5,
+    .flt6,
+    .flt7 {
+      animation: none !important;
+    }
+
     .section-menu-button,
     .section-drawer__close,
     .section-drawer__nav a {
