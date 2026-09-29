@@ -1,0 +1,39 @@
+---
+interface Props { company: string; role: string; focus?: string; cvUrl: string; }
+const { company, role, focus, cvUrl } = Astro.props;
+const subject = `${company}: ${role}${focus ? ` (${focus})` : ''}`;
+---
+<div class="application-contact" data-application-contact data-email-subject={subject}>
+  <div class="ac-row"><button type="button" class="ac-primary" data-email>Email Me <span aria-hidden="true">↗</span></button><button type="button" class="ac-copy" data-copy>Copy email</button></div>
+  <a class="ac-cv" href={cvUrl} download data-astro-prefetch="false">Download CV <span aria-hidden="true">↓</span></a>
+  <p class="ac-status" role="status" aria-live="polite" data-status></p>
+  <noscript><p>Enable JavaScript to use the email controls, or find contact details in the CV.</p></noscript>
+</div>
+<style>
+  .application-contact{display:grid;justify-items:center;gap:12px;margin-top:36px;font-family:var(--font-body,Arial,sans-serif)}.ac-row{display:flex;gap:8px}.application-contact button,.ac-cv{display:inline-flex;align-items:center;justify-content:center;gap:18px;font:inherit;font-size:16px;font-weight:650;min-height:52px;border-radius:12px;padding:12px 22px;cursor:pointer;text-decoration:none;transition:background-color 150ms ease,transform 150ms ease}.ac-primary{background:var(--application-accent,#ff5500);color:#121212;border:1px solid transparent;min-width:174px}.ac-copy{background:#1d1d1d;color:#fafafa;border:1px solid #565656;min-width:116px}.ac-cv{color:#fafafa;border:1px solid #565656;background:transparent;font-size:14px}.ac-copy[data-copied]{color:#121212;background:#eeeadd}.ac-status{min-height:20px;color:#ddd;font-size:13px;margin:0}.application-contact :is(button,a):focus-visible{outline:3px solid #fff;outline-offset:4px}@media(hover:hover){.ac-primary:hover,.ac-cv:hover{transform:translateY(-2px)}.ac-copy:hover{background:#303030}}@media(max-width:380px){.ac-primary{min-width:0}.ac-row{width:100%}.ac-primary{flex:1}.application-contact button{font-size:14px;padding:12px 14px}.ac-copy{min-width:108px}}@media(prefers-reduced-motion:reduce){.application-contact :is(button,a){transition:none!important;transform:none!important}}
+</style>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-application-contact]').forEach(root => {
+    if (root.dataset.ready) return;
+    root.dataset.ready = 'true';
+    const email = () => String.fromCharCode(105,109,64,103,105,108,101,115,46,105,111);
+    const launch = root.querySelector<HTMLButtonElement>('[data-email]');
+    const copy = root.querySelector<HTMLButtonElement>('[data-copy]');
+    const status = root.querySelector<HTMLElement>('[data-status]');
+    if (!launch || !copy || !status) return;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    launch.addEventListener('click', () => { window.location.href = `mailto:${email()}?subject=${encodeURIComponent(root.dataset.emailSubject || '')}`; });
+    copy.addEventListener('click', async () => {
+      clearTimeout(timer);
+      let copied = false;
+      try { await navigator.clipboard.writeText(email()); copied = true; } catch {
+        const field = document.createElement('textarea'); field.value = email(); field.readOnly = true;
+        field.style.cssText = 'position:fixed;left:-9999px;top:0'; document.body.append(field); field.select();
+        try { copied = document.execCommand('copy'); } catch { copied = false; } finally { field.remove(); copy.focus({preventScroll:true}); }
+      }
+      if (!copied) { status.textContent = 'Copy is unavailable. Use Email Me or the contact details in the CV.'; return; }
+      copy.textContent = 'Copied'; copy.dataset.copied = 'true'; status.textContent = 'Email address copied.';
+      timer = setTimeout(() => { copy.textContent = 'Copy email'; delete copy.dataset.copied; status.textContent = ''; }, 1800);
+    });
+  });
+</script>

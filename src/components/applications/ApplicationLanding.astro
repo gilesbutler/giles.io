@@ -1,0 +1,126 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import Pads from '~/components/lab/moises/sampler/Pads.astro';
+import AnimatedPipe from '~/components/AnimatedPipe.astro';
+import ProductLearningLoop from '~/components/ProductLearningLoop.astro';
+import ApplicationWork from './ApplicationWork.astro';
+import ApplicationContact from './ApplicationContact.astro';
+import type { ApplicationConfig } from '~/config/applications/types';
+import './application-landing.css';
+interface Props { application: ApplicationConfig; }
+const { application: app } = Astro.props;
+const chapters = [
+  ['hero','Start','Introduction'], ['music','01','Music'], ['design','02','Design'],
+  ['engineering','03','Engineering'], ['product','04','Product'], ['ai','05','The tools changed'],
+  ['taste','06','Taste'], ['why','07',`Why ${app.company}`], ['work','08','Work'], ['contact','End','Contact'],
+];
+---
+<Layout title={`Giles Butler × ${app.company} | ${app.role}, ${app.focus}`} description={app.description} ogImage={app.ogImage} canonical={`/${app.slug}/`} noindex={true}>
+  <main class="application-page" data-application-page={app.slug} style={`--application-accent:${app.accent}`}>
+    <div class="ap-sticky" data-application-sticky>
+      <a class="ap-lockup" href="#hero" data-astro-prefetch="false" aria-label={`Giles Butler’s application for ${app.company}, back to start`}><span class="ap-company"><img src={app.logo} width="48" height="48" alt=""/><b>{app.company}</b></span><span aria-hidden="true">/</span><strong>Giles Butler<span>.</span></strong></a>
+      <button type="button" data-open-navigation aria-label="Open chapter navigation" aria-haspopup="dialog" aria-controls="application-drawer" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+    <dialog class="ap-drawer" id="application-drawer" aria-labelledby="application-drawer-title">
+      <header><h2 id="application-drawer-title">Jump to a chapter</h2><button type="button" data-close-navigation aria-label="Close chapter navigation">×</button></header>
+      <nav aria-label="Application chapters"><ol>{chapters.map(([id, number, title]) => <li><a href={`#${id}`} data-astro-prefetch="false"><span>{number}</span><strong>{title}</strong></a></li>)}</ol></nav>
+      <p>{app.company} · {app.focus}</p>
+    </dialog>
+    <section class="ap-section ap-hero" id="hero" aria-labelledby="application-title">
+      <p class="ap-narrator ap-greeting">{app.greeting}</p>
+      <h1 id="application-title" class="display-name selected resizable-heading ap-hero-title" data-resizable-heading>
+        <span class="display-name-content"><a href="#music" data-astro-prefetch="false">Music</a>, <a href="#design" data-astro-prefetch="false">Design</a>, <span class="ap-engineering-word"><a href="#engineering" data-astro-prefetch="false">Engineering</a><span class="ap-and">and</span></span> <a href="#product" data-astro-prefetch="false">Product</a>.</span>
+        <span class="h tl" aria-hidden="true"></span><span class="h tr" aria-hidden="true"></span><span class="h bl" aria-hidden="true"></span><span class="h br" aria-hidden="true"></span>
+      </h1>
+      <p class="ap-application-note">(it’s also a job application)</p>
+      <div class="ap-lockup ap-hero-lockup"><span class="ap-company"><img src={app.logo} width="60" height="60" alt=""/><b>{app.company}</b></span><span aria-hidden="true">/</span><strong>Giles Butler<span>.</span></strong></div>
+      <img class="ap-avatar" src="/avatar.jpg" width="48" height="48" alt="Giles Butler"/>
+      <p class="ap-role">{app.role} · {app.focus}</p>
+      <p class="ap-hero-summary">{app.heroSummary}</p>
+      <a class="ap-location-short" href="#location" data-astro-prefetch="false">{app.locationShort}</a>
+      <p class="ap-question-intro">So there’s one question I’ve been thinking about…</p>
+      <p class="ap-sticker ap-sticker-yellow">{app.heroQuestion}</p>
+      <a class="ap-skip ap-narrator" href="#work" data-astro-prefetch="false">short on time? skip to the work <span aria-hidden="true">↓</span></a>
+    </section>
+    <section class="ap-section ap-music" id="music" aria-labelledby="music-heading">
+      <header class="ap-chapter"><p>Chapter 1</p><h2 id="music-heading">Music</h2><p class="ap-subtitle">Learning to listen.</p></header>
+      <div class="ap-music-grid"><div class="ap-pads"><Pads/><p class="ap-narrator">go on, play my pads</p><p class="ap-caption">Hand-built SVG controls and synthesised audio.<br/>Sound starts only when you play.</p></div><div class="ap-prose"><p>When I was 12 I got into producing and DJing. I learnt something I still use every day: making more is easy. Knowing what belongs, what doesn’t, and when something is finished is much harder.</p><p>I studied Music Production at university, produced with Logic in the Emagic era and have used Ableton since Live 4, including its beta programme. Twenty-five years later, I still produce, release music, collect hardware and spend wayyy too much time sampling things.</p><p class="ap-practice"><strong>Current practice:</strong> recording, MIDI, mixing, routing, signal flow, hardware synths and samplers. Ableton with mainly stock plugins, select VSTs and Max for Live devices.</p></div></div>
+      <p class="ap-sticker ap-sticker-blue">But instinct only gets you so far. How do you turn a feeling into a deliberate decision?</p>
+    </section>
+    <section class="ap-section ap-design" id="design" aria-labelledby="design-heading">
+      <header class="ap-chapter"><p>Chapter 2</p><h2 id="design-heading">Design</h2><p class="ap-subtitle">Learning to choose.</p></header>
+      <div class="ap-prose"><h3>I started my career as a designer.</h3><p>It taught me to turn instinct into intent: to decide what matters, where attention should go, and what can disappear without losing meaning.</p><p><strong>Hierarchy. Rhythm. Contrast. Restraint.</strong> I learnt to use them to give an interface structure, make relationships clear and make the next step feel obvious.</p><h3>{app.designHeading}</h3><p>{app.designIntro}</p></div>
+      <slot name="design-demo"/>
+      <p class="ap-demo-note">{app.designCaption}</p>
+      <div class="ap-prose"><p>{app.designAfter}</p></div>
+      <p class="ap-sticker ap-sticker-pink">I wanted to design what happened, not just what it looked like…</p>
+    </section>
+    <section class="ap-section ap-engineering" id="engineering" aria-labelledby="engineering-heading">
+      <header class="ap-chapter"><p>Chapter 3</p><h2 id="engineering-heading">Engineering</h2><p class="ap-subtitle">So I learnt to build what I was designing.</p></header>
+      <AnimatedPipe/>
+      <div class="ap-prose"><p>Frontend soon became full stack. Code stopped being something that happened after design and became another material I could design with.</p><h3>Today, working prototypes are often how I think.</h3><p>They expose assumptions that static designs hide: state, timing, responsiveness, latency, edge cases and what happens when real data refuses to fit the happy path. Component systems and testing in isolation help me carry those decisions into implementation.</p><h3>Sometimes the fastest way to answer a design question is to build it.</h3></div>
+      <p class="ap-sticker ap-sticker-blue">Building taught me that the interface is only one part of the product…</p>
+    </section>
+    <section class="ap-section ap-product" id="product" aria-labelledby="product-heading">
+      <header class="ap-chapter"><p>Chapter 4</p><h2 id="product-heading">Product</h2><p class="ap-subtitle">Then I learnt to think beyond the interface.</p></header>
+      <div class="ap-prose"><p>The last decade has been spent building products inside startups. Talking to customers, deciding what to build and staying involved after it ships.</p><p>At Mixo I’m in support every day. Repeated requests for a way to hear from customers’ own visitors led us to build custom forms, turning a website into a way to collect enquiries and feedback.</p><h3>Good product work moves at the speed of learning.</h3><p>Some decisions need another conversation. Some need a prototype in an afternoon. Some need more craft before they reach a customer. Owning the product means choosing the next step, not waiting for a finished brief.</p></div>
+      <ProductLearningLoop noOutro={true}/>
+      <p class="ap-sticker ap-sticker-green">Then the tools made it much faster to put an idea in somebody’s hands…</p>
+    </section>
+    <section class="ap-section ap-ai" id="ai" aria-labelledby="ai-heading">
+      <header class="ap-chapter"><p>Chapter 5</p><h2 id="ai-heading">The tools<br/>changed.</h2><p class="ap-subtitle">The decisions still need a reason.</p></header>
+      <div class="ap-prose"><p>AI-assisted development lets me explore more directions and get to a working prototype sooner. I use structured specifications, code agents and independent review to support implementation, while checking the behaviour and output myself.</p><h3>More options make the choice more important.</h3><p>{app.toolsParagraph}</p></div>
+      <p class="ap-narrator ap-next-question">So how do you learn to choose?</p>
+    </section>
+    <section class="ap-section ap-taste" id="taste" aria-labelledby="taste-heading">
+      <header class="ap-chapter"><p>Chapter 6</p><h2 id="taste-heading">Taste</h2><p class="ap-subtitle">Accumulated judgement.</p></header>
+      <div class="ap-prose"><p>For me, taste is the judgement I’ve developed through making things, getting things wrong and seeing what people actually use.</p><p>It shapes which question I start with, what I make prominent, what I leave out and which assumption needs testing next. Experience gives me a starting point. Feedback gives me a reason to change it.</p></div>
+      <p class="ap-sticker ap-sticker-yellow">which brings us back to where we started…</p>
+    </section>
+    <section class="ap-section ap-why" id="why" aria-labelledby="why-heading">
+      <p class="ap-chapter-number">Chapter 7</p>
+      <h2 class="ap-overlap" id="why-heading"><span>Music.</span><small>To listen closely.</small><span>Design.</span><small>To decide what matters.</small><span>Engineering.</span><small>To make the idea real enough to test.</small><span>Product.</span><small>To challenge assumptions against what people need.</small></h2>
+      <p class="ap-narrator ap-experience-note">Twenty-five years of making things has shaped how I make decisions today.</p>
+      <div class="ap-prose"><h3>{app.whyTitle}</h3>{app.why.map(paragraph => <p>{paragraph}</p>)}<h3>{app.whyClose}</h3><p class="ap-role-link"><a href={app.jobUrl} target="_blank" rel="noopener noreferrer" data-astro-prefetch="false">The {app.focus} brief ↗</a></p></div>
+      <p class="ap-sticker ap-sticker-yellow">two products probably explain this better than I can…</p>
+    </section>
+    <section class="ap-section ap-work" id="work" aria-labelledby="work-heading">
+      <header class="ap-chapter"><p>Chapter 8</p><h2 id="work-heading">Work</h2><p class="ap-subtitle">From first idea to everyday use.</p></header>
+      <div class="ap-prose ap-work-intro"><p>{app.workIntro}</p></div>
+      <ApplicationWork company={app.company} mixoRelevance={app.workMixoRelevance} mixvisorRelevance={app.workMixvisorRelevance}/>
+    </section>
+    <section class="ap-section ap-contact" id="contact" aria-labelledby="contact-heading">
+      <header class="ap-chapter"><p>The next chapter?</p><h2 id="contact-heading">Say hello</h2><p class="ap-subtitle">{app.closing}</p></header>
+      <div class="ap-prose"><p>I’ve spent years making music, designing products and building software. I’d like to bring all of it to {app.company}.</p></div>
+      <ApplicationContact company={app.company} role={app.role} focus={app.focus} cvUrl={app.cvUrl}/>
+      <aside class="ap-location" id="location"><strong>A note on location</strong><p>{app.locationDetail}</p></aside>
+      <p class="ap-colophon">Designed and built for this approach to {app.company}.</p>
+    </section>
+  </main>
+</Layout>
+<script>
+  import { setupResizableSelections } from '~/scripts/resizable-selection';
+  const root = document.querySelector<HTMLElement>('[data-application-page]');
+  if (root) {
+    const sticky = root.querySelector<HTMLElement>('[data-application-sticky]');
+    const hero = root.querySelector<HTMLElement>('#hero');
+    const drawer = root.querySelector<HTMLDialogElement>('#application-drawer');
+    const open = root.querySelector<HTMLButtonElement>('[data-open-navigation]');
+    if (sticky && hero) {
+      const sync = () => sticky.classList.toggle('is-visible', hero.getBoundingClientRect().bottom <= 40);
+      sync(); window.addEventListener('scroll', sync, { passive: true }); window.addEventListener('pageshow', sync);
+    }
+    if (drawer && open) {
+      open.addEventListener('click', () => { if (!drawer.open) drawer.showModal(); open.setAttribute('aria-expanded','true'); });
+      drawer.addEventListener('close', () => open.setAttribute('aria-expanded','false'));
+      drawer.querySelector('[data-close-navigation]')?.addEventListener('click', () => drawer.close());
+      drawer.addEventListener('click', e => { if (e.target === drawer) { const b = drawer.getBoundingClientRect(); const p = e as MouseEvent; if (p.clientX < b.left || p.clientX > b.right || p.clientY < b.top || p.clientY > b.bottom) drawer.close(); } });
+      drawer.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(link => link.addEventListener('click', e => {
+        const target = document.getElementById(link.hash.slice(1)); if (!target) return;
+        e.preventDefault(); drawer.close(); history.replaceState(null,'',link.hash);
+        target.setAttribute('tabindex','-1'); target.focus({preventScroll:true}); target.scrollIntoView();
+      }));
+    }
+    setupResizableSelections();
+  }
+</script>

@@ -1,0 +1,8 @@
+---
+import ApplicationLanding from '~/components/applications/ApplicationLanding.astro';
+import CreatorInsights from '~/components/applications/CreatorInsights.astro';
+import { soundcloudApplication } from '~/config/applications/soundcloud';
+---
+<ApplicationLanding application={soundcloudApplication}>
+  <CreatorInsights slot="design-demo" />
+</ApplicationLanding>
