@@ -1,0 +1,30 @@
+export interface ApplicationConfig {
+  slug: string;
+  company: string;
+  role: string;
+  focus: string;
+  jobUrl: string;
+  sourceUrl: string;
+  logo: string;
+  ogImage: string;
+  cvUrl: string;
+  accent: string;
+  description: string;
+  greeting: string;
+  heroQuestion: string;
+  heroSummary: string;
+  locationShort: string;
+  locationDetail: string;
+  whyTitle: string;
+  why: readonly string[];
+  whyClose: string;
+  designHeading: string;
+  designIntro: string;
+  designCaption: string;
+  designAfter: string;
+  toolsParagraph: string;
+  workIntro: string;
+  workMixoRelevance: string;
+  workMixvisorRelevance: string;
+  closing: string;
+}
