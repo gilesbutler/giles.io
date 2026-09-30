@@ -1,0 +1,10 @@
+/* Long chapter names need smaller minimums on narrow screens. Scoped to the
+   new application surface so the original application is unaffected. */
+@media (max-width: 760px) {
+  .application-page .ap-hero-title {
+    font-size: clamp(30px, 9.4vw, 81px) !important;
+  }
+  .application-page .ap-engineering .ap-chapter h2 {
+    font-size: clamp(30px, 8.5vw, 64px);
+  }
+}

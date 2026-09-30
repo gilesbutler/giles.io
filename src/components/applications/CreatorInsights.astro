@@ -1,5 +1,7 @@
 ---
 import './creator-insights.css';
+import { summarise } from './creator-insights.js';
+const initial = summarise(7, 'plays');
 ---
 <section class="creator-insights" data-creator-insights aria-labelledby="insights-title">
   <header class="ci-header">
@@ -11,7 +13,7 @@ import './creator-insights.css';
     <div class="ci-segment" role="group" aria-label="Metric"><button type="button" data-metric="plays" aria-pressed="true">Plays</button><button type="button" data-metric="listeners" aria-pressed="false">Listeners</button></div>
     <div class="ci-segment" role="group" aria-label="Presentation"><button type="button" data-view="overview" aria-pressed="true">Overview</button><button type="button" data-view="data" aria-pressed="false">Underlying data</button></div>
   </div>
-  <div class="ci-summary"><div><span data-metric-label>Plays</span><strong data-total>9,360</strong></div><p data-comparison>25% more than the previous 7 days.</p><span class="ci-period-note" data-period-note>Sample period ends 28 Sep 2026</span></div>
+  <div class="ci-summary"><div><span data-metric-label>Plays</span><strong data-total>{new Intl.NumberFormat('en-GB').format(initial.total)}</strong></div><p data-comparison>{Math.round(initial.change ?? 0)}% more than the previous 7 days.</p><span class="ci-period-note" data-period-note>Sample period ends 28 Sep 2026</span></div>
   <div data-overview>
     <figure class="ci-chart"><svg viewBox="0 0 720 250" role="img" aria-labelledby="ci-chart-title ci-chart-desc"><title id="ci-chart-title">Daily plays, last 7 days</title><desc id="ci-chart-desc">Daily fictional plays. Detailed values are available under Underlying data.</desc><g data-grid></g><path class="ci-area" data-area d=""/><path class="ci-line" data-line d=""/><g data-labels></g></svg><figcaption><span data-definition>Plays count repeat listening. They are not unique people.</span><button type="button" data-open-data>Read the values ↓</button></figcaption></figure>
     <div class="ci-interpretation"><span class="ci-eyebrow">WHAT THE NUMBERS CAN TELL US</span><h4 data-insight-title>Listening increased.</h4><p data-insight></p><p class="ci-question"><strong>Next question:</strong> <span data-question></span></p></div>
